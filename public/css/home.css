@@ -1,0 +1,530 @@
+/* AQUI INICIA ESTILOS GENERALES */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a{
+ list-style: none;
+ text-decoration: none;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+article{
+    width: 90%;
+    margin: auto;
+}
+
+/* AQUI TERMINA ESTILOS GENERALES */
+
+/* ************************************ */
+/* ==================================== */
+
+/* AQUI INICIA HEADER */
+
+/* .main-menu{
+    width: 100%;
+    position: absolute;
+} */
+
+.header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* position: fixed;
+    width: 100%; 
+    z-index: 10; */
+    padding: 5px;
+    background-color: #42938E; /* #6DADE0; */
+    
+}
+
+.header-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    /* position: relative;
+    top:30px;
+    width: 100%;
+    z-index: 9; */
+    
+      /* flex-wrap: wrap;*/ 
+    padding: 5px;
+    
+}
+
+.form-search input{
+    height: 35px;
+}
+
+.header-top a, i{
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+
+.div-relleno{    
+    display: none;
+}
+
+.login-menu-hamb{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.content-hamb-menu{
+    width: 10%;
+    margin-right: 10px;
+}
+
+.hamburger-button{
+    background-color: #42938E;
+    color: white;
+    display: block;
+    max-width: 40px;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+}
+
+.logo{
+    padding: 10px; 
+  
+}
+
+.logo img{
+    width: 50px;
+    border-radius: 50%;
+    transition: width, 0.5s;
+}
+
+.nav-top-bottom{
+    display: none;
+}
+
+.nav-top-bottom ul{
+    list-style-type: none;
+    
+}
+
+.nav-top-bottom a{
+    text-decoration:none;
+    color: #424242;
+}
+
+.form-control{
+    margin-bottom: 15px;  
+}
+
+.create-form{
+    padding: 20px 15px;
+    max-width: 850px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* ==========*/
+.cart-option-menu{
+    display: none;
+}
+
+.form-search input{
+    height: 35px;
+}
+
+.form-control{
+    width: 100%;
+    border-radius: 7px;
+}
+
+/* .control{
+    width: 100%;
+    padding: 8px;
+}
+
+.button-form{
+    background-color: #42938E;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+}
+/* ========*/
+/* .button-form:hover {
+    background-color: turquoise;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.crearCuenta:hover{
+    color: #6DC4E0;
+} */
+/* AQUI TERMINA HEADER */
+
+/* ************************************ */
+/* ==================================== */
+
+/* AQUI INICIA MAIN */
+
+/* .banner-main{
+    position: relative;
+    top:125px;
+} */
+.banner-main img{
+    width: 90%;
+}
+
+/*=========*/
+.title-hot-sale, .title-week-sale, 
+.title-new-sale{
+    background-color: #42938E;
+    margin-top: 15px;
+    padding: 5px 0px;
+    text-align: center;
+    color: white;
+
+}
+
+.description-hot-sales, .description-new-sales{
+    padding: 10px;
+}
+
+.description-hot-sales p
+, .description-new-sales p{
+    text-align: justify;
+    color: #424242;
+}
+
+.products-hot, .products-week, .products-new{
+    padding: 10px;
+}
+
+.product-image{
+    width: 100%;
+}
+
+.product-detail i {
+    display: block;
+    font-size: 20px;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+}
+
+.product-detail, h4{
+    padding:0 10px 0px 10px;
+    margin: 15px 0px;
+    color: rgb(110, 109, 109);
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+.product-detail .price{
+    flex-grow: 3;
+    
+}
+
+.product-detail .discount{
+    flex-grow: 7;
+    
+}
+
+.product-detail i{
+    color: #42938E;
+    font: 16px;
+}
+
+.products-hot article, .products-week article, .products-new article{
+    background-color: rgba(66, 147, 142, 0.3);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+article h4{
+    display: none;
+}
+
+/* AQUI TERMINA MAIN */
+
+/* ************************************ */
+/* ==================================== */
+
+
+/* AQUI INICIA FOOTER */
+
+.secion-footer{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    background-color: #42938E;
+    width: 100%;
+    padding: 15px;
+
+}
+
+/* .news-letter ul{
+    text-decoration: none;
+    list-style: none;
+    text-align: left;
+    color: white;
+    font-size: 10px;
+} */
+
+/* .news-letter ul li{
+    margin: 5px 0px ;
+    
+} */
+
+.secion-footer a{
+    color: white;
+    
+}
+
+.social-media, .paid-method, .contact{
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.social-media h5, .paid-method h5, .contact h5{
+    margin-bottom: 5px;    
+}
+
+.social-media, .paid-method, .contact{
+    flex-grow: 3;
+}
+
+div.contact{
+    display: none;
+}
+
+
+/* AQUI TERMINA FOOTER */
+
+/* ************************************ */
+/* ==================================== */
+
+/* AQUI INICIAN LOS MEDIAS QUERYS */
+@media (min-width: 361px) {
+
+    .logo img{
+        width: 90px;
+        transition: width, 0.5s;
+        /* border-radius: 50%; */
+    }
+
+    .header-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .products-hot, .products-week{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 15px;
+
+    }
+    /* .product-detail h4{
+        display: block;
+        margin-top: 15px;
+    } */    
+    
+    .img-description{
+        position: relative;
+    }
+
+    .img-description h4:hover{
+        opacity: 1;
+
+    }
+
+    .img-description h4{
+        display: block;
+        position: absolute;
+        background-color: rgba(0,0,0,0.4);
+        color: white;
+        margin: 0; 
+        left: 0;
+        top: 0;
+        padding: 15px;
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 450ms;
+    }  
+
+    .products-hot article, .products-week article{
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+        margin: 10px;
+        width: 40%;
+        transition: width, 0.5s;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .login-menu-hamb{
+        display: none;
+        
+    }
+
+    .header-bottom{
+        display: flex;
+        margin: 0px 15px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-top-bottom{
+        display: block;
+        position: relative;
+        margin-left: 90px;
+        padding-left: 10px;
+        width: 60%;
+        
+    }
+
+    .nav-top-bottom a{
+        color: #666464;;
+    }
+
+    .cart-option-menu{
+        text-align: center;
+        width: 10%;
+    }
+
+    .cart-option-menu i{
+        font-size: 30px;
+        color: #42938E;
+    }
+
+    .content-menu-top-bottom{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .cart-option-menu{
+        display: block;
+    }
+    
+    .nav-create-login{
+        position: relative;
+        padding-left: 49px;
+        flex-grow: 6;
+    }
+
+    .form-search{
+        flex-grow: 4;
+    }
+
+    .products-hot article, .products-week article{
+        width: 22%;
+        transition: width, 0.5s;
+    }
+
+    .description-new-sales{
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        margin-top: 10PX;        
+    }
+
+    section .new-sales-note{
+        width: 40%;
+        
+    }
+
+    .products-new{
+        padding: 0px;
+        width: 50%;
+    }
+
+    footer .secion-footer h5{
+        font-size: 18px;
+    }
+
+    footer .paid-method, .social-media i{
+        font-size: 20px;
+    }
+   
+    
+    footer .contact, .social-media, .paid-method{
+        display: block;
+        width: 30%;
+        
+    }
+
+    footer ul{
+        list-style: none;
+        text-align: justify;
+    }
+
+    footer ul li{
+        padding: 5px;
+    }
+
+    footer .contact{
+        padding-left: 30px;
+    }
+
+    
+}
+
+@media (min-widht: 768px) {
+    footer .secion-footer h5{
+        font-size: 18px;
+    }
+
+    footer .paid-method, .social-media i{
+        font-size: 20px;
+    }
+   
+    
+    footer .contact, .social-media, .paid-method{
+        display: block;
+        width: 30%;
+        
+    }
+
+    footer ul{
+        list-style: none;
+        text-align: justify;
+    }
+
+    footer ul li{
+        padding: 5px;
+    }
+
+    footer .contact{
+        padding-left: 30px;
+    }    
+}
+
+/* AQUI TERMINAN LOS MEDIAS QUERYS */
+
