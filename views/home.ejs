@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-FDM</title>
+    <!-- fuentes de google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/140d5acfa8.js" crossorigin="anonymous"></script>
+    <!-- Estilos Normalize y custom -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <%- include('./partials/header.ejs') %>
+ <main>
+     <div class="banner-main">
+         <img src="/images/imgBannerMain.jpg" alt="Imagen Cocina Banner">
+     </div>
+    <section class="hot-sales">
+         <div class="section-hot-sales">
+             <h2 class="title-hot-sale">Lo más Vendido</h2>
+             <div class="description-hot-sales">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia quidem quibusdam quas quos tempore!</p>
+             </div>
+         </div>
+         <div class="products-hot">
+            <article>
+                <div class="img-description">
+                    <img src="/images/sala1.png" alt="Set comedor"
+                class="product-image">
+                    <h4>Set Comedor</h4>
+                </div>
+                <!-- <img src="/images/sala1.png" alt="Set comedor" 
+                class="product-image">-->
+                <div class="product-detail">
+                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                    <p class="price">$320.000</p>
+                    <p class="discount">%15</p>  
+                </div>
+                <!-- <h4>Set Comedor</h4> -->
+            </article>
+            <article>
+                <div class="img-description">
+                    <img src="/images/baño1.png" alt="Mueble de baño"
+                    class="product-image">
+                    <h4>Mueble de Baño</h4>
+                </div>
+                <div class="product-detail">
+                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                    <p class="price">$10.000</p>
+                    <p class="discount">%25</p>
+                </div>
+            </article>
+            <article>
+                <div class="img-description">
+                    <img src="/images/cocina1.png" alt="Isla Cocina"
+                    class="product-image">
+                    <h4>Isla Cocina</h4>
+                </div>
+                    <div class="product-detail">
+                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                    <p class="price">$520.000</p>
+                    <p class="discount">%5</p>
+                </div>
+            </article>
+            <article>
+                <div class="img-description">
+                    <img src="/images/cocielec1.png" alt="Cocina Electro"
+                    class="product-image">
+                    <h4>Cocina Moderna</h4>
+                </div>
+                <div class="product-detail">
+                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                    <p class="price">$520.000</p>
+                    <p class="discount">%5</p>
+                </div>
+            </article>
+         </div>
+    </section>
+    <section class="week-sales">
+        <div class="section-week-sales">
+            <h2 class="title-week-sale">Ofertas de la semana</h2>
+        </div>
+        <div class="products-week">
+           <article>
+            <div class="img-description">                  
+               <img src="/images/sala2.png" alt="Set comedor"
+               class="product-image">
+               <h4>Set Comedor</h4>
+            </div>   
+               <div class="product-detail">
+                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                   <p class="price">$420.000</p>
+                   <p class="discount">%10</p>
+               </div>
+           </article>
+           <article>
+                <div class="img-description">
+                    <img src="/images/baño2.png" alt="Mueble de baño"
+                    class="product-image">
+                    <h4>Mueble de Baño</h4>
+                </div>
+               <div class="product-detail">
+                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                   <p class="price">$20.000</p>
+                   <p class="discount">%05</p>
+               </div>
+           </article>
+           <article>
+                <div class="img-description">
+                    <img src="/images/cocina2.png" alt="Isla Cocina"
+                    class="product-image">
+                    <h4>Isla Cocina</h4>
+                </div>
+               <div class="product-detail">
+                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                   <p class="price">$320.000</p>
+                   <p class="discount">%15</p>
+               </div>
+           </article>
+           <article>
+                <div class="img-description">
+                    <img src="/images/cocielec3.png" alt="Cocina Electro"
+                    class="product-image">
+                    <h4>Cocina Moderna</h4>
+                </div>
+               <div class="product-detail">
+                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                   <p class="price">$120.000</p>
+                   <p class="discount">%5</p>
+               </div>
+           </article>
+        </div>
+    </section>
+    <section class="new-sales">
+        <div class="section-new-sales">
+            <h2 class="title-new-sale">Nuevo Lanzamiento</h2>
+        </div>        
+        <div class="new-sales-main">
+            <div class="description-new-sales">
+                <p class="new-sales-note">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum 
+                    perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia 
+                    quidem quibusdam quas quos tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum 
+                    perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia 
+                    quidem quibusdam quas quos tempore!.Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum 
+                    perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia 
+                    quidem quibusdam quas quos tempore! Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum 
+                    perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia 
+                    quidem quibusdam quas quos temp.
+                </p>                
+                <div class="products-new">
+                    <article>
+                        <div class="img-description">
+                            <img src="/images/sala3.png" alt="Set comedor"
+                            class="product-image">
+                            <h4>Set Comedor</h4>                    
+                        </div>
+                        <div class="product-detail">
+                            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                            <p class="price">$420.000</p>
+                            <p class="discount">%10</p>
+                        </div>
+                    </article>          
+                </div>
+            </div>
+        </div>
+    </section>
+ </main>
+ <%- include('./partials/footer.ejs') %>   
+</body>
+</html>
