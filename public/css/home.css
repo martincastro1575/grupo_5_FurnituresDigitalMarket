@@ -271,13 +271,14 @@ article{
 }
 
 .form-edit-product{
-
     padding: 20px 15px;
     max-width: 850px;
     margin-top: 30px;
     border-radius: 10px;
-    background-color: rgba(66, 147, 142, 0.3);
-    color: rgb(70, 69, 69);
+    /* background-color: rgba(66, 147, 142, 0.3); */
+    border: 1px solid #377a76;
+    /* color: rgb(70, 69, 69); */
+    color: #377a76;
     
 }
 
@@ -287,30 +288,39 @@ article{
     margin: 15px auto;
 }
 
+
+
 .form-control label{
     margin-bottom: 5px;
     font-style: italic;
+    font-weight: bold;
     display: block;
 }
 
 .control{
     width: 100%;
     padding: 8px;
+    color: #377a76;
 }
 
 .button-form:hover{
     background-color: rgba(66, 147, 142, 0.5);
  }
 
-.button-form{
-    /* background-color: #39b54a; */
+ .form-control-button{
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-form{    
     background-color:#377a76;
     border: none;
-    width: 100%;
+    width: 30%;
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 20px 10px 0px 10px;
     color: white;
 }
 
