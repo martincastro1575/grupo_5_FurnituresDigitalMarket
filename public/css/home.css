@@ -258,6 +258,9 @@ article{
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
+main h2{
+    color:#377a76;;
+}
 
 .main-form{
     display: flex;
@@ -326,6 +329,10 @@ article{
 
 .control:focus{
     border: 2px solid rgba(65, 141, 136, 0.5);
+}
+
+.precio{
+    width: 35%;
 }
 
 table{
