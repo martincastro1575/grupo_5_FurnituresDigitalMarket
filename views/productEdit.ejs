@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %> 
+<body>
+    <%- include('./partials/header') %> 
+    <div class="main-form">
+    <!-- <div class="form-register"> -->
+        <main>
+            <!-- <form action="/home.html" method="POST" class="create-form"> -->
+            <form action="#" method="POST" class="form-edit-product">
+                <div class="form-control">
+                    <label for="nombre-producto">Nombre del Producto</label>
+                    <input type="text" name="nombre-producto" id="nombre-producto" class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="descripcion-prod" class="control">Descripción</label>
+                    <textarea name="descripcion-prod" id="descripcion-prod" cols="30" rows="5" class="control">
+                    </textarea>
+                </div>
+                <div class="form-control">
+                    <label for="categoria-prod" class="control">Categoría</label>
+                    <select name="categoria-prod" id="categoria-prod" class="control">
+                        <% let categorias = ['Muebles','Baño','Cocina','comedor'] %> 
+                        <% categorias.forEach(categoria => { %>
+                            <option value="<%= categoria %>"><%= categoria %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="medidas" class="control">Medidas</label>
+                    <table class="medidas" >
+                        <tr>
+                            <th>Largo</th>
+                            <th>Ancho</th>
+                            <th>Alto</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="largo" id="largo" 
+                                class="control" placeholder="Largo" required>
+                            </td>
+                            <td><input type="text" name="ancho" id="ancho" 
+                                class="control" placeholder="Ancho" required>
+                            </td>
+                            <td><input type="text" name="alto" id="alto" 
+                                class="control" placeholder="Alto" required>
+                            </td>
+                            
+                        
+                        </tr>                    
+                    </table>
+                </div>
+            
+                <div class="form-control">
+                    <button type="submit" class="button-form">Editar</button>
+                    <button type="reset" class="button-form">Borrar</button>
+                </div>
+            </form>
+        </main>
+    </div>
+<%- include('./partials/footer') %> 
+</body>
+</html>

@@ -121,7 +121,7 @@ article{
     color: #424242;
 }
 
-.form-control{
+/* .form-control{
     margin-bottom: 15px;  
 }
 
@@ -130,7 +130,7 @@ article{
     max-width: 850px;
     width: 100%;
     margin-top: 20px;
-}
+} */
 
 /* ==========*/
 .cart-option-menu{
@@ -141,9 +141,10 @@ article{
     height: 35px;
 }
 
-.form-control{
+.form-control-header{
     width: 100%;
     border-radius: 7px;
+    
 }
 
 /* .control{
@@ -257,6 +258,80 @@ article{
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
+
+.main-form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-form main{
+    width: 60%;
+    margin: 20px 0px;
+}
+
+.form-edit-product{
+
+    padding: 20px 15px;
+    max-width: 850px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: rgba(66, 147, 142, 0.3);
+    color: rgb(70, 69, 69);
+    
+}
+
+.form-control{
+    margin-bottom: 15px;
+    width: 90%;
+    margin: 15px auto;
+}
+
+.form-control label{
+    margin-bottom: 5px;
+    font-style: italic;
+    display: block;
+}
+
+.control{
+    width: 100%;
+    padding: 8px;
+}
+
+.button-form:hover{
+    background-color: rgba(66, 147, 142, 0.5);
+ }
+
+.button-form{
+    /* background-color: #39b54a; */
+    background-color:#377a76;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+}
+
+.control:focus{
+    border: 2px solid rgba(65, 141, 136, 0.5);
+}
+
+table{
+    width: 100%;
+}
+
+.medidas table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    
+}
+
+  th, td {
+    padding: 5px;
+    text-align: center;
+  }
 
 article h4{
     display: none;

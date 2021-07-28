@@ -1,6 +1,8 @@
 const mainController = {
     'home': (req, res) => {
-        return res.render('home');
+        return res.render('home', {
+            title: 'Home FDMk'
+        });
     },
 
     'list': (req, res) =>{
