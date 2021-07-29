@@ -258,11 +258,8 @@ article{
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
-main h2{
-    color:#377a76;;
-}
 
-.main-form{
+/* .main-form{
     display: flex;
     justify-content: center;
     align-content: center;
@@ -278,9 +275,9 @@ main h2{
     max-width: 850px;
     margin-top: 30px;
     border-radius: 10px;
-    /* background-color: rgba(66, 147, 142, 0.3); */
+    
     border: 1px solid #377a76;
-    /* color: rgb(70, 69, 69); */
+    
     color: #377a76;
     
 }
@@ -311,7 +308,7 @@ main h2{
  }
 
  .form-control-button{
-    /* text-align: center; */
+    
     display: flex;
     justify-content: space-around;
 }
@@ -331,10 +328,6 @@ main h2{
     border: 2px solid rgba(65, 141, 136, 0.5);
 }
 
-.precio{
-    width: 35%;
-}
-
 table{
     width: 100%;
 }
@@ -348,7 +341,7 @@ table{
   th, td {
     padding: 5px;
     text-align: center;
-  }
+  } */
 
 article h4{
     display: none;
