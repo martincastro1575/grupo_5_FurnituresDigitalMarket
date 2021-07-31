@@ -1,129 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear cuenta</title>
-    <!-- fuentes de google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <script src="https://kit.fontawesome.com/140d5acfa8.js" crossorigin="anonymous"></script>
-    <!-- Estilos Normalize y custom -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <%- include('../partials/head.ejs') %> 
 <body>
-    <header>
-        <div class="main-menu">
-           <div class="header-top">
-               <div class="form-search">
-                   <form action="#" method="get" class="search-fm">
-                       <input type="text" name="search-prod" id="search-prod" max-length="120" class="form-control">
-                   </form>
-               </div>
-               <nav class="nav-create-login">
-                   <i class="fas fa-user-plus"></i>
-                   <a href="/register">Crear cuenta</a>
-                   <i class="fas fa-sign-in-alt"></i>
-                   <a href="/login">Login</a>
-               </nav>
-           </div>
-   
-           <div class="header-bottom">
-               <div class="logo">
-                   <img src="/images/LogoFDMK.png" alt="Logo de tienda">
-               </div>
-               <div class="login-menu-hamb">
-                   <!-- <div class="logo">
-                       <img src="/images/LogoFDMK.png" alt="Logo de tienda">
-                   </div> -->
-                   <div class="content-hamb-menu">
-                       <a href="#" class="hamburger-button">
-                           <i class="fas fa-bars"></i>
-                       </a>
-                   </div>             
-               </div>         
-                   <nav class="nav-top-bottom">
-                       <ul class="content-menu-top-bottom">
-                           <li><a href="#">Ofertas</a></li>
-                           <li><a href="#">Decoración</a></li>
-                           <li><a href="#">Cocina</a></li>
-                           <li><a href="#">Baño</a></li>
-                           <li><a href="#">Ayuda</a></li>
-                       </ul>
-                   </nav>         
-               <div class="cart-option-menu">
-                   <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
-               </div>
-   
-           </div>
-       </div>
-    </header> 
-    <main>
-    <div class="form-register">
-        <form action="/home.html" method="POST" class="create-form">
-            <div class="form-control">
-                <label for="nombre-apellido">Nombre y apellido</label>
-                <input type="text" name="nombre-apellido" id="nombre-apellido" class="control" required>
-            </div>
-            <div class="form-control">
-                <label for="user-email">Email</label>
-                <input type="email" name="user-email" id="user-email" class="control" required>
-            </div>
-            <div class="form-control">
-                <label for="telefono">Teléfono</label>
-                <input type="number" name="telefono" id="telefono" class="control" required>
-            </div>
-            <div class="form-control">
-                <label for="user-fecha">Fecha de nacimiento</label>
-                <input type="date" name="user-fecha" id="user-fecha" class="control">
-            </div>
-            <div class="form-control">
-                <label for="user-pass">Contraseña</label>
-                <input type="password" name="user-pass" id="user-pass" class="control" required>
-            </div>
-            <div class="form-control">
-                <label for="confirm-pass">Confirmar contraseña</label>
-                <input type="password" name="confirm-pass" id="confirm-pass" class="control" required>
-            </div>
-            <div class="form-control">
-                <button type="submit" class="button-form">Enviar</button>
-                <button type="reset" class="button-form">Borrar</button>
-            </div>
-        </form>
+    <%- include('../partials/header.ejs') %>
+    <div class="main-form"> 
+        <main> 
+            <h2>Registro de Usuario</h2>   
+            <form action="/home.html" method="POST" class="form-register">
+                <div class="form-control">
+                    <label for="nombre-apellido">Nombre y apellido</label>
+                    <input type="text" name="nombre-apellido" id="nombre-apellido" class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="user-email">Email</label>
+                    <input type="email" name="user-email" id="user-email" class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="telefono">Teléfono</label>
+                    <input type="number" name="telefono" id="telefono" class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="user-fecha">Fecha de nacimiento</label>
+                    <input type="date" name="user-fecha" id="user-fecha" class="control">
+                </div>
+                <div class="form-control">
+                    <label for="user-pass">Contraseña</label>
+                    <input type="password" name="user-pass" id="user-pass" class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="confirm-pass">Confirmar contraseña</label>
+                    <input type="password" name="confirm-pass" id="confirm-pass" class="control" required>
+                </div>
+                <div class="form-control-button">
+                    <button type="submit" class="button-form">Guardar</button>
+                    <button type="reset" class="button-form">Borrar</button>
+                </div>
+            </form>
+        </main>
     </div>
-</main>
-    <footer>
-        <div class="secion-footer">
-            <!-- <div class="news-letter"> -->
-            <div class="paid-method">
-               <h5>Métodos de pago</h5>
-               <i class="fab fa-paypal" title="PayPal"></i>
-               <i class="fab fa-bitcoin" title="BitCoin"></i>
-               <i class="far fa-credit-card" title="Credit Card"></i>
-               <!-- <ul class="ul-news">
-                   <li><a href="#">Nuevos Lanzamientos</a></li>
-                   <li><a href="#">Lo que es tendencia</a></li>
-                   <li><a href="#">Promociones</a></li>
-               </ul> -->
-            </div>
-            <div class="social-media">
-               <h5>Redes Sociales</h5>
-               <i class="fab fa-facebook-square" ></i>
-               <i class="fab fa-twitter-square"></i>
-               <i class="fab fa-instagram-square"></i>
-            </div>
-            <div class="contact">
-               <h5>Contacto</h5>
-               <ul>
-                   <li><i class="fas fa-home"></i> Av Santa Fe 3000</li>
-                   <li><i class="fas fa-envelope"></i> contact@fdmk.com</li>
-                   <li><i class="fas fa-mobile-alt"></i> 11 15 9343-2344</li>
-               </ul>            
-            </div>
-        </div>
-    </footer>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

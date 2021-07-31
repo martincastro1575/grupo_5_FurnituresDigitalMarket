@@ -32,6 +32,16 @@ main h2{
     
 }
 
+.form-register{
+    padding: 20px 15px;
+    max-width: 850px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 1px solid #377a76;
+    color: #377a76;
+
+}
+
 .form-control{
     margin-bottom: 15px;
     width: 90%;
