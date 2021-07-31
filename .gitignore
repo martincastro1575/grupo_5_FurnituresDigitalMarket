@@ -2,3 +2,6 @@ node_modules/
 userList.ejs
 package.json
 package-lock.json
+userResultEjemplo.ejs
+controllerEjemplo.js
+registerEjemplo.ejs

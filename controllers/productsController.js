@@ -4,7 +4,7 @@ const producController = {
     },
 
     'productsEdit': (req, res)=>{
-        res.render('productEdit',{
+        res.render('products/productEdit',{
             title: 'Edición de Productos'
         })
     },

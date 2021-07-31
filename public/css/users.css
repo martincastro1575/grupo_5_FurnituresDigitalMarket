@@ -1,11 +1,12 @@
 
-/* Formulario de edicion de Productos */
+/* Formulario de edicion
+ de Productos */
+
 
 main h2{
     color: #377a76;
 
 }
-
 .main-form{
     display: flex;
     justify-content: center;
@@ -17,14 +18,16 @@ main h2{
     margin: 20px 0px;
 }
 
-.form-edit-product{
+.form-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 20px 15px;
+    height: 350px;
     max-width: 850px;
     margin-top: 30px;
     border-radius: 10px;
-    /* background-color: rgba(66, 147, 142, 0.3); */
     border: 1px solid #377a76;
-    /* color: rgb(70, 69, 69); */
     color: #377a76;
     
 }
@@ -34,8 +37,6 @@ main h2{
     width: 90%;
     margin: 15px auto;
 }
-
-
 
 .form-control label{
     margin-bottom: 5px;
@@ -75,23 +76,4 @@ main h2{
     border: 2px solid rgba(65, 141, 136, 0.5);
 }
 
-.precio{
-    width: 35%;
-}
-
-table{
-    width: 100%;
-}
-
-.medidas table, th, td {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    
-}
-
-  th, td {
-    padding: 5px;
-    text-align: center;
-  }
-
-/* Fin de Formulario de edicion de Productos */  
+/* Fin de Formulario de edicion de login */  
