@@ -4,7 +4,7 @@ const app = express();
 const routes = require('./routers/mainRoutes');
 const routesProducts = require('./routers/products')
 
-const routerEjemplo = require('./routers/rutaEjemplo')
+// const routerEjemplo = require('./routers/rutaEjemplo')
 const routerUser = require('./routers/users')
 
 app.use(express.static('public'));
