@@ -16,6 +16,7 @@ app.set('view engine', 'ejs');
 
 app.use('/', routes);
 app.use('/editar', routesProducts);
+app.use('/listar', routesProducts)
 app.use('/user', routerUser);
 
 

@@ -11,16 +11,17 @@
             <form action="#" method="POST" class="form-edit-product">
                 <div class="form-control">
                     <label for="nombre-producto">Nombre del Producto</label>
-                    <input type="text" name="nombre-producto" id="nombre-producto" class="control" required>
+                    <input type="text" name="nombreProducto" id="nombreProducto" 
+                    value="<%= product %> " class="control" required>
                 </div>
                 <div class="form-control">
                     <label for="descripcion-prod" class="control">Descripción</label>
-                    <textarea name="descripcion-prod" id="descripcion-prod" cols="30" rows="5" class="control">
+                    <textarea name="descripcionProd" id="descripcionProd" cols="30" rows="5" class="control">
                     </textarea>
                 </div>
                 <div class="form-control">
                     <label for="categoria-prod" class="control">Categoría</label>
-                    <select name="categoria-prod" id="categoria-prod" class="control">
+                    <select name="categoriaProd" id="categoriaProd" class="control">
                         <% let categorias = ['Muebles','Baño','Cocina','comedor'] %> 
                         <% categorias.forEach(categoria => { %>
                             <option value="<%= categoria %>"><%= categoria %></option>
@@ -50,9 +51,14 @@
                 </div> 
                 <div class="form-control">
                     <label for="precio-producto">Precio del Producto</label>
-                    <input type="text" name="precio-producto" id="precio-producto" 
+                    <input type="text" name="precioProducto" id="precioProducto" 
                     class="control precio" required>
-                </div>           
+                </div>
+                <div class="form-control">
+                    <label for="discount-producto">Descuento del Producto</label>
+                    <input type="text" name="discountProducto" id="discountProducto" 
+                    class="control precio" required>
+                </div>            
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Editar</button>
                     <button type="reset" class="button-form">Borrar</button>

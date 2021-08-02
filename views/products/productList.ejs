@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head')  %>  
+<body>
+    <%- include('../partials/header') %>
+ <main>
+    
+    <section class="hot-sales-list">
+        
+         <div class="list-product">
+            
+                <table class="table-product">
+                    <caption class="titile-table"><h2>Listado de Productos</h2></caption>
+                    <tr class="title-items">
+                        <td>item</td>
+                        <td >Foto</td>
+                        <td>Nombre</td>
+                        <td>Descripcion</td>
+                        <td>Precio</td>
+                        <td>Descuento</td>
+                        <td>Stock</td>
+                    </tr>
+                    <% for( let i = 0; i < products.length; i++ ) { %>
+                        <form action="/editar/producto" method="get">
+                            <tr class="content-tr">
+                                <td>
+                                    <input type="text" name="id-product" id="id-product" class="text-id-prod"
+                                    value="<%= products[i].id %>" readonly>
+                                </td>
+                                <td>
+                                    <img src="/images/<%= products[i].image %>" alt="<%= products[i].product %>">
+                                </td>
+                                <input type="hidden" name="product" value="products[i].product">
+                                <td><button class="btn-editar-list" type="submit"><%= products[i].product %></button></td>
+                                <td>
+                                    <input type="text" name="descriptionProduct" id="description-product" class="text-desc-prod"
+                                    value="<%= products[i].description %>" readonly>                                  
+                                </td>
+                                <td>
+                                    <input type="text" name="price-product" id="price-product" 
+                                    class="text-price-prod" value="<%= products[i].price %>" readonly>
+                                </td>
+                                <td>
+                                    <input type="text" name="discount-product" id="discount-product" 
+                                    class="text-discount-prod" value="<%= products[i].discount %>" readonly>
+                                </td>
+                                <td>
+                                    <input type="text" name="stock-product" id="stock-product" 
+                                    class="text-stk-prod" value="<%= products[i].stock %>" readonly>
+                                    
+                                </td>
+                            </tr>
+                        </form>
+                    <% } %>
+                    
+                </table>
+            
+                
+         </div>
+         </div>
+
+         <!-- <% for( let i = 0; i < products.length; i++ ) { %>
+            <div class="products-hot">
+                <article>
+                    <div class="img-description">
+                        <img src="/images/<%= products[i].image %>" alt="<%= products[i].product %>" class="product-image">
+                        <h4><%= products[i].product %></h4>
+                    </div>                
+                    <div class="product-detail">
+                        <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                        <p class="price"><%= products[i].moneda %>  <%= products[i].price %></p>
+                        <p class="discount"><%= products[i].discount %> %</p>  
+                    </div>
+                    
+                </article>
+                
+            </div>
+         <% } %> -->
+           
+    </section>
+ </main>
+ <%- include('../partials/footer.ejs') %>   
+</body>
+</html>
