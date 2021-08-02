@@ -1,5 +1,11 @@
 
 /* Formulario de edicion de Productos */
+
+main h2{
+    color: #377a76;
+
+}
+
 .main-form{
     display: flex;
     justify-content: center;
@@ -88,4 +94,99 @@ table{
     text-align: center;
   }
 
-/* Fin de Formulario de edicion de Productos */  
+/* Fin de Formulario de edicion de Productos */ 
+
+/*Listado de productos*/
+
+.titile-table{
+    padding: 20px;
+}
+
+.title-items td{
+    color: #377a76;
+    font-weight: bold;
+}
+
+table.table-product {
+    table-layout: auto;
+    overflow: auto;
+    width: 90%;
+    height: 500px;
+    margin: 20px auto;
+}
+
+/*
+table.table-product td:nth-child(2){
+  width: 25%;
+
+}
+ 
+table.table-product td:nth-child(3){
+    width: 25%;
+}
+
+table.table-product td:nth-child(4){
+    width: 30%;
+} */
+
+table.table-product, th, td{
+    border: 1px solid #377a76;
+    border-collapse: collapse;
+    color: #377a76;
+    padding: 0px;
+    
+}
+
+table.table-product td{
+    color: #377a76;
+}
+
+
+td img{    
+    width: 25%;
+}
+
+.btn-editar-list{
+    width: 100%;
+    background-color: white;
+    color: #377a76;
+    border: none;
+}
+
+.btn-editar-list:hover{
+    cursor: pointer;
+}
+
+.text-id-prod, .text-desc-prod, .text-price-prod,
+.text-discount-prod, .text-stk-prod, .text-category-prod{
+    border: none;
+    color: #377a76;
+}
+
+.text-desc-prod, .text-price-prod,
+.text-discount-prod, .text-stk-prod,
+.text-desc-prod,.text-category-prod{
+    padding: 0px 10px;
+}
+
+.text-id-prod{
+    width: 15%;
+}
+
+.text-price-prod{
+    text-align: center;
+}
+
+.text-discount-prod{
+    width: 60%;
+}
+
+.text-stk-prod{
+    text-align: center;
+    width: 90%;
+}
+
+
+
+
+/* Fin de listado de productos*/

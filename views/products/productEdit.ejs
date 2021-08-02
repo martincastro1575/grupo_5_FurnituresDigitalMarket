@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %> 
+    <div class="main-form">
+    <!-- <div class="form-register"> -->
+        <main>
+            <h2>Edición de Producto</h2>
+            <!-- <form action="/home.html" method="POST" class="create-form"> -->
+            <form action="#" method="POST" class="form-edit-product">
+                <div class="form-control">
+                    <label for="nombre-producto">Nombre del Producto</label>
+                    <input type="text" name="nombreProducto" id="nombreProducto" 
+                    value="<%= product %> " class="control" required>
+                </div>
+                <div class="form-control">
+                    <label for="descripcion-prod" class="control">Descripción</label>
+                    <textarea name="descripcionProd" id="descripcionProd" cols="30" rows="5" class="control">
+                        <%= descriptionProduct %> 
+                    </textarea>
+                </div>
+                <div class="form-control">
+                    <label for="categoria-prod" class="control">Categoría</label>
+                    <input type="text" name="categoryProducto" id="categoryProducto" 
+                    value="<%= category %> " class="control" required>
+                    
+                </div>
+                <div class="form-control">
+                    <label for="medidas" class="control">Medidas</label>
+                    <table class="medidas" >
+                        <tr>
+                            <th>Largo</th>
+                            <th>Ancho</th>
+                            <th>Alto</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="largo" id="largo" 
+                                class="control" placeholder="Largo" 
+                                value="<%= largeProduct %> " required>
+                            </td>
+                            <td><input type="text" name="ancho" id="ancho" 
+                                class="control" placeholder="Ancho" 
+                                value="<%= widhProduct %> "required>
+                            </td>
+                            <td><input type="text" name="alto" id="alto" 
+                                class="control" placeholder="Alto" 
+                                value="<%= highProduct %> "required>
+                            </td>                        
+                        </tr>                    
+                    </table>
+                </div> 
+                <div class="form-control">
+                    <label for="precio-producto">Precio del Producto</label>
+                    <input type="text" name="precioProducto" id="precioProducto" 
+                    class="control precio" value="<%= priceProduct %> "required>
+                </div>
+                <div class="form-control">
+                    <label for="discount-producto">Descuento del Producto</label>
+                    <input type="text" name="discountProducto" id="discountProducto" 
+                    class="control precio" value="<%= discountProduct %> " required>
+                </div>            
+                <div class="form-control-button">
+                    <button type="submit" class="button-form">Guardar Cambios</button>
+                    <button type="reset" class="button-form">Borrar</button>
+                </div>
+            </form>
+        </main>
+    </div>
+<%- include('../partials/footer.ejs') %> 
+</body>
+</html>

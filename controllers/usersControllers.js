@@ -1,5 +1,14 @@
 const userController = {
+    'userLogin': (req, res)=>{
+        res.render('users/loginUser',{
+            title:'Login de Usuario'
+        })
+    },
+
     'usersAdd': (req, res)=>{
+        res.render('users/register',{
+            title: 'Registro de Usuario'
+        })
 
     },
 
@@ -11,3 +20,5 @@ const userController = {
 
     },
 }
+
+module.exports = userController;

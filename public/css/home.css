@@ -356,6 +356,10 @@ article h4{
 
 /* AQUI INICIA FOOTER */
 
+footer{
+    display: flex;
+}
+
 .secion-footer{
     display: flex;
     /* justify-content: space-between; */
