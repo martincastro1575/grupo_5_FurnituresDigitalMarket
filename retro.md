@@ -1,6 +1,6 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
-## Sprint \# 2 :two
+## Sprint \# 2️⃣
 
 ### Lo Malo 😞
 *No tomar previsiones por su uno del equipo tiene algun imprevisto.
