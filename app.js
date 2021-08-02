@@ -15,8 +15,10 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use('/', routes);
-app.use('/editar', routesProducts);
-app.use('/listar', routesProducts)
+app.use('/producto', routesProducts);
+// app.use('/editar', routesProducts);
+// app.use('/listar', routesProducts);
+// app.use('/agregar', routesProducts);
 app.use('/user', routerUser);
 
 

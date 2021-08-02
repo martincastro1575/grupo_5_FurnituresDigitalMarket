@@ -2,6 +2,16 @@ node_modules/
 userList.ejs
 package.json
 package-lock.json
+
 userResultEjemplo.ejs
-controllerEjemplo.js
 registerEjemplo.ejs
+
+controllerEjemplo.js
+mainControllerCopy.js
+mainController.js
+
+
+rutaEjemplo.js
+mainRoutesCopy.js
+rutaEjemplo.js
+

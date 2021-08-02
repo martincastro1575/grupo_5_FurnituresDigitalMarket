@@ -1,6 +1,8 @@
-const producController = {
+const productsController = {
     'producstAdd': (req, res) =>{
-
+        res.render('products/productAdd', {
+            title: 'Agregar Producto',
+        })
     },
 
     'productsEdit': (req, res)=>{
@@ -109,4 +111,4 @@ const producController = {
 
 }
 
-module.exports = producController
+module.exports = productsController
