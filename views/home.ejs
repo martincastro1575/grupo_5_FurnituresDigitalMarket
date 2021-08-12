@@ -13,57 +13,21 @@
              </div>
          </div>
          <div class="products-hot">
-            <article>
-                <div class="img-description">
-                    <img src="/images/sala1.png" alt="Set comedor"
-                class="product-image">
-                    <h4>Set Comedor</h4>
-                </div>
-                <!-- <img src="/images/sala1.png" alt="Set comedor" 
-                class="product-image">-->
-                <div class="product-detail">
-                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                    <p class="price">$320.000</p>
-                    <p class="discount">%15</p>  
-                </div>
-                <!-- <h4>Set Comedor</h4> -->
-            </article>
-            <article>
-                <div class="img-description">
-                    <img src="/images/baño1.png" alt="Mueble de baño"
+             <% producthotSales.forEach(element => { %>
+                <article>
+                    <div class="img-description">
+                        <img src="/images/<%= element.image %>" alt="Set comedor"
                     class="product-image">
-                    <h4>Mueble de Baño</h4>
-                </div>
-                <div class="product-detail">
-                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                    <p class="price">$10.000</p>
-                    <p class="discount">%25</p>
-                </div>
-            </article>
-            <article>
-                <div class="img-description">
-                    <img src="/images/cocina1.png" alt="Isla Cocina"
-                    class="product-image">
-                    <h4>Isla Cocina</h4>
-                </div>
+                        <h4><%= element.name %></h4>
+                    </div>
                     <div class="product-detail">
-                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                    <p class="price">$520.000</p>
-                    <p class="discount">%5</p>
-                </div>
-            </article>
-            <article>
-                <div class="img-description">
-                    <img src="/images/cocielec1.png" alt="Cocina Electro"
-                    class="product-image">
-                    <h4>Cocina Moderna</h4>
-                </div>
-                <div class="product-detail">
-                    <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                    <p class="price">$520.000</p>
-                    <p class="discount">%5</p>
-                </div>
-            </article>
+                        <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                        <p class="price">$<%= element.price %></p>
+                        <p class="discount"><%= element.discount %>%</p>  
+                    </div>
+                </article>
+             <% }) %>
+            
          </div>
     </section>
     <section class="week-sales">
@@ -71,54 +35,20 @@
             <h2 class="title-week-sale">Ofertas de la semana</h2>
         </div>
         <div class="products-week">
-           <article>
-            <div class="img-description">                  
-               <img src="/images/sala2.png" alt="Set comedor"
-               class="product-image">
-               <h4>Set Comedor</h4>
-            </div>   
-               <div class="product-detail">
-                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                   <p class="price">$420.000</p>
-                   <p class="discount">%10</p>
-               </div>
-           </article>
-           <article>
-                <div class="img-description">
-                    <img src="/images/baño2.png" alt="Mueble de baño"
+            <% productsInSales.forEach(element => { %>
+                <article>
+                 <div class="img-description">                  
+                    <img src="/images/<%= element.image %> " alt="Set comedor"
                     class="product-image">
-                    <h4>Mueble de Baño</h4>
-                </div>
-               <div class="product-detail">
-                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                   <p class="price">$20.000</p>
-                   <p class="discount">%05</p>
-               </div>
-           </article>
-           <article>
-                <div class="img-description">
-                    <img src="/images/cocina2.png" alt="Isla Cocina"
-                    class="product-image">
-                    <h4>Isla Cocina</h4>
-                </div>
-               <div class="product-detail">
-                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                   <p class="price">$320.000</p>
-                   <p class="discount">%15</p>
-               </div>
-           </article>
-           <article>
-                <div class="img-description">
-                    <img src="/images/cocielec3.png" alt="Cocina Electro"
-                    class="product-image">
-                    <h4>Cocina Moderna</h4>
-                </div>
-               <div class="product-detail">
-                <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                   <p class="price">$120.000</p>
-                   <p class="discount">%5</p>
-               </div>
-           </article>
+                    <h4><%= element.name %></h4>
+                 </div>   
+                    <div class="product-detail">
+                     <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                        <p class="price">$<%= element.price %></p>
+                        <p class="discount"><%= element.discount %>%</p>
+                    </div>
+                </article>
+            <% }) %>
         </div>
     </section>
     <section class="new-sales">
@@ -141,14 +71,14 @@
                 <div class="products-new">
                     <article>
                         <div class="img-description">
-                            <img src="/images/sala3.png" alt="Set comedor"
+                            <img src="/images/<%= newProducts.image %> " alt="Set comedor"
                             class="product-image">
-                            <h4>Set Comedor</h4>                    
+                            <h4><%= newProducts.name %></h4>                    
                         </div>
                         <div class="product-detail">
                             <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
-                            <p class="price">$420.000</p>
-                            <p class="discount">%10</p>
+                            <p class="price">$<%= newProducts.price %></p>
+                            <p class="discount"><%= newProducts.discount %>%</p>
                         </div>
                     </article>          
                 </div>

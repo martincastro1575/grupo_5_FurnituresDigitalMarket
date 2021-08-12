@@ -11,10 +11,15 @@ controllerEjemplo.js
 mainControllerCopy.js
 mainController.js
 
-
+homeCopy.ejs
 rutaEjemplo.js
 mainRoutesCopy.js
 rutaEjemplo.js
 
 productsPrueba.css
 
+logDBMiddleware.js
+logMiddleware.js
+
+log.txt
+logDB.txt
