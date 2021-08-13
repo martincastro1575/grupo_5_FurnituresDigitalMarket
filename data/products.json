@@ -6,7 +6,10 @@
   "discount": 50,
   "category": "inSale",
   "description": "Set comedor, elegante para 4 personas",
-  "image": "sala2.png"
+  "image": "sala2.png",
+  "w": 23,
+  "h": 15,
+  "l": 35
  },
  {
   "id": 2,
@@ -15,7 +18,10 @@
   "discount": 25,
   "category": "inSale",
   "description": "Mueble para baños con espejo y dos bachas",
-  "image": "baño2.png"
+  "image": "baño2.png",
+  "w": 23,
+  "h": 15,
+  "l": 35
  },
  {
   "id": 3,
@@ -24,7 +30,10 @@
   "discount": 5,
   "category": "inSale",
   "description": "Novedosa isla de cocina color wenwe y gabinetes con puertas, gavetas silenciosas",
-  "image": "cocina2.png"
+  "image": "cocina2.png",
+  "w": 23,
+  "h": 15,
+  "l": 35
  },
  {
   "id": 4,
@@ -33,7 +42,10 @@
   "price": 379000,
   "discount": 20,
   "image": "cocielec3.png",
-  "category": "inSale"
+  "category": "inSale",
+  "w": 23,
+  "h": 15,
+  "l": 35
  },
  {
     "id": 5,
@@ -42,7 +54,10 @@
     "discount": 5,
     "category": "hotSales",
     "description": "Set comedor, elegante para 4 personas",
-    "image": "sala1.png"
+    "image": "sala1.png",
+    "w": 23,
+    "h": 15,
+    "l": 35
    },
    {
     "id": 6,
@@ -51,7 +66,10 @@
     "discount": 25,
     "category": "hotSales",
     "description": "Mueble para baños con espejo y dos bachas",
-    "image": "baño1.png"
+    "image": "baño1.png",
+    "w": 23,
+    "h": 15,
+    "l": 35
    },
    {
     "id": 7,
@@ -60,7 +78,10 @@
     "discount": 5,
     "category": "hotSales",
     "description": "Novedosa isla de cocina color wenwe y gabinetes con puertas, gavetas silenciosas",
-    "image": "cocina1.png"
+    "image": "cocina1.png",
+    "w": 23,
+    "h": 15,
+    "l": 35
    },
    {
     "id": 8,
@@ -69,7 +90,10 @@
     "price": 479000,
     "discount": 10,
     "image": "cocielec1.png",
-    "category": "hotSales"
+    "category": "hotSales",
+    "w": 23,
+    "h": 15,
+    "l": 35
    },
    {
     "id": 9,
@@ -78,7 +102,10 @@
     "price": 179000,
     "discount": 5   ,
     "image": "cocielec1.png",
-    "category": "newSales"
+    "category": "newSales",
+    "w": 23,
+    "h": 15,
+    "l": 35
    }
 
 ]

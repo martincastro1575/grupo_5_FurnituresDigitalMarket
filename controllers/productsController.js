@@ -12,18 +12,14 @@ const productsController = {
     },
 
     'productsEdit': (req, res)=>{
+        let idProduct = req.params.id;
+
+        let oneProduct = products.find(product=>
+                product.id == idProduct
+            )
         res.render('products/productEdit',{
             title: 'Edición de Productos',
-            product: req.query.product,
-            descriptionProduct: req.query.descriptionProduct,
-            category: req.query.categoryProduct,
-            priceProduct: req.query.priceProduct,
-            discountProduct: req.query.discountProduct,
-            stockProduct: req.query.stockProduct,
-            highProduct: req.query.highProduct,
-            largeProduct: req.query.largeProduct,
-            widhProduct:req.query.widhProduct,
-            // image: 'sala1.png',
+            oneProduct: oneProduct,
         })
     },
 

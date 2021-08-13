@@ -12,18 +12,17 @@
                 <div class="form-control">
                     <label for="nombre-producto">Nombre del Producto</label>
                     <input type="text" name="nombreProducto" id="nombreProducto" 
-                    value="<%= product %> " class="control" required>
+                    value="<%= oneProduct.name %> " class="control" required>
                 </div>
                 <div class="form-control">
                     <label for="descripcion-prod" class="control">Descripción</label>
-                    <textarea name="descripcionProd" id="descripcionProd" cols="30" rows="5" class="control">
-                        <%= descriptionProduct %> 
-                    </textarea>
+                    <textarea name="descripcionProd" id="descripcionProd" 
+                    cols="30" rows="5" class="control"><%= oneProduct.description %></textarea>
                 </div>
                 <div class="form-control">
                     <label for="categoria-prod" class="control">Categoría</label>
                     <input type="text" name="categoryProducto" id="categoryProducto" 
-                    value="<%= category %> " class="control" required>
+                    value="<%= oneProduct.category %> " class="control" required>
                     
                 </div>
                 <div class="form-control">
@@ -37,15 +36,15 @@
                         <tr>
                             <td><input type="text" name="largo" id="largo" 
                                 class="control" placeholder="Largo" 
-                                value="<%= largeProduct %> " required>
+                                value="<%= oneProduct.l %> " required>
                             </td>
                             <td><input type="text" name="ancho" id="ancho" 
                                 class="control" placeholder="Ancho" 
-                                value="<%= widhProduct %> "required>
+                                value="<%= oneProduct.w %> "required>
                             </td>
                             <td><input type="text" name="alto" id="alto" 
                                 class="control" placeholder="Alto" 
-                                value="<%= highProduct %> "required>
+                                value="<%= oneProduct.h %> "required>
                             </td>                        
                         </tr>                    
                     </table>
@@ -53,12 +52,12 @@
                 <div class="form-control">
                     <label for="precio-producto">Precio del Producto</label>
                     <input type="text" name="precioProducto" id="precioProducto" 
-                    class="control precio" value="<%= priceProduct %> "required>
+                    class="control precio" value="<%= oneProduct.price %> "required>
                 </div>
                 <div class="form-control">
                     <label for="discount-producto">Descuento del Producto</label>
                     <input type="text" name="discountProducto" id="discountProducto" 
-                    class="control precio" value="<%= discountProduct %> " required>
+                    class="control precio" value="<%= oneProduct.discount %> " required>
                 </div>            
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar Cambios</button>

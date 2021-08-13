@@ -8,7 +8,8 @@ const logMiddleWareDB = require('../middlewares/logDBMiddleware')
 const productController = require('../controllers/productsController');
 
 
-router.get('/editar', productController.productsEdit)
+router.get('/editar/:id/', productController.productsEdit)
+router.put('/editar/:id', productController.productsEdit)
 
 
 router.get('/agregar', productController.producstAdd)

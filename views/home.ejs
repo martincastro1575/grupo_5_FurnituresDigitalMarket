@@ -14,7 +14,7 @@
          </div>
          <div class="products-hot">
              <% producthotSales.forEach(element => { %>
-                <a href="#">
+                <a href="/producto/editar/<%= element.id %>">
                     <article>
                         <div class="img-description">
                             <img src="/images/<%= element.image %>" alt="Set comedor"
@@ -38,7 +38,7 @@
         </div>
         <div class="products-week">
             <% productsInSales.forEach(element => { %>
-                <a href="#">
+                <a href="/producto/editar/<%= element.id %>">
                     <article>
                     <div class="img-description">                  
                         <img src="/images/<%= element.image %> " alt="Set comedor"
@@ -73,7 +73,7 @@
                     quidem quibusdam quas quos temp.
                 </p>                
                 <div class="products-new">
-                    <a href="#">
+                    <a href="/producto/editar/<%= newProducts.id %>">
                         <article>
                             <div class="img-description">
                                 <img src="/images/<%= newProducts.image %> " alt="Set comedor"
