@@ -23,6 +23,26 @@ const productsController = {
         })
     },
 
+    'productsUpdate':(req, res)=>{
+        let idProduct = req.params.id;
+
+        products.forEach(product => {
+            if (product.id == idProduct){
+                product.name = req.body.nombreProducto;
+                product.description = req.body.descripcionProd;
+                product.category = req.body.categoryProducto;
+                product.price = req.body.precioProducto;
+                product.discount = req.body.discountProducto;
+                product.w = req.body.ancho;
+                product.l = req.body.largo;
+                product.h = req.body.alto;
+            }
+        });
+        fs.writeFileSync(productsPath, JSON.stringify(products));
+        res.redirect('/producto/editar/' + idProduct);
+
+    },
+
     'productList': (req, res) =>{  
         
         res.render('products/productList',{

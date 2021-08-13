@@ -9,7 +9,7 @@ const productController = require('../controllers/productsController');
 
 
 router.get('/editar/:id/', productController.productsEdit)
-router.put('/editar/:id', productController.productsEdit)
+router.put('/editar/:id', productController.productsUpdate)
 
 
 router.get('/agregar', productController.producstAdd)
