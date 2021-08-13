@@ -14,18 +14,20 @@
          </div>
          <div class="products-hot">
              <% producthotSales.forEach(element => { %>
-                <article>
-                    <div class="img-description">
-                        <img src="/images/<%= element.image %>" alt="Set comedor"
-                    class="product-image">
-                        <h4><%= element.name %></h4>
-                    </div>
-                    <div class="product-detail">
-                        <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                        <p class="price">$<%= element.price %></p>
-                        <p class="discount"><%= element.discount %>%</p>  
-                    </div>
-                </article>
+                <a href="#">
+                    <article>
+                        <div class="img-description">
+                            <img src="/images/<%= element.image %>" alt="Set comedor"
+                        class="product-image">
+                            <h4><%= element.name %></h4>
+                        </div>
+                        <div class="product-detail">
+                            <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                            <p class="price">$<%= element.price %></p>
+                            <p class="discount"><%= element.discount %>%</p>  
+                        </div>
+                    </article>
+                </a>
              <% }) %>
             
          </div>
@@ -36,18 +38,20 @@
         </div>
         <div class="products-week">
             <% productsInSales.forEach(element => { %>
-                <article>
-                 <div class="img-description">                  
-                    <img src="/images/<%= element.image %> " alt="Set comedor"
-                    class="product-image">
-                    <h4><%= element.name %></h4>
-                 </div>   
+                <a href="#">
+                    <article>
+                    <div class="img-description">                  
+                        <img src="/images/<%= element.image %> " alt="Set comedor"
+                        class="product-image">
+                        <h4><%= element.name %></h4>
+                    </div>   
                     <div class="product-detail">
-                     <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                        <p class="price">$<%= element.price %></p>
-                        <p class="discount"><%= element.discount %>%</p>
+                        <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                            <p class="price">$<%= element.price %></p>
+                            <p class="discount"><%= element.discount %>%</p>
                     </div>
-                </article>
+                    </article>
+                </a>
             <% }) %>
         </div>
     </section>
@@ -69,18 +73,20 @@
                     quidem quibusdam quas quos temp.
                 </p>                
                 <div class="products-new">
-                    <article>
-                        <div class="img-description">
-                            <img src="/images/<%= newProducts.image %> " alt="Set comedor"
-                            class="product-image">
-                            <h4><%= newProducts.name %></h4>                    
-                        </div>
-                        <div class="product-detail">
-                            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
-                            <p class="price">$<%= newProducts.price %></p>
-                            <p class="discount"><%= newProducts.discount %>%</p>
-                        </div>
-                    </article>          
+                    <a href="#">
+                        <article>
+                            <div class="img-description">
+                                <img src="/images/<%= newProducts.image %> " alt="Set comedor"
+                                class="product-image">
+                                <h4><%= newProducts.name %></h4>                    
+                            </div>
+                            <div class="product-detail">
+                                <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                <p class="price">$<%= newProducts.price %></p>
+                                <p class="discount"><%= newProducts.discount %>%</p>
+                            </div>
+                        </article>
+                    </a>          
                 </div>
             </div>
         </div>
