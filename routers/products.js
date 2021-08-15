@@ -11,9 +11,10 @@ const productController = require('../controllers/productsController');
 router.get('/editar/:id/', productController.productsEdit)
 router.put('/editar/:id', productController.productsUpdate)
 
-router.get('/agregar', productController.producstAdd)
+router.get('/agregar', productController.crearProducto)
 //colocamos el middleware entre la ruta y el controller
-router.post('/agregar', logMiddleWareDB, productController.producstAdd)
+// router.post('/guardarProducto', logMiddleWareDB, productController.guardarProducto)
+router.post('/guardarProducto', productController.guardarProducto)
 
 router.post('/eliminar/:id', productController.productDelete)
 

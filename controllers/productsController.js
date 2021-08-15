@@ -5,12 +5,36 @@ const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'))
 
 const productsController = {
-    'producstAdd': (req, res) =>{
+    'crearProducto': (req, res) =>{
 
-        res.send('Estoy en agregar')
-        // res.render('products/productAdd', {
-        //     title: 'Agregar Producto',
-        // })
+        res.render('products/productAdd', {
+            title:"Un nuevo Producto",
+        })
+       
+    },
+
+    'guardarProducto': (req, res) =>{
+        let nuevoId = products[products.length - 1].id + 1;
+
+		let nuevoProducto = {
+			id: nuevoId,
+            name: req.body.nombreProducto,
+			price: req.body.precioProducto,
+			category: req.body.categoriaProd,
+			discount: req.body.discountProducto,
+			descripton: req.body.descripcionProd,
+			//image: req.body.imageProduct,
+            w: req.body.ancho,
+            h: req.body.alto,
+            l: req.body.largo,
+            stock: req.body.cantidadProducto,
+		}
+
+		products.push(nuevoProducto);
+		fs.writeFileSync(productsPath, JSON.stringify(products));
+        res.redirect('/producto/listado');
+        
+		
     },
 
     'productsEdit': (req, res)=>{
@@ -52,7 +76,7 @@ const productsController = {
             return product.id != idProduct
         })
         fs.writeFileSync(productsPath, JSON.stringify(products));
-        res.redirect('/');
+        res.redirect('/producto/listado');
 
     },
 

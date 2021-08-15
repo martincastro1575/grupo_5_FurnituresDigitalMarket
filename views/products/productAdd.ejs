@@ -7,20 +7,25 @@
     <!-- <div class="form-register"> -->
         <main>
             <h2>Agregar Productos</h2>
-            <!-- <form action="/home.html" method="POST" class="create-form"> -->
-            <form action="/" method="POST" class="form-edit-product">
+            <form action="/producto/guardarProducto" method="POST" class="form-edit-product">
                 <div class="form-control">
                     <label for="nombre-producto">Nombre del Producto</label>
                     <input type="text" name="nombreProducto" id="nombreProducto" class="control" required>
                 </div>
                 <div class="form-control">
                     <label for="descripcion-prod" class="control">Descripción</label>
-                    <textarea name="descripcionProd" id="descripcionProd" cols="30" rows="5" class="control">
-                    </textarea>
+                    <textarea name="descripcionProd" id="descripcionProd" 
+                    cols="30" rows="5" class="control"></textarea>
                 </div>
                 <div class="form-control">
-                    <label for="categoria-prod" class="control">Categoría</label>
-                    <input type="text" name="categoryProducto" id="categoryProducto" class="control" required>
+                    <label for="categoriaProd" class="control">Categoría</label>
+                    <!-- <input type="text" name="categoryProducto" id="categoryProducto" class="control"> -->
+					<select name="categoriaProd" id="categoriaProd" class="control">
+						<option value="">Elegí</option>
+						<option value="inSale">En oferta</option>
+						<option value="hotSales">Más vendidos</option>
+                        <option value="newSales">Novedades</option>
+					</select>
                 </div>
                 <div class="form-control">
                     <label for="categoria-prod" class="control">Seleccione Imagen</label>
