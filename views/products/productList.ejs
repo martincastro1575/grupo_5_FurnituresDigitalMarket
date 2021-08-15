@@ -4,99 +4,31 @@
 <body>
     <%- include('../partials/header') %>
  <main>
-    
-    <section class="hot-sales-list">
-        
-         <div class="list-product">
-            
-            <table class="table-product">
-                <caption class="titile-table"><h2>Listado de Productos</h2></caption>
-                <tr class="title-items">
-                    <td>item</td>
-                    <td >Foto</td>
-                    <td>Nombre</td>
-                    <td>Descripcion</td>
-                    <td>Categoria</td>
-                    <td>Precio</td>
-                    <td>Descuento</td>
-                    <td>Stock</td>
-                    <td>Alto</td>
-                    <td>Largo</td>
-                    <td>Ancho</td>
-                </tr>
-                <% for( let i = 0; i < products.length; i++ ) { %>
-                    <form action="/producto/editar" method="get">
-                        <tr class="content-tr">
-                            <td>
-                                <input type="text" name="idProduct" id="idProduct" class="text-id-prod"
-                                value="<%= products[i].id %>" readonly>
-                            </td>
-                            <td>
-                                <img src="/images/<%= products[i].image %>" alt="<%= products[i].product %>">
-                            </td>
-                            <input type="hidden" name="product" value="<%= products[i].product %>">
-                            <td><button class="btn-editar-list" type="submit"><%= products[i].product %></button></td>
-                            <td>
-                                <input type="text" name="descriptionProduct" id="descriptionProduct" class="text-desc-prod"
-                                value="<%= products[i].description %>" readonly>                                  
-                            </td>
-                            <td>
-                                <input type="text" name="categoryProduct" id="categoryProduct" class="text-category-prod"
-                                value="<%= products[i].category %>" readonly>                                  
-                            </td>
-                            <td>
-                                <input type="text" name="priceProduct" id="priceProduct" 
-                                class="text-price-prod" value="<%= products[i].price %>" readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="discountProduct" id="discountProduct" 
-                                class="text-discount-prod" value="<%= products[i].discount %>" readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="stockProduct" id="stockProduct" 
-                                class="text-stk-prod" value="<%= products[i].stock %>" readonly>
-                                
-                            </td>
-                            <td>
-                                <input type="text" name="largeProduct" id="largeProduct" 
-                                class="text-stk-prod" value="<%= products[i].large %>" readonly>                                    
-                            </td>
-                            <td>
-                                <input type="text" name="highProduct" id="highProduct" 
-                                class="text-stk-prod" value="<%= products[i].high %>" readonly>                                    
-                            </td>
-                            <td>
-                                <input type="text" name="widhProduct" id="widtProduct" 
-                                class="text-stk-prod" value="<%= products[i].widt %>" readonly>                                    
-                            </td>                          
-                        </tr>
-                    </form>
-                <% } %>
-                
-            </table>
-            
-                
+    <section class="hot-sales">
+         <div class="section-hot-sales">
+             <h2 class="title-hot-sale">Todos los Productos</h2>
+             <!-- <div class="description-hot-sales">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia quidem quibusdam quas quos tempore!</p>
+             </div> -->
          </div>
-         <!-- </div> -->
-
-         <!-- <% for( let i = 0; i < products.length; i++ ) { %>
-            <div class="products-hot">
-                <article>
-                    <div class="img-description">
-                        <img src="/images/<%= products[i].image %>" alt="<%= products[i].product %>" class="product-image">
-                        <h4><%= products[i].product %></h4>
-                    </div>                
-                    <div class="product-detail">
-                        <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                        <p class="price"><%= products[i].moneda %>  <%= products[i].price %></p>
-                        <p class="discount"><%= products[i].discount %> %</p>  
-                    </div>
-                    
-                </article>
-                
-            </div>
-         <% } %> -->
-           
+         <div class="products-hot">
+             <% products.forEach(element => { %>
+                <a href="/producto/editar/<%= element.id %>">
+                    <article>
+                        <div class="img-description">
+                            <img src="/images/<%= element.image %>" alt="Set comedor"
+                        class="product-image">
+                            <h4><%= element.name %></h4>
+                        </div>
+                        <div class="product-detail">
+                            <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                            <p class="price">$<%= element.price %></p>
+                            <p class="discount"><%= element.discount %>%</p>  
+                        </div>
+                    </article>
+                </a>
+             <% }) %>            
+         </div>
     </section>
  </main>
  <%- include('../partials/footer.ejs') %>   
