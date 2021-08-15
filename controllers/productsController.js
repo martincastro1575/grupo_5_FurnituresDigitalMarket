@@ -6,9 +6,11 @@ let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'))
 
 const productsController = {
     'producstAdd': (req, res) =>{
-        res.render('products/productAdd', {
-            title: 'Agregar Producto',
-        })
+
+        res.send('Estoy en agregar')
+        // res.render('products/productAdd', {
+        //     title: 'Agregar Producto',
+        // })
     },
 
     'productsEdit': (req, res)=>{
@@ -40,6 +42,17 @@ const productsController = {
         });
         fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/editar/' + idProduct);
+
+    },
+
+    'productDelete':(req, res)=>{
+        let idProduct = req.params.id;
+
+        products = products.filter(product=>{
+            return product.id != idProduct
+        })
+        fs.writeFileSync(productsPath, JSON.stringify(products));
+        res.redirect('/');
 
     },
 

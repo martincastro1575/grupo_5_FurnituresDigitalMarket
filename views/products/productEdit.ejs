@@ -60,9 +60,17 @@
                 </div>            
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar Cambios</button>
-                    <button type="reset" class="button-form">Borrar</button>
+                    <button type="reset" class="button-form">Limpiar</button>
                 </div>
+                
             </form>
+            <div class="form-control-button-delete">
+                
+                <form action="/producto/eliminar/<%= oneProduct.id %>" method="POST" class="form-delete-product">
+                    <button type="submit" class="button-form">Eliminar</button>
+                </form>
+                
+            </div>
         </main>
     </div>
 <%- include('../partials/footer.ejs') %> 
