@@ -23,7 +23,7 @@ const productsController = {
 			category: req.body.categoriaProd,
 			discount: req.body.discountProducto,
 			descripton: req.body.descripcionProd,
-			//image: req.body.imageProduct,
+			image: req.file.filename,
             w: req.body.ancho,
             h: req.body.alto,
             l: req.body.largo,
