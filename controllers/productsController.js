@@ -23,7 +23,7 @@ const productsController = {
 			category: req.body.categoriaProd,
 			discount: req.body.discountProducto,
 			descripton: req.body.descripcionProd,
-			image: req.file.filename,
+			image: req.file.filename, //de este manera se llama usando multer
             w: req.body.ancho,
             h: req.body.alto,
             l: req.body.largo,

@@ -20,9 +20,17 @@
                     cols="30" rows="5" class="control"><%= oneProduct.description %></textarea>
                 </div>
                 <div class="form-control">
-                    <label for="categoria-prod" class="control">Categoría</label>
-                    <input type="text" name="categoryProducto" id="categoryProducto" 
-                    value="<%= oneProduct.category %>" class="control" required>
+                    <label for="categoryProducto" class="control">Categoría</label>
+                    <select name="categoryProducto" id="categoryProducto" class="control">
+                        <option value="">Elegí</option>
+                        <% if (oneProduct.category == 'hotSales') { %>
+                            <option value="inSale">En oferta</option>
+                            <option value="hotSales" selected>Más vendidos</option>
+                        <% } else { %>
+                            <option value="inSale" selected>En oferta</option>
+                            <option value="hotSales">Más vendidos</option>
+                        <% } %>
+                    </select>
                 </div>
                 <div class="form-control">
                     <label for="medidas" class="control">Medidas</label>
