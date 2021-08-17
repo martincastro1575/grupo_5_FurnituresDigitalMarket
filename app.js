@@ -1,5 +1,5 @@
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 const app = express();
 const methodOverride = require('method-override');
 const routes = require('./routers/mainRoutes');
@@ -13,7 +13,7 @@ const logMiddleWare = require('./middlewares/logMiddleware');
 
 
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // Se agregan estas lineas para trabajo con metodo POST
 app.use(express.urlencoded({ extended: false }));
@@ -24,8 +24,8 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 //************************************************** */
 
-// const publicPath = path.resolve(__dirname, './public')
-// app.use(express.static(publicPath))
+const publicPath = path.resolve(__dirname, './public')
+app.use(express.static(publicPath))
 
 app.set('view engine', 'ejs');
 
