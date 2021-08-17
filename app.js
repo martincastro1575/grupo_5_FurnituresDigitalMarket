@@ -30,7 +30,6 @@ app.use(express.static(publicPath))
 app.set('view engine', 'ejs');
 
 //Hago de uso global el middleware
-app.use(logMiddleWare);
 
 app.use('/', routes);
 app.use('/producto', routesProducts);
@@ -39,6 +38,7 @@ app.use('/producto', routesProducts);
 // app.use('/agregar', routesProducts);
 app.use('/user', routerUser);
 
+app.use(logMiddleWare);
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log('Corriendo servidor Express:3000');

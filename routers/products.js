@@ -5,7 +5,7 @@ const router = express.Router();
 //Requeriendo Multer
 const multer = require('multer');
 //declaramos el middleware a nivel de ruta
-const logMiddleWareDB = require('../middlewares/logDBMiddleware')
+// const logMiddleWareDB = require('../middlewares/logDBMiddleware')
 
 const productController = require('../controllers/productsController');
 
@@ -27,17 +27,18 @@ const upload = multer({ storage: storage});
 //********************************************* */
 
 
-router.get('/editar/:id/', productController.productsEdit)
-router.put('/editar/:id', productController.productsUpdate)
+router.get('/editar/:id/', productController.productsEdit);
+router.put('/editar/:id', productController.productsUpdate);
 
-router.get('/agregar', productController.crearProducto)
+router.get('/agregar', productController.crearProducto);
 //colocamos el middleware entre la ruta y el controller
 // router.post('/guardarProducto', logMiddleWareDB, productController.guardarProducto)
-router.post('/guardarProducto', upload.single('imageProduct'),productController.guardarProducto)
+router.post('/guardarProducto', upload.single('imageProduct'),productController.guardarProducto);
 
-router.post('/eliminar/:id', productController.productDelete)
+router.post('/eliminar/:id', productController.productDelete);
 
-router.get('/listado', productController.productList)
+router.get('/listado', productController.productList);
+router.get('/search', productController.search);
 
 
 module.exports = router

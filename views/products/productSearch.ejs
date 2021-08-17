@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head')  %>  
+<body>
+    <%- include('../partials/header') %>
+ <main>
+    <section class="hot-sales">
+         <div class="section-hot-sales">
+             <h2 class="title-hot-sale">Productos Encontrados: (<%= cantidad %>)</h2>
+             <!-- <div class="description-hot-sales">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia quidem quibusdam quas quos tempore!</p>
+             </div> -->
+         </div>
+         <div class="products-hot">
+             <% resultado.forEach(element => { %>
+                <a href="/producto/editar/<%= element.id %>">
+                    <article>
+                        <div class="img-description">
+                            <img src="/images/<%= element.image %>" alt="<%= element.name %>"
+                        class="product-image">
+                            <h4><%= element.name %></h4>
+                        </div>
+                        <div class="product-detail">
+                            <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                            <p class="price">$<%= element.price %></p>
+                            <p class="discount"><%= element.discount %>%</p>  
+                        </div>
+                    </article>
+                </a>
+             <% }) %>            
+         </div>
+    </section>
+ </main>
+ <%- include('../partials/footer.ejs') %>   
+</body>
+</html>

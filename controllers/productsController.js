@@ -90,6 +90,26 @@ const productsController = {
 
     },
 
+    'search':(req, res) =>{
+        let buscaProduct = req.query.searchProd;
+
+        let resultado = [];
+
+        products.forEach(product => {
+            if (product.name.includes(buscaProduct)){
+                resultado.push(product)
+            }
+        })
+
+        res.render('./products/productSearch', {
+            resultado : resultado,
+            title: 'Resultado de Busqueda',
+            cantidad: resultado.length
+        })
+        
+
+    },
+
 }
 
 module.exports = productsController
