@@ -22,7 +22,7 @@ const productsController = {
 			price: req.body.precioProducto,
 			category: req.body.categoriaProd,
 			discount: req.body.discountProducto,
-			descripton: req.body.descripcionProd,
+			description: req.body.descripcionProd,
 			image: req.file.filename, //de este manera se llama usando multer
             w: req.body.ancho,
             h: req.body.alto,
@@ -66,6 +66,7 @@ const productsController = {
         });
         fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/editar/' + idProduct);
+        
 
     },
 

@@ -26,9 +26,16 @@
                         <% if (oneProduct.category == 'hotSales') { %>
                             <option value="inSale">En oferta</option>
                             <option value="hotSales" selected>Más vendidos</option>
-                        <% } else { %>
+                            <option value="newSales">Nuevo Lanzamiento</option>
+                        <% } else if (oneProduct.category == 'inSale') { %>
                             <option value="inSale" selected>En oferta</option>
                             <option value="hotSales">Más vendidos</option>
+                            <option value="newSales">Nuevo Lanzamiento</option>
+                        <% } else { %>
+                            <option value="inSale">En oferta</option>
+                            <option value="hotSales">Más vendidos</option>
+                            <option value="newSales" selected>Nuevo Lanzamiento</option>
+                          
                         <% } %>
                     </select>
                 </div>
