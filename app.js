@@ -9,7 +9,7 @@ const routesProducts = require('./routers/products');
 const routerUser = require('./routers/users');
 
 //requiriendo el middleware
-const logMiddleWare = require('./middlewares/logMiddleware');
+//const logMiddleWare = require('./middlewares/logMiddleware');
 
 
 
@@ -38,7 +38,7 @@ app.use('/producto', routesProducts);
 // app.use('/agregar', routesProducts);
 app.use('/user', routerUser);
 
-app.use(logMiddleWare);
+//app.use(logMiddleWare);
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log('Corriendo servidor Express:3000');
