@@ -1,5 +1,16 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
+## Sprint \# 3️⃣
+
+### Lo Malo 😞
+* Modificado
+
+*
+### Lo Bueno 🤓
+*Incorporación del tablero de tareas (Trello)
+
+
+
 ## Sprint \# 2️⃣
 
 ### Lo Malo 😞
