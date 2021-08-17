@@ -1,24 +1,28 @@
 node_modules/
-userList.ejs
+
 package.json
 package-lock.json
-
-userResultEjemplo.ejs
-registerEjemplo.ejs
-productListPrueba.ejs
 
 controllerEjemplo.js
 mainControllerCopy.js
 
-homeCopy.ejs
-rutaEjemplo.js
+logDBMiddleware.js
+logMiddleware.js
+
+main.js
 mainRoutesCopy.js
 rutaEjemplo.js
 
+
+productListCopy.ejs
+productListPrueba.ejs
+registerEjemplo.ejs
+userList.ejs
+userResultEjemplo.ejs
+
+
 productsPrueba.css
 
-logDBMiddleware.js
-logMiddleware.js
 
 log.txt
 logDB.txt
