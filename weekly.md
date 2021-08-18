@@ -45,4 +45,4 @@
   
 - ***Nicolas Racciatti***
 
-*Opinión sobre las daily/weekly meetings:
+*Opinión sobre las daily/weekly meetings: Opino que los meetings son un punto clave e indispensable en el futuro ya que es el grupo con el cual vamos a llevar a cabo toda la cursada. Estaría bueno que nos organicemos mejor pero cada uno maneja distintos horarios; pese a eso siempre que nos juntamos la comunicación entre los integrantes es esplendida y gracias a esto podemos avanzar tanto grupal como indivualmente.
