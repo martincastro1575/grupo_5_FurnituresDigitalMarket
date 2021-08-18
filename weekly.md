@@ -37,7 +37,7 @@
 ## Integrantes: 🤩
 - ***Martin Castro***
 
-*Opinión sobre las daily/weekly meetings: Considero que son reuniones muy importantes ya que permiten hacer seguimiento del proyecto, nos permite hacer ajustes a tiempo, detectar algun impedimiento que no permita al equipo avanzar, además determinar orden de preoridad en las tareas ya definidas. Y sobre todo, nos ayuda mantener el espiritu de equipo y colaboraciòn mutua.
+*Opinión sobre las daily/weekly meetings: Considero que son reuniones muy importantes ya que permiten hacer seguimiento del proyecto, nos permite hacer ajustes a tiempo, detectar algun impedimiento que no permita al equipo avanzar, además determinar orden de prioridad en las tareas ya definidas. Y sobre todo, nos ayuda mantener el espiritu de equipo y colaboraciòn mutua.
   
 - ***Maria Palavecino***
 
