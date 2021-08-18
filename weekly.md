@@ -1,6 +1,6 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
-## Weekly meeting \# 4 
+## Weekly meeting \# 4️⃣
 
 ### Meet 06/08/2021 🖊️
 *Vista del sprint nuevo y tareas a realizar.
