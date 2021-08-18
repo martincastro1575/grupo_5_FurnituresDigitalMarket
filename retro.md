@@ -13,14 +13,15 @@
 *Reconocimiento de errores.
 
 ### Qué deberiamos a comenzar hacer? 🤔
-* Avisar con antelación los días que no podemos hacer meet.
+*Avisar con antelación los días que no podemos hacer meet.
 
-* Pushear las tareas y modificaciones una por una y no todas juntas.
+*Pushear las tareas y modificaciones una por una y no todas juntas.
 
-* Tener mejor comunicación.
+*Tener mejor comunicación.
 
 ### Qué deberiamos dejar de hacer? ☢️
-* Realizar trabajo de otros participantes sin consultar primero.
+*Realizar trabajo de otros participantes sin consultar primero.
+*Dejar para ultimo momento los commit y el push de las tareas. No permite el avance del proyecto y retrasa las actividades del grupo.
 
 ## Sprint \# 3️⃣
 
