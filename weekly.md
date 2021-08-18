@@ -19,8 +19,19 @@
 
 *Proxima semana se deberan completar actividades.
 
+## Weekly meeting \# 4 
 
+### Meet 06/08/2021 🖊️
+*Vista del sprint nuevo y tareas a realizar.
 
+*Creación de tablero sprint 4.
+
+*Asignación de tareas.
+
+### Meet 17/08/2021 🖊️
+*Control del proyecto.
+
+*Actualización de archivos.
 
 ## Integrantes: 🤩
 - ***Martin Castro***
