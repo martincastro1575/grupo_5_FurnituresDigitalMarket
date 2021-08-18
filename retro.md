@@ -1,13 +1,34 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
+## Sprint \# 4
+
+### Lo Malo 😞
+* Falta de comunicación y organización (a mejorar).
+
+* Pocos encuentros en grupos.
+
+### Lo Bueno 🤓
+*Tareas culminadas.
+
+*Reconocimiento de errores.
+
+### Qué deberiamos a comenzar hacer? 🤔
+* Avisar con antelación los días que no podemos hacer meet.
+
+* Pushear las tareas y modificaciones una por una y no todas juntas.
+
+* Tener mejor comunicación.
+
+### Qué deberiamos dejar de hacer? ☢️
+* Realizar trabajo de otros participantes sin consultar primero.
+
 ## Sprint \# 3️⃣
 
 ### Lo Malo 😞
-* Modificado
+* Modificado.
 
-*
 ### Lo Bueno 🤓
-*Incorporación del tablero de tareas (Trello)
+*Incorporación del tablero de tareas (Trello).
 
 
 
@@ -35,7 +56,7 @@
 
 *Tratar de culminar las tareas antes de tiempo limite para ayudar aquel compañero que este rezagado.
 
-### Qué dejariamos dejar de hacer? ☢️
+### Qué deberiamos dejar de hacer? ☢️
 *Dejar tareas para último momento.
 
 *Saturarnos tareas.
