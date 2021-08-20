@@ -1,4 +1,11 @@
 
+
+/*Mensaje de error*/
+.is-danger{
+    color: rgb(201, 25, 25);
+}
+
+
 /* Formulario de edicion
  de Productos */
 
@@ -86,4 +93,7 @@ main h2{
     border: 2px solid rgba(65, 141, 136, 0.5);
 }
 
+.recordame{
+    margin: 15px;
+}
 /* Fin de Formulario de edicion de login */  
