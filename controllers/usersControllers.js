@@ -56,6 +56,10 @@ const userController = {
 
     },
 
+    'profile': (req, res)=>{
+        res.send('Estoy en Procfile');
+    },
+
     'usersEdit': (req, res) =>{
 
     },

@@ -15,7 +15,12 @@ routerUser.post('/login', [
     check('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
 ], userController.processLogin);
 
+//muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
+//proceso el post
+routerUser.post('registro', userController.usersAdd);
+//Perfil de Usuario
+routerUser.get('profile/:userId', userController.profile);
 
 
 // *** Ruta de prueba
