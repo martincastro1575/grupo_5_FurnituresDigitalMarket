@@ -6,7 +6,7 @@
     <div class="main-form"> 
         <main> 
             <h2>Registro de Usuario</h2>   
-            <form action="/" method="POST" class="form-register">
+            <form action="/" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
                     <label for="nombre-apellido">Nombre y apellido</label>
                     <input type="text" name="nombre-apellido" id="nombre-apellido" class="control" required>
@@ -22,6 +22,11 @@
                 <div class="form-control">
                     <label for="user-fecha">Fecha de nacimiento</label>
                     <input type="date" name="user-fecha" id="user-fecha" class="control">
+                </div>
+                <div class="form-control">
+                    <label for="imageUser" class="control">Seleccione Imagen</label>
+                    <input type="file" name="imageUser" id="imageUser" 
+                    accept="image/png, image/jpeg">                    
                 </div>
                 <div class="form-control">
                     <label for="user-pass">Contraseña</label>
