@@ -1,5 +1,20 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
+## Weekly meeting \# :five
+
+### Meet 19/08/2021 🖊️
+*Vista del sprint nuevo y tareas a realizar.
+
+*Creación del tablero sprint 5.
+
+### Meet 20/08/2021 🖊️
+*Actualización de archivos y tareas realizadas.
+
++Asignación de tareas.
+
+### Meet 24/08/2021 🖊️
+*
+
 ## Weekly meeting \# 4️⃣
 
 ### Meet 06/08/2021 🖊️
