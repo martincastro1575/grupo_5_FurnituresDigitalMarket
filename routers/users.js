@@ -1,24 +1,44 @@
 const express = require('express');
 const routerUser = express.Router();
-const {check} = require('express-validator');
+const {body} = require('express-validator');
+const path = require('path');
+const multer = require('multer');
+
 
 const userController = require('../controllers/usersControllers');
-const router = require('./mainRoutes');
+//const router = require('./mainRoutes');
 
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-// const router = require('./products');
 
+//Configuracion de multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb)=>{
+        cb(null, path.join(__dirname, '../public/images/avatars'))
+    },
+    filename: (req, file, cb)=>{
+        //console.log(file);
+        const newFilename = 'user-' + Date.now() + path.extname(file.originalname);
+        cb(null, newFilename);
+    },
+})
+
+//Ejecuto multer
+const upload = multer({ storage: storage});
+
+
+//Valida datos del login
 routerUser.get('/login', userController.userLogin);
 routerUser.post('/login', [
-    check('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
-    check('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
+    body('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
+    body('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
 ], userController.processLogin);
 
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
-//proceso el post
-routerUser.post('registro', userController.usersAdd);
+//procesar el registro
+routerUser.post('/registro', upload.single('imageUser'),userController.processUser);
+
 //Perfil de Usuario
 routerUser.get('profile/:userId', userController.profile);
 

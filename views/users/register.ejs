@@ -6,22 +6,22 @@
     <div class="main-form"> 
         <main> 
             <h2>Registro de Usuario</h2>   
-            <form action="/user/registro" method="POST" class="form-register" enctype="multipart/form-data">
+            <form action ="/user/registro/" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
-                    <label for="nombre-apellido">Nombre y apellido</label>
-                    <input type="text" name="nombre-apellido" id="nombre-apellido" class="control" required>
+                    <label for="nombreApellido">Nombre y apellido</label>
+                    <input type="text" name="nombreApellido" id="nombreApellido" class="control">
                 </div>
                 <div class="form-control">
-                    <label for="user-email">Email</label>
-                    <input type="email" name="user-email" id="user-email" class="control" required>
+                    <label for="userEmail">Email</label>
+                    <input type="email" name="userEmail" id="userEmail" class="control">
                 </div>
                 <div class="form-control">
                     <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" class="control" required>
+                    <input type="number" name="telefono" id="telefono" class="control">
                 </div>
                 <div class="form-control">
-                    <label for="user-fecha">Fecha de nacimiento</label>
-                    <input type="date" name="user-fecha" id="user-fecha" class="control">
+                    <label for="fechaNac">Fecha de nacimiento</label>
+                    <input type="date" name="fechaNac" id="fechaNac" class="control">
                 </div>
                 <div class="form-control">
                     <label for="imageUser" class="control">Seleccione Imagen</label>
@@ -29,12 +29,12 @@
                     accept="image/png, image/jpeg">                    
                 </div>
                 <div class="form-control">
-                    <label for="user-pass">Contraseña</label>
-                    <input type="password" name="user-pass" id="user-pass" class="control" required>
+                    <label for="userPass">Contraseña</label>
+                    <input type="password" name="userPass" id="userPass" class="control">
                 </div>
                 <div class="form-control">
-                    <label for="confirm-pass">Confirmar contraseña</label>
-                    <input type="password" name="confirm-pass" id="confirm-pass" class="control" required>
+                    <label for="confirmPass">Confirmar contraseña</label>
+                    <input type="password" name="confirmPass" id="confirmPass" class="control">
                 </div>
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar</button>

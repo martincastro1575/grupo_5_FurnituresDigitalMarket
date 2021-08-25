@@ -15,9 +15,7 @@ const userController = {
 
     'processLogin': (req, res)=>{
         let errors = validationResult(req);
-        let emailUser = req.body.nombreUser;
-
-         
+        let emailUser = req.body.nombreUser;         
         
         if (errors.isEmpty()){
             let encontrarUser = users.find(user => 
@@ -39,7 +37,8 @@ const userController = {
                 res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
             }
             
-            res.send('success');
+            // res.send('Success');
+            res.send(req.body);
 
         }else{
             return res.render('users/loginUser', {
@@ -54,6 +53,14 @@ const userController = {
             title: 'Registro de Usuario'
         })
 
+    },
+
+    'processUser': (req, res)=>{
+        //res.send('Estoy en processUser');
+        res.send({
+            body:req.body,
+            file:req.file
+        });
     },
 
     'profile': (req, res)=>{
