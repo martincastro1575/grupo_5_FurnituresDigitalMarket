@@ -62,6 +62,7 @@ const userController = {
             
             res.render('users/register',{
                 errors: resultErros.mapped(),
+                oldData: req.body,
                 title: 'Registro de Usuario'
             })
         }

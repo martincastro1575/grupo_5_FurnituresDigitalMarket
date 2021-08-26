@@ -10,7 +10,8 @@
             <form action ="/user/registro/" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
                     <label for="nombreApellido">Nombre y apellido</label>
-                    <input type="text" name="nombreApellido" id="nombreApellido" class="control">
+                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= locals.oldData ? oldData.nombreApellido : null %>">
+                    
                     <div class="text-danger">
                         <% if (locals.errors && errors.nombreApellido) { %>
                             <%= errors.nombreApellido.msg %> 
@@ -19,7 +20,7 @@
                 </div>
                 <div class="form-control">
                     <label for="userEmail">Email</label>
-                    <input type="email" name="userEmail" id="userEmail" class="control">
+                    <input type="email" name="userEmail" id="userEmail" class="control" value="<%= locals.oldData ? oldData.userEmail : null %>">
                     <div class="text-danger">
                         <% if (locals.errors && errors.userEmail) { %>
                             <%= errors.userEmail.msg %> 
@@ -28,7 +29,7 @@
                 </div>
                 <div class="form-control">
                     <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" class="control">
+                    <input type="number" name="telefono" id="telefono" class="control" value="<%= locals.oldData ? oldData.telefono : null %>">
                     <div class="text-danger">
                         <% if (locals.errors && errors.telefono) { %>
                             <%= errors.telefono.msg %> 
@@ -37,7 +38,7 @@
                 </div>
                 <div class="form-control">
                     <label for="fechaNac">Fecha de nacimiento</label>
-                    <input type="date" name="fechaNac" id="fechaNac" class="control">
+                    <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= locals.oldData ? oldData.fechaNac : null %>">
                     <div class="text-danger">
                         <% if (locals.errors && errors.fechaNac) { %>
                             <%= errors.fechaNac.msg %> 
