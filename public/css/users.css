@@ -96,4 +96,9 @@ main h2{
 .recordame{
     margin: 15px;
 }
+
+.text-danger{
+    color: rgb(248, 66, 66);
+    margin-top: 5px;
+}
 /* Fin de Formulario de edicion de login */  

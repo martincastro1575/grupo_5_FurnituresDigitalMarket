@@ -5,31 +5,89 @@
     <%- include('../partials/header.ejs') %>
     <div class="main-form"> 
         <main> 
-            <h2>Registro de Usuario</h2>   
-            <form action="/" method="POST" class="form-register">
+            <h2>Registro de Usuario</h2>
+              
+            <form action ="/user/registro/" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
-                    <label for="nombre-apellido">Nombre y apellido</label>
-                    <input type="text" name="nombre-apellido" id="nombre-apellido" class="control" required>
+                    <label for="nombreApellido">Nombre y apellido</label>
+                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= locals.oldData ? oldData.nombreApellido : null %>">
+                    
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.nombreApellido) { %>
+                            <%= errors.nombreApellido.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="user-email">Email</label>
-                    <input type="email" name="user-email" id="user-email" class="control" required>
+                    <label for="userEmail">Email</label>
+                    <input type="email" name="userEmail" id="userEmail" class="control" value="<%= locals.oldData ? oldData.userEmail : null %>">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.userEmail) { %>
+                            <%= errors.userEmail.msg %> 
+                        <% } %>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="sexo">Sexo</label>
+                    <select name="sexo" id="sexo" class="control" <%= locals.oldData ? oldData.userEmail : null %>>
+                        <option value="">Seleccione su Sexo</option>
+                        <option value="M" <%= locals.oldData && (oldData.sexo === 'M') ? 'selected' : null %>>
+                            Masculino
+                        </option>
+                        <option value="F" <%= locals.oldData && (oldData.sexo === 'F') ? 'selected' : null %>>
+                            Femenino
+                        </option>
+                    </select>
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.sexo) { %>
+                            <%= errors.sexo.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" class="control" required>
+                    <input type="number" name="telefono" id="telefono" class="control" value="<%= locals.oldData ? oldData.telefono : null %>">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.telefono) { %>
+                            <%= errors.telefono.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="user-fecha">Fecha de nacimiento</label>
-                    <input type="date" name="user-fecha" id="user-fecha" class="control">
+                    <label for="fechaNac">Fecha de nacimiento</label>
+                    <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= locals.oldData ? oldData.fechaNac : null %>">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.fechaNac) { %>
+                            <%= errors.fechaNac.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
-                    <label for="user-pass">Contraseña</label>
-                    <input type="password" name="user-pass" id="user-pass" class="control" required>
+                    <label for="imageUser" class="control">Seleccione Imagen</label>
+                    <input type="file" name="imageUser" id="imageUser">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.imageUser) { %>
+                            <%= errors.imageUser.msg %> 
+                        <% } %>
+                    </div>                    
                 </div>
                 <div class="form-control">
-                    <label for="confirm-pass">Confirmar contraseña</label>
-                    <input type="password" name="confirm-pass" id="confirm-pass" class="control" required>
+                    <label for="userPass">Contraseña</label>
+                    <input type="password" name="userPass" id="userPass" class="control">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.userPass) { %>
+                            <%= errors.userPass.msg %> 
+                        <% } %>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="confirmPass">Confirmar contraseña</label>
+                    <input type="password" name="confirmPass" id="confirmPass" class="control">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.confirmPass) { %>
+                            <%= errors.confirmPass.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar</button>
