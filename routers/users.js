@@ -1,6 +1,6 @@
 const express = require('express');
 const routerUser = express.Router();
-const {body} = require('express-validator');
+const { body } = require('express-validator');
 const path = require('path');
 const multer = require('multer');
 
@@ -36,8 +36,18 @@ routerUser.post('/login', [
 
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
+
+
+const validationUser = [
+    body('nombreApellido').notEmpty().withMessage('Ingrese su nombre completo'),
+    body('userEmail').notEmpty().withMessage('Ingrese un email'),
+    body('telefono').notEmpty().withMessage('Ingrese un numero de telefono'),
+    body('fechaNac').notEmpty().withMessage('Ingrese una fecha de nacimiento'),
+    body('userPass').notEmpty().withMessage('Ingrese la clave'),
+    body('confirmPass').notEmpty().withMessage('Repita la clave'),
+]
 //procesar el registro
-routerUser.post('/registro', upload.single('imageUser'),userController.processUser);
+routerUser.post('/registro', upload.single('imageUser'), validationUser, userController.processUser);
 
 //Perfil de Usuario
 routerUser.get('profile/:userId', userController.profile);

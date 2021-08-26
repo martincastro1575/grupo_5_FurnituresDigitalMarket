@@ -1,4 +1,4 @@
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 
@@ -56,11 +56,15 @@ const userController = {
     },
 
     'processUser': (req, res)=>{
-        //res.send('Estoy en processUser');
-        res.send({
-            body:req.body,
-            file:req.file
-        });
+        const resultErros= validationResult(req)
+        
+        if (!resultErros.isEmpty()){
+            
+            res.render('users/register',{
+                errors: resultErros.mapped(),
+                title: 'Registro de Usuario'
+            })
+        }
     },
 
     'profile': (req, res)=>{
