@@ -41,6 +41,7 @@ routerUser.get('/registro', guestMiddleware, userController.usersAdd);
 const validationUser = [
     body('nombreApellido').notEmpty().withMessage('Ingrese su nombre completo'),
     body('userEmail').notEmpty().withMessage('Ingrese un email'),
+    body('sexo').notEmpty().withMessage('Seleccione su sexo'),
     body('telefono').notEmpty().withMessage('Ingrese un numero de telefono'),
     body('fechaNac').notEmpty().withMessage('Ingrese una fecha de nacimiento'),
     body('userPass').notEmpty().withMessage('Ingrese la clave'),
