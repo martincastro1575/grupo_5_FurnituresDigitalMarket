@@ -34,7 +34,7 @@
                         <option value="M" <%= locals.oldData && (oldData.sexo === 'M') ? 'selected' : null %>>
                             Masculino
                         </option>
-                        <option value="F" <%= locals.oldData && (oldData.sexo === 'M') ? 'selected' : null %>>
+                        <option value="F" <%= locals.oldData && (oldData.sexo === 'F') ? 'selected' : null %>>
                             Femenino
                         </option>
                     </select>
@@ -64,8 +64,12 @@
                 </div>
                 <div class="form-control">
                     <label for="imageUser" class="control">Seleccione Imagen</label>
-                    <input type="file" name="imageUser" id="imageUser" 
-                    accept="image/png, image/jpeg">                    
+                    <input type="file" name="imageUser" id="imageUser">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.imageUser) { %>
+                            <%= errors.imageUser.msg %> 
+                        <% } %>
+                    </div>                    
                 </div>
                 <div class="form-control">
                     <label for="userPass">Contraseña</label>

@@ -66,6 +66,8 @@ const userController = {
                 title: 'Registro de Usuario'
             })
         }
+
+        res.send('Las validaciones de usuario estan OK');
     },
 
     'profile': (req, res)=>{
