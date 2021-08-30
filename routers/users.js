@@ -2,7 +2,7 @@ const express = require('express');
 const routerUser = express.Router();
 const { body } = require('express-validator');
 const path = require('path');
-const multer = require('multer');
+//const multer = require('multer');
 
 
 const userController = require('../controllers/usersControllers');
@@ -11,21 +11,8 @@ const userController = require('../controllers/usersControllers');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-//Configuracion de multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb)=>{
-        cb(null, path.join(__dirname, '../public/images/avatars'))
-    },
-    filename: (req, file, cb)=>{
-        //console.log(file);
-        const newFilename = 'user-' + Date.now() + path.extname(file.originalname);
-        cb(null, newFilename);
-    },
-})
-
-//Ejecuto multer
-const upload = multer({ storage: storage});
-
+const upload_image = require('../middlewares/multerMiddlewares');
+const validationUser = require('../middlewares/registerValMiddleware')
 
 //Valida datos del login
 routerUser.get('/login', userController.userLogin);
@@ -37,39 +24,8 @@ routerUser.post('/login', [
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
 
-
-const validationUser = [
-    body('nombreApellido').notEmpty().withMessage('Ingrese su nombre completo'),
-    body('userEmail')
-        .notEmpty().withMessage('Ingrese un email').bail()
-        .isEmail().withMessage('Debes ingresar un email valido'),
-    body('sexo').notEmpty().withMessage('Seleccione su sexo'),
-    body('telefono').notEmpty().withMessage('Ingrese un numero de telefono'),
-    body('fechaNac').notEmpty().withMessage('Ingrese una fecha de nacimiento'),
-    body('userPass').notEmpty().withMessage('Ingrese la clave'),
-    body('confirmPass').notEmpty().withMessage('Repita la clave'),
-    body('imageUser').custom((value, { req })=>{
-        let file = req.file;
-        let extensionesValidas = ['.jpg','.png','.gif','.jpeg'];
-        
-        if (!file){
-            throw new Error('Debes incluir una imagen');
-        }else{
-            let extencionesImg = path.extname(file.originalname)
-            
-            if (!extensionesValidas.includes(extencionesImg)) {
-                throw new Error(`La extensiones validas son ${extensionesValidas.join(', ')}`);
-        }
-        
-        }
-        //despues de la validacion se debe retornar un true
-        return true;
-
-    })
-
-]
 //procesar el registro
-routerUser.post('/registro', upload.single('imageUser'), validationUser, userController.processUser);
+routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
 
 //Perfil de Usuario
 routerUser.get('profile/:userId', userController.profile);
