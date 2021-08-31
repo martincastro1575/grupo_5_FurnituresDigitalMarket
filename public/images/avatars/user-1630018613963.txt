@@ -1,0 +1,23 @@
+Configurando nuevo repositorio:
+
+1.- Crear un nuevo directorio
+2.- dentro del nuevo directorio, ejecutar el comando git init
+3.- clonar la rama con el comando, git clone -b BranchSP3 https://github.com/martincastro1575/grupo_5_FurnituresDigitalMarket.git
+4.- Luego de clonada la rama, entrar al proyecto clonado. -> Aqui veran la nueva estructura del proyecto.
+5.- Dentro del proyecto clonado, crear una nueva rama en repo local con el comando, git checkout -b nombreDeRama
+
+Y con estos 5 pasos preparamos nuestro repo para comenzar a codear.
+
+Subiendo cambios:
+
+.- Para subir cambios por primera vez, git push --set-upstream https://github.com/martincastro1575/grupo_5_FurnituresDigitalMarket.git nombreDeRama
+
+.- Para cambios posteriores, git push origin nombreDeRama
+
+Por ultimo instalar los modulos de node, expres, ejs,
+
+Estando en el directorio raiz del proyecto ejecutar los comandos:
+
+npm init -y
+npm install express
+npm install ejs --save

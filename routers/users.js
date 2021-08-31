@@ -1,13 +1,15 @@
 const express = require('express');
 const routerUser = express.Router();
-const {check} = require('express-validator');
+const { body } = require('express-validator');
+const path = require('path');
+//const multer = require('multer');
+
 
 const userController = require('../controllers/usersControllers');
-const router = require('./mainRoutes');
+//const router = require('./mainRoutes');
 
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-// const router = require('./products');
 
 routerUser.post('/register', userController.processRegister);
 
@@ -15,11 +17,18 @@ routerUser.get('/profile/:userId', userController.userProfile);
 
 routerUser.get('/login', userController.userLogin);
 routerUser.post('/login', [
-    check('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
-    check('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
+    body('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
+    body('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
 ], userController.processLogin);
 
+//muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
+
+//procesar el registro
+routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
+
+//Perfil de Usuario
+routerUser.get('profile/:userId', userController.profile);
 
 
 // *** Ruta de prueba
