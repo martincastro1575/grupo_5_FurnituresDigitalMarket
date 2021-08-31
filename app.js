@@ -16,7 +16,6 @@ const recordameMiddleware = require('./middlewares/cookieRecordameMiddleware')
 //const logMiddleWare = require('./middlewares/logMiddleware');
 
 
-
 //app.use(express.static('public'));
 
 // Se agregan estas lineas para trabajo con metodo POST
