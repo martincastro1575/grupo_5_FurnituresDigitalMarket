@@ -48,10 +48,19 @@ const userController = {
         }
     },
 
-    'usersAdd': (req, res)=>{
+    'usersRegister': (req, res)=>{
         res.render('users/register',{
             title: 'Registro de Usuario'
         })
+
+    },
+    'processRegister': (req, res) =>{
+        return res.send('Viniste por POST');
+
+    },
+
+    'userProfile': (req, res) =>{
+        return res.render('userProfile');
 
     },
 
