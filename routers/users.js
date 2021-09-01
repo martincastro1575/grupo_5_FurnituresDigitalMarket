@@ -11,9 +11,16 @@ const userController = require('../controllers/usersControllers');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-routerUser.post('/register', userController.processRegister);
 
-routerUser.get('/profile/:userId', userController.userProfile);
+//constantes a validaciones
+const upload_image = require('../middlewares/multerMiddlewares');
+const validationUser = require('../middlewares/registerValMiddleware')
+
+//Comentada por Martin
+//routerUser.post('/register', userController.processRegister);
+//Comentada por Martin
+//routerUser.get('/profile/:userId', userController.userProfile);
+
 
 routerUser.get('/login', userController.userLogin);
 routerUser.post('/login', [
@@ -23,7 +30,6 @@ routerUser.post('/login', [
 
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
-
 //procesar el registro
 routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
 
