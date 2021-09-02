@@ -4,7 +4,8 @@ module.exports = {
     "password": "martin+1575",
     "database": "clase30_musimundos",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306
   },
   "test": {
     "username": "root",

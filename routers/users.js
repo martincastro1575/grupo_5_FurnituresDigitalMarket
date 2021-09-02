@@ -24,7 +24,7 @@ routerUser.post('/login', [
 
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
-//procesar el registro
+//procesar el registro->debe quedar parecida a esta linea
 routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
 
 //Perfil de Usuario

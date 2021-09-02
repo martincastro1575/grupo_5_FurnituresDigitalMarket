@@ -8,6 +8,9 @@ const routesProducts = require('./routers/products');
 // const routerEjemplo = require('./routers/rutaEjemplo')
 const routerUser = require('./routers/users');
 
+//OJO!!!!! SE DEBE QUITAR ESTA LINEA
+const moviesRouter = require('./routers/movies');
+
 //requerimos express session
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -48,6 +51,9 @@ app.use('/producto', routesProducts);
 // app.use('/listar', routesProducts);
 // app.use('/agregar', routesProducts);
 app.use('/user', routerUser);
+
+//OJO!!!!, SE DEBE QUITAR ESTA RUTA
+app.use('/movies', moviesRouter);
 
 //app.use(logMiddleWare);
 
