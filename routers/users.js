@@ -11,11 +11,17 @@ const userController = require('../controllers/usersControllers');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+
 //constantes a validaciones
 const upload_image = require('../middlewares/multerMiddlewares');
 const validationUser = require('../middlewares/registerValMiddleware')
 
-//Valida datos del login
+//Comentada por Martin
+//routerUser.post('/register', userController.processRegister);
+//Comentada por Martin
+//routerUser.get('/profile/:userId', userController.userProfile);
+
+
 routerUser.get('/login', userController.userLogin);
 routerUser.post('/login', [
     body('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
