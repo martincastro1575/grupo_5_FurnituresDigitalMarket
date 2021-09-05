@@ -48,10 +48,19 @@ const userController = {
         }
     },
 
-    'usersAdd': (req, res)=>{
+    'usersRegister': (req, res)=>{
         res.render('users/register',{
             title: 'Registro de Usuario'
         })
+
+    },
+    'processRegister': (req, res) =>{
+        return res.send('Viniste por POST');
+
+    },
+
+    'userProfile': (req, res) =>{
+        return res.render('userProfile');
 
     },
 
@@ -65,11 +74,9 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })
-        
-        }else{
-            res.send('Las validaciones de usuario estan OK');
         }
 
+        res.send('Las validaciones de usuario estan OK');
     },
 
     'profile': (req, res)=>{
@@ -83,6 +90,10 @@ const userController = {
     'usersInquery': (req, res) =>{
 
     },
+
+    'usersAdd':(req, res)=>{
+        
+    }
 }
 
 module.exports = userController;

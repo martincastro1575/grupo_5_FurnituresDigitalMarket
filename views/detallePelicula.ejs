@@ -7,7 +7,20 @@
     <title>Detalle Pelicula</title>
 </head>
 <body>
-    <h1>Detalle de la pelicula: <%= pelicula.title %></h1>
+    <a href="/movies/edit/<%= pelicula.id %>">
+        
+        <h1>Detalle de la pelicula: <%= pelicula.title %></h1>
+    </a>
+    <div>
+        <p>Selecciones el titulo de la pelicula para editar</p>
+    </div>
+    <div>
+        <form action="/movies/delete/<%= pelicula.id %>" method="post">
+            <button type="submit">
+                Eliminar
+            </button>
+        </form>
+    </div>
     
 </body>
 </html>

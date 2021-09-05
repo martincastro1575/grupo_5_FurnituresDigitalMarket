@@ -31,5 +31,9 @@ logDB.txt
 Pelicula.js
 movies.js
 moviesController.js
-movies.js
-detallePelicula.js
+movies.ejs
+detallePelicula.ejs
+peliculasDrama.ejs
+top.ejs
+crearPelicula.ejs
+editarPelicula.ejs
