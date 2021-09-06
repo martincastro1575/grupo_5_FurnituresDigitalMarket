@@ -10,7 +10,16 @@ const validationUser = [
     body('telefono').notEmpty().withMessage('Ingrese un numero de telefono'),
     body('fechaNac').notEmpty().withMessage('Ingrese una fecha de nacimiento'),
     body('userPass').notEmpty().withMessage('Ingrese la clave'),
-    body('confirmPass').notEmpty().withMessage('Repita la clave'),
+    //body('confirmPass').notEmpty().withMessage('Repita la clave'),
+    body('confirmPass').notEmpty().withMessage('Repita la clave').custom((value, { req })=>{
+        if (req.body.userPass !== req.body.confirmPass && req.body.confirmPass!= undefined) {
+            throw new Error('Las Claves deben ser iguales');
+        }
+
+        return true
+    }),
+
+
     body('imageUser').custom((value, { req })=>{
         let file = req.file;
         let extensionesValidas = ['.jpg','.png','.gif','.jpeg'];
@@ -28,7 +37,7 @@ const validationUser = [
         //despues de la validacion se debe retornar un true
         return true;
 
-    })
+    }),
 
 ]
 
