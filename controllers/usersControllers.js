@@ -72,8 +72,17 @@ const userController = {
         }
         
         let userCreate = {
-            ...req.body,
-            image: req.file.filename
+            
+            nombreApellido: req.body.nombreApellido,
+            sexo: req.body.sexo,
+            email: req.body.userEmail,
+            telefono:req.body.telefono,
+            fechaNac: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            category: "user",
+            image: req.file.filename,
+            isActive: true
+            
         }
         User.create(userCreate)    
         return res.send('Se almaceno el registro');

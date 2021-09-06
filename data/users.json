@@ -201,35 +201,14 @@
  },
  {
   "id": 21,
-  "nombreApellido": "Elena Carrilo",
-  "userEmail": "eleca@gmail.com",
-  "sexo": "F",
-  "telefono": "01159713341",
-  "fechaNac": "2021-09-17",
-  "userPass": "1",
-  "confirmPass": "1",
-  "image": "user-1630926533648.png"
- },
- {
-  "id": 22,
-  "nombreApellido": "Patricia Perez",
-  "userEmail": "pperez@gmail.com",
-  "sexo": "F",
-  "telefono": "1134567899",
-  "fechaNac": "2021-09-30",
-  "userPass": "1",
-  "confirmPass": "1",
-  "image": "user-1630929162824.png"
- },
- {
-  "id": 23,
   "nombreApellido": "Fabiola Colmenares",
-  "userEmail": "facolmenares@gmail.com",
   "sexo": "F",
-  "telefono": "1122224444",
-  "fechaNac": "2021-09-08",
-  "userPass": "12",
-  "confirmPass": "12",
-  "image": "user-1630968288914.png"
+  "email": "facolmenares@gmail.com",
+  "telefono": "59713341",
+  "fechaNac": "1981-03-27",
+  "password": "$2a$10$NSd9LWPZQSXhUID5Ck7kD.VPPDsNTpDXrnyFnraoLb/A4w430PfBe",
+  "category": "user",
+  "image": "user-1630970040104.png",
+  "isActive": true
  }
 ]
