@@ -41,19 +41,24 @@ const User = {
     //crea un usuario
     create: function(userData){
         let allUsers = this.findAll();
-        allUsers.push(userData);
+        let newUser = {
+            id: this.generateId,
+            ...userData
+        }
+        allUsers.push(newUser);
 
         fs.writeFileSync(this.filename, JSON.stringify(allUsers, null, ' '));
 
         return true;
-    }
+    },
+    delete: function(id){
+        let allUsers = this.findAll();
+        let finalUsers = allUsers.filter(user => user.id !== id)
+        
+        fs.writeFileSync(this.filename, JSON.stringify(finalUsers, null, ' '));
+        return true;
+    },
 
 }
 
-console.log(User.create({first_name: "Myrle",
-last_name: "Moretto",
-email: "mmorettoj@whitehouse.gov",
-password: "jUAnZ1F0",
-category: "user",
-image: "default.png",
-isActive: true}));
+console.log(User.delete(21));
