@@ -4,7 +4,8 @@ const path = require('path');
 const bcryptjs = require('bcryptjs')
 
 //requiriendo modelo JSON
-const User = require('../models/Users')
+const User = require('../models/Users');
+const { send } = require('process');
 
 
 const productsPath = path.join(__dirname, '../data/users.json');
@@ -69,6 +70,22 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })        
+        }
+
+        //valido que usuario con el mismo email, no se registre
+        //dos veces.
+        let userExists = User.findByField('email', req.body.userEmail)
+
+        if(userExists){
+            return res.render('users/register',{
+                errors: {
+                    userEmail:{
+                        msg: 'Este email ya existe'
+                    }
+                },
+                oldData: req.body,
+                title: 'Registro de Usuario'    
+            })
         }
         
         let userCreate = {

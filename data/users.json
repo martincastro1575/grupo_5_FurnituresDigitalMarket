@@ -210,5 +210,17 @@
   "category": "user",
   "image": "user-1630970040104.png",
   "isActive": true
+ },
+ {
+  "id": 22,
+  "nombreApellido": "Fabiola Colmenares",
+  "sexo": "F",
+  "email": "facolmenares2020@gmail.com",
+  "telefono": "59713341",
+  "fechaNac": "2021-09-04",
+  "password": "$2a$10$lx2eDW9V8FNiuhbwSyGyyuMfNIEWcjckK5DXii/lG0b45oeVUJkaK",
+  "category": "user",
+  "image": "user-1630971291792.png",
+  "isActive": true
  }
 ]
