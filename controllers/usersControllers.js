@@ -64,8 +64,7 @@ const userController = {
                 errors: resultErros.mapped(),
                 oldData: req.body,
                 title: 'Registro de Usuario'    
-            })
-        
+            })        
         }else{
             res.send('Las validaciones de usuario estan OK');
         }

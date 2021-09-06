@@ -8,6 +8,16 @@ const User = {
     getdata: function(){
         return JSON.parse(fs.readFileSync(this.filename, 'utf-8'));
     },
+
+    generateId: function(){
+        let allUsers = this.findAll()
+        let lastUser = allUsers.pop()
+
+        if (lastUser){
+            return lastUser.id + 1
+        }
+        return 1
+    },
     //Busca todos los usuarios
     findAll: function(){
         return this.getdata();
@@ -40,4 +50,10 @@ const User = {
 
 }
 
-console.log(User.create({id:000, first_name:'Martin', email:'mjcm@gmail.com'}));
+console.log(User.create({first_name: "Myrle",
+last_name: "Moretto",
+email: "mmorettoj@whitehouse.gov",
+password: "jUAnZ1F0",
+category: "user",
+image: "default.png",
+isActive: true}));

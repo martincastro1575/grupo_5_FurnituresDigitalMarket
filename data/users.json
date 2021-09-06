@@ -198,10 +198,5 @@
   "category": "user",
   "image": "default.png",
   "isActive": true
- },
- {
-  "id": 0,
-  "first_name": "Martin",
-  "email": "mjcm@gmail.com"
  }
 ]
