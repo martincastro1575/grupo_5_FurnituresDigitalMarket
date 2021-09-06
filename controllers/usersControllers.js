@@ -2,6 +2,9 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 
+//requiriendo modelo JSON
+const User = require('../models/Users')
+
 
 const productsPath = path.join(__dirname, '../data/users.json');
 let users = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
@@ -58,16 +61,22 @@ const userController = {
     'processUser': (req, res)=>{
         const resultErros= validationResult(req)
         
-        if (!resultErros.isEmpty()){
+        if (resultErros.errors.length > 0){
             
-            res.render('users/register',{
+            return res.render('users/register',{
                 errors: resultErros.mapped(),
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })        
-        }else{
-            res.send('Las validaciones de usuario estan OK');
         }
+        
+        let userCreate = {
+            ...req.body,
+            image: req.file.filename
+        }
+        User.create(userCreate)    
+        return res.send('Se almaceno el registro');
+        
 
     },
 

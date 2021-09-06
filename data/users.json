@@ -198,5 +198,27 @@
   "category": "user",
   "image": "default.png",
   "isActive": true
+ },
+ {
+  "id": 21,
+  "nombreApellido": "Elena Carrilo",
+  "userEmail": "eleca@gmail.com",
+  "sexo": "F",
+  "telefono": "01159713341",
+  "fechaNac": "2021-09-17",
+  "userPass": "1",
+  "confirmPass": "1",
+  "image": "user-1630926533648.png"
+ },
+ {
+  "id": 22,
+  "nombreApellido": "Patricia Perez",
+  "userEmail": "pperez@gmail.com",
+  "sexo": "F",
+  "telefono": "1134567899",
+  "fechaNac": "2021-09-30",
+  "userPass": "1",
+  "confirmPass": "1",
+  "image": "user-1630929162824.png"
  }
 ]

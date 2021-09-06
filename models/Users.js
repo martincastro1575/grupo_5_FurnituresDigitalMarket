@@ -10,12 +10,14 @@ const User = {
     },
 
     generateId: function(){
+
         let allUsers = this.findAll()
         let lastUser = allUsers.pop()
 
         if (lastUser){
             return lastUser.id + 1
         }
+
         return 1
     },
     //Busca todos los usuarios
@@ -42,14 +44,15 @@ const User = {
     create: function(userData){
         let allUsers = this.findAll();
         let newUser = {
-            id: this.generateId,
+
+            id: this.generateId(),
             ...userData
         }
         allUsers.push(newUser);
 
         fs.writeFileSync(this.filename, JSON.stringify(allUsers, null, ' '));
 
-        return true;
+        return newUser;
     },
     delete: function(id){
         let allUsers = this.findAll();
@@ -61,4 +64,5 @@ const User = {
 
 }
 
+//console.log(User.generateId())
 module.exports = User;
