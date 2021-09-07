@@ -22,6 +22,7 @@ const userController = {
         let errors = validationResult(req);
         let emailUser = req.body.nombreUser;         
         
+        //res.send('Estoy en el proceso de login')
         if (errors.isEmpty()){
             let encontrarUser = users.find(user => 
                 user.email ==  emailUser
@@ -101,8 +102,10 @@ const userController = {
             isActive: true
             
         }
-        User.create(userCreate)    
-        return res.send('Se almaceno el registro');
+        let createuser = User.create(userCreate)
+
+         return res.redirect('/user/login')
+        //return res.send('Se almaceno el registro');
         
 
     },

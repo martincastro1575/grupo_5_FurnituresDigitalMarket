@@ -15,6 +15,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 //constantes a validaciones
 const upload_image = require('../middlewares/multerMiddlewares');
 const validationUser = require('../middlewares/registerValMiddleware')
+const validationLogin = require('../middlewares/loginValMiddleware')
 
 //Comentada por Martin
 //routerUser.post('/register', userController.processRegister);
@@ -23,10 +24,7 @@ const validationUser = require('../middlewares/registerValMiddleware')
 
 
 routerUser.get('/login', userController.userLogin);
-routerUser.post('/login', [
-    body('nombreUser').isEmail().withMessage('Debe ser un Email valido'),
-    body('passUser').isLength({min: 8}).withMessage('El password debe tener al menos 8 caracteres')
-], userController.processLogin);
+routerUser.post('/login', validationLogin, userController.processLogin);
 
 //muestra form de registro
 routerUser.get('/registro', guestMiddleware, userController.usersAdd);
