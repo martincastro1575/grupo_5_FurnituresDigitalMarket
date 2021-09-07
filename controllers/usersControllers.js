@@ -48,7 +48,8 @@ const userController = {
 
         }else{
             return res.render('users/loginUser', {
-                errors: errors.errors,
+                //errors: errors.errors,
+                errors: resultErros.mapped(),
                 title: 'Login de Usuario',
             });
         }
