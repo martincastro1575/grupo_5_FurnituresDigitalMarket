@@ -23,7 +23,7 @@ const validationLogin = require('../middlewares/loginValMiddleware')
 //routerUser.get('/profile/:userId', userController.userProfile);
 
 
-routerUser.get('/login', userController.userLogin);
+routerUser.get('/login', guestMiddleware, userController.userLogin);
 routerUser.post('/login', validationLogin, userController.processLogin);
 
 //muestra form de registro
@@ -33,9 +33,10 @@ routerUser.post('/registro', upload_image.single('imageUser'), validationUser, u
 
 //Perfil de Usuario
 //routerUser.get('profile/:userId', userController.profile);
+routerUser.get('/profile', authMiddleware, userController.profile);
 
-routerUser.get('/profile', userController.profile);
-
+//logout
+routerUser.get('/logout', userController.logout);
 
 // *** Ruta de prueba
 routerUser.get('/check', (req, res) => {

@@ -1,8 +1,9 @@
 const guestMiddleware = (req, res, next)=>{
-    if (req.session.usuarioLogueado == undefined) {
-        next();
+    if (req.session.userLogin) {
+        return res.redirect('/user/profile')
+        
     }else{
-        res.send('Esta pagina es solo para invitados');
+        next();
     }
 }
 

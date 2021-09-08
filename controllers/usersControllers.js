@@ -61,37 +61,12 @@ const userController = {
             })
         }
 
+    },
+    
+    'logout':(req,res)=>{
+        req.session.destroy()
         
-        //return res.send(userLogin)
-        
-        // if (resultErros.errors.length > 0){
-        //     let encontrarUser = users.find(user => 
-        //         user.email ==  emailUser
-        //         )
-                
-        //         if (!encontrarUser){                
-        //             return res.render('./users/loginUser', {
-        //             errors: resultErros.mapped(),
-        //             title: 'usuario no existe',
-        //         });
-        //     }
-            
-        //     // req.session.usuarioLogueado = encontrarUser;
-        //     // //Guardando en cookie
-        //     // if (req.body.recordame != undefined) {
-        //     //     res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
-        //     // }
-            
-        //     // res.send('Success');
-        //     res.send("ALGO PASO");
-
-        // }else{
-        //     return res.render('users/loginUser', {
-        //         //errors: resultErros.errors,
-        //         errors: resultErros.mapped(),
-        //         title: 'Login de Usuario',
-        //     });
-        // }
+        return res.redirect('/')
     },
 
     'usersAdd': (req, res)=>{
