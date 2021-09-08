@@ -36,8 +36,13 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 //************************************************** */
 
-//Creamos el middleware session y lo ejecutamos global
-app.use(session({secret: 'Esto es un secreto!!!'}))
+//Creamos el middleware session de aplicacion  y lo ejecutamos global
+app.use(session({
+    secret: 'LPMQLP!!!',
+    resave: false,
+    saveUninitialized:false,
+
+}))
 
 //Hago uso del middleware global o aplicacion 
 app.use(recordameMiddleware);
