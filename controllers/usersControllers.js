@@ -13,6 +13,7 @@ let users = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const userController = {
     'userLogin': (req, res)=>{
+        console.log(req.session)
         res.render('users/loginUser',{
             title:'Login de Usuario'
         })
@@ -30,7 +31,11 @@ const userController = {
             let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
 
             if(verificaPassword){
-                
+                //por seguridad borramos de la session el password
+                delete userLogin.password
+                req.session.userLogin = userLogin
+                console.log(req.session.userLogin)
+
                 return res.redirect('/user/profile');
 
             }else{
@@ -59,34 +64,34 @@ const userController = {
         
         //return res.send(userLogin)
         
-        if (resultErros.errors.length > 0){
-            let encontrarUser = users.find(user => 
-                user.email ==  emailUser
-                )
+        // if (resultErros.errors.length > 0){
+        //     let encontrarUser = users.find(user => 
+        //         user.email ==  emailUser
+        //         )
                 
-                if (!encontrarUser){                
-                    return res.render('./users/loginUser', {
-                    errors: resultErros.mapped(),
-                    title: 'usuario no existe',
-                });
-            }
+        //         if (!encontrarUser){                
+        //             return res.render('./users/loginUser', {
+        //             errors: resultErros.mapped(),
+        //             title: 'usuario no existe',
+        //         });
+        //     }
             
-            // req.session.usuarioLogueado = encontrarUser;
-            // //Guardando en cookie
-            // if (req.body.recordame != undefined) {
-            //     res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
-            // }
+        //     // req.session.usuarioLogueado = encontrarUser;
+        //     // //Guardando en cookie
+        //     // if (req.body.recordame != undefined) {
+        //     //     res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
+        //     // }
             
-            // res.send('Success');
-            res.send("ALGO PASO");
+        //     // res.send('Success');
+        //     res.send("ALGO PASO");
 
-        }else{
-            return res.render('users/loginUser', {
-                //errors: resultErros.errors,
-                errors: resultErros.mapped(),
-                title: 'Login de Usuario',
-            });
-        }
+        // }else{
+        //     return res.render('users/loginUser', {
+        //         //errors: resultErros.errors,
+        //         errors: resultErros.mapped(),
+        //         title: 'Login de Usuario',
+        //     });
+        // }
     },
 
     'usersAdd': (req, res)=>{
@@ -145,9 +150,10 @@ const userController = {
 
     },
 
-    'profile': (req, res)=>{
+    'profile': (req, res)=>{        
         res.render('./users/userProfile', {
             title: 'Procfile de Usuario',
+            user : req.session.userLogin,
         });
     },
 
