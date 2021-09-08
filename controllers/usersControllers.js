@@ -19,36 +19,70 @@ const userController = {
     },
 
     'processLogin': (req, res)=>{
-        let errors = validationResult(req);
-        let emailUser = req.body.nombreUser;         
+        const resultErros = validationResult(req)
+        //let errors = validationResult(req);
+        //let emailUser = req.body.nombreUser;         
+
+        //busco en el modelo so existe el usuario
+        let userLogin = User.findByField('email', req.body.nombreUser)
+
+        if (userLogin){
+            let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
+
+            if(verificaPassword){
+                
+                return res.redirect('/user/profile');
+
+            }else{
+                return res.render('users/loginUser',{
+                    errors:{
+                        nombreUser:{
+                            msg: 'Verique las credenciales ingresadas',
+                        }
+                    },
+                    title:'Login de Usuario',
+                })
+            }
+        }else{
+            //si no se encuentra el usuario
+            return res.render('users/loginUser',{
+                errors:{
+                    nombreUser:{
+                        msg: 'Verifique el mail ingresado',
+                    }
+                },
+                title:'Login de Usuario',
+                oldData: req.body,
+            })
+        }
+
         
-        //res.send('Estoy en el proceso de login')
-        if (errors.isEmpty()){
+        //return res.send(userLogin)
+        
+        if (resultErros.errors.length > 0){
             let encontrarUser = users.find(user => 
                 user.email ==  emailUser
-            )
-    
-            if (!encontrarUser){                
-                return res.render('./users/loginUser', {
-                    errors: [
-                        {msg: 'Usuario Invalido'}
-                    ],
+                )
+                
+                if (!encontrarUser){                
+                    return res.render('./users/loginUser', {
+                    errors: resultErros.mapped(),
                     title: 'usuario no existe',
                 });
             }
             
-            req.session.usuarioLogueado = encontrarUser;
-            //Guardando en cookie
-            if (req.body.recordame != undefined) {
-                res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
-            }
+            // req.session.usuarioLogueado = encontrarUser;
+            // //Guardando en cookie
+            // if (req.body.recordame != undefined) {
+            //     res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
+            // }
             
             // res.send('Success');
-            res.send(req.body);
+            res.send("ALGO PASO");
 
         }else{
             return res.render('users/loginUser', {
-                //errors: errors.errors,
+                //errors: resultErros.errors,
                 errors: resultErros.mapped(),
                 title: 'Login de Usuario',
             });
@@ -112,7 +146,9 @@ const userController = {
     },
 
     'profile': (req, res)=>{
-        res.send('Estoy en Procfile');
+        res.render('./users/userProfile', {
+            title: 'Procfile de Usuario',
+        });
     },
 
     'usersEdit': (req, res) =>{

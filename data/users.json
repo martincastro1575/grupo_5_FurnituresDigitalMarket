@@ -354,5 +354,17 @@
   "category": "user",
   "image": "user-1631008347248.jpg",
   "isActive": true
+ },
+ {
+  "id": 34,
+  "nombreApellido": "Prueba de Martin",
+  "sexo": "M",
+  "email": "marcasmal@gmail.com",
+  "telefono": "1122223333",
+  "fechaNac": "2021-09-02",
+  "password": "$2a$10$U3N8PXzRDdjOLS8UCYV1K.3gj5sCYvL0THnVHkjq4XRtwYlGENIsm",
+  "category": "user",
+  "image": "user-1631060054119.png",
+  "isActive": true
  }
 ]

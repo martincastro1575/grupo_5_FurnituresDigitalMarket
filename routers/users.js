@@ -32,7 +32,9 @@ routerUser.get('/registro', guestMiddleware, userController.usersAdd);
 routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
 
 //Perfil de Usuario
-routerUser.get('profile/:userId', userController.profile);
+//routerUser.get('profile/:userId', userController.profile);
+
+routerUser.get('/profile', userController.profile);
 
 
 // *** Ruta de prueba
