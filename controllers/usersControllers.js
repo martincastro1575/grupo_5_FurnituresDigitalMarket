@@ -20,6 +20,13 @@ const userController = {
 
     'processLogin': (req, res)=>{
         let errors = validationResult(req);
+
+        let contraseña = req.body.userPass;
+
+        if (usserPass !== confirmPass){
+            return res.send('Las contraseñas no coinciden')
+        }
+        
         let emailUser = req.body.nombreUser;         
         
         //res.send('Estoy en el proceso de login')
