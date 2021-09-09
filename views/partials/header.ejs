@@ -7,10 +7,19 @@
                </form>
            </div>
            <nav class="nav-create-login">
-               <i class="fas fa-user-plus"></i>
-               <a href="/user/registro">Crea cuenta</a>
-               <i class="fas fa-sign-in-alt"></i>
-               <a href="/user/login">Login</a>
+               
+               <% if (locals.isUserlogged) { %>
+                <i class="fas fa-user"></i>
+                <a href="/user/profile">Hi! <%= locals.userLogin.nombreApellido%> </a>
+                <i class="fas fa-sign-out-alt"></i>
+                <a href="/user/logout">Logout</a>
+               <% } else { %>
+                    
+                 <i class="fas fa-user-plus"></i>
+                 <a href="/user/registro">Crea cuenta</a>
+                 <i class="fas fa-sign-in-alt"></i>
+                 <a href="/user/login">Login</a>
+                 <% } %>
            </nav>
        </div>
        <div class="header-bottom">

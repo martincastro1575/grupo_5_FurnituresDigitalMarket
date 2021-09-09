@@ -20,9 +20,7 @@ const userController = {
     },
 
     'processLogin': (req, res)=>{
-        const resultErros = validationResult(req)
-        //let errors = validationResult(req);
-        //let emailUser = req.body.nombreUser;         
+        const resultErros = validationResult(req)       
 
         //busco en el modelo so existe el usuario
         let userLogin = User.findByField('email', req.body.nombreUser)
@@ -33,8 +31,13 @@ const userController = {
             if(verificaPassword){
                 //por seguridad borramos de la session el password
                 delete userLogin.password
+                //creo la session
                 req.session.userLogin = userLogin
-                console.log(req.session.userLogin)
+                
+                //creo la cookie
+                if(req.body.recordame){
+                    res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+                }
 
                 return res.redirect('/user/profile');
 
@@ -64,18 +67,21 @@ const userController = {
     },
     
     'logout':(req,res)=>{
-        req.session.destroy()
+        res.clearCookie('userEmail');
+        req.session.destroy();
         
         return res.redirect('/')
     },
 
+    //Muestra el form de registro
     'usersAdd': (req, res)=>{
-        res.render('users/register',{
+        return res.render('users/register',{
             title: 'Registro de Usuario'
         })
 
     },
 
+    //Procesa el form de registro
     'processUser': (req, res)=>{
         const resultErros= validationResult(req)
         
@@ -120,13 +126,12 @@ const userController = {
         let createuser = User.create(userCreate)
 
          return res.redirect('/user/login')
-        //return res.send('Se almaceno el registro');
-        
 
     },
 
-    'profile': (req, res)=>{        
-        res.render('./users/userProfile', {
+    'profile': (req, res)=>{
+        //console.log(req.cookies.userEmail);
+        return res.render('./users/userProfile', {
             title: 'Procfile de Usuario',
             user : req.session.userLogin,
         });
