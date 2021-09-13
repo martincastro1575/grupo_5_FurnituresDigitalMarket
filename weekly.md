@@ -10,10 +10,25 @@
 ### Meet 20/08/2021 🖊️
 *Actualización de archivos y tareas realizadas.
 
-+Asignación de tareas.
+*Asignación de tareas.
 
 ### Meet 24/08/2021 🖊️
-*
+* Solucionando problemas de ramas.
+
+### Meet 31/08/2021 🖊️
+* Chequeo de tareas pendientes.
+
+* Solucionando problemas al actualizar ramas.
+
+### Meet 02/09/2021 🖊️
+
+* Solucion de conflictos.
+
+### Meet 09/09/2021 🖊️
+
+* Chequeando tareas pendientes a realizar.
+
+* Corroborando que estén todas las líneas de código en la rama principal.
 
 ## Weekly meeting \# 4️⃣
 
