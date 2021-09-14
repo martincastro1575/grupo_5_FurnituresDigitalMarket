@@ -156,7 +156,20 @@ const userController = {
     },
 
     'store':(req, res)=>{
+        const resultErros= validationResult(req)        
+        
 
+        if (resultErros.errors.length > 0){
+            
+            return res.render('users/edit',{
+                errors: resultErros.mapped(),
+                oldData: req.body,
+                title: 'Registro de Usuario'    
+            })        
+        }
+
+
+        
     }
 }
 

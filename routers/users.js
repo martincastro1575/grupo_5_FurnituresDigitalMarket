@@ -16,6 +16,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const upload_image = require('../middlewares/multerMiddlewares');
 const validationUser = require('../middlewares/registerValMiddleware')
 const validationLogin = require('../middlewares/loginValMiddleware')
+const validationToUpdateUser = require('../middlewares/updateValMiddleware')
 
 //Comentada por Martin
 //routerUser.post('/register', userController.processRegister);
@@ -42,7 +43,7 @@ routerUser.get('/listado', userController.usersList);
 routerUser.get('/edit/:id', userController.userEdit);
 
 //Update User
-routerUser.post('/edit/:id', userController.store);
+routerUser.post('/edit/:id', validationToUpdateUser, userController.store);
 
 //logout
 routerUser.get('/logout', userController.logout);
