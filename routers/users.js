@@ -37,7 +37,7 @@ routerUser.post('/registro', upload_image.single('imageUser'), validationUser, u
 routerUser.get('/profile', authMiddleware, userController.profile);
 
 //Listado users
-routerUser.get('/listado', userController.usersList);
+routerUser.get('/listado', authMiddleware,userController.usersList);
 
 //Editarusuario
 routerUser.get('/edit/:id', userController.userEdit);
