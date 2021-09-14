@@ -27,7 +27,7 @@ const User = {
     //Busca un Usuario
     findByPk: function(id){
         let allUsers = this.findAll();
-        let userFound = allUsers.find(oneUser => oneUser.id === id);
+        let userFound = allUsers.find(oneUser => oneUser.id == id);
 
         return userFound;
     },
@@ -64,5 +64,5 @@ const User = {
 
 }
 
-//console.log(User.generateId())
+//console.log(User.findByPk(1))
 module.exports = User;

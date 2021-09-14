@@ -8,8 +8,8 @@ const User = require('../models/Users');
 const { send } = require('process');
 
 
-const productsPath = path.join(__dirname, '../data/users.json');
-let users = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
+const usersPath = path.join(__dirname, '../data/users.json');
+let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
 
 const userController = {
     'userLogin': (req, res)=>{
@@ -123,6 +123,7 @@ const userController = {
             isActive: true
             
         }
+        
         let createuser = User.create(userCreate)
 
          return res.redirect('/user/login')
@@ -137,13 +138,26 @@ const userController = {
         });
     },
 
-    'usersEdit': (req, res) =>{
+    'userEdit': (req, res) =>{        
+        let oneUser = User.findByPk(req.params.id);
 
+        res.render('users/editUser',{
+            title: 'Edición de Usuarios',
+            oneUser: oneUser,
+        })
+    },
+    
+    'usersList': (req,res)=>{
+        //res.send('9')
+        res.render('users/userList',{
+            users:users,
+            title:'Listado de Usuarios'
+        }) 
     },
 
-    'usersInquery': (req, res) =>{
+    'store':(req, res)=>{
 
-    },
+    }
 }
 
 module.exports = userController;

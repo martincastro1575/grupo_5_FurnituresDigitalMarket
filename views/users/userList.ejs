@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head.ejs') %>
+<body>
+    <main>
+    <%- include('../partials/header.ejs') %>
+    <h1>Listado Usuarios</h1>
+    <ul>
+        <% for (let i=0; i < users.length; i++) { %>
+            <a href="/user/edit/<%= users[i].id %>">
+                <li>id: <%= users[i].id %>-<%= users[i].nombreApellido %></li>
+            </a>
+       <% } %>
+    </ul>
+    
+</main>
+<%- include('../partials/footer.ejs') %>
+</body>
+</html>
