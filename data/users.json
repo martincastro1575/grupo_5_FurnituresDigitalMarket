@@ -177,5 +177,17 @@
   "category": "admin",
   "image": "user-1631060054119.png",
   "isActive": true
+ },
+ {
+  "id": 35,
+  "nombreApellido": "Patricia Campos",
+  "sexo": "F",
+  "email": "pcampos@gmail.com",
+  "telefono": "1111112222",
+  "fechaNac": "1950-09-15",
+  "password": "$2a$10$iLJ.mD2VllzWDNBlUyVmSuag.mJk2uGmalhEObClP9bFHmD2aDRlm",
+  "category": "user",
+  "image": "user-1631616863133.jpg",
+  "isActive": true
  }
 ]
