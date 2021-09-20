@@ -156,17 +156,20 @@ const userController = {
     },
 
     'store':(req, res)=>{
-        const resultErros= validationResult(req)        
+        const resultErros= validationResult(req)
+        //const oneUSer = User.findByPk(req.body.id)        
         
-
         if (resultErros.errors.length > 0){
-            
-            return res.render('users/edit',{
+            return res.send(resultErros)
+            return res.render('users/editUser',{
                 errors: resultErros.mapped(),
-                oldData: req.body,
-                title: 'Registro de Usuario'    
+                oneUser: oneUser,
+                title: 'Edición de Usuario'    
             })        
         }
+        console.log(req.body)
+        res.redirect('Todo validado')
+        //res.redirect('/user/edit/' + req.body.id)
 
 
         

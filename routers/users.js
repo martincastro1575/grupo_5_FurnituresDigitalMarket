@@ -37,13 +37,14 @@ routerUser.post('/registro', upload_image.single('imageUser'), validationUser, u
 routerUser.get('/profile', authMiddleware, userController.profile);
 
 //Listado users
-routerUser.get('/listado', authMiddleware,userController.usersList);
+routerUser.get('/listado', userController.usersList);
+
+//Update User
+routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.store);
 
 //Editarusuario
 routerUser.get('/edit/:id', userController.userEdit);
 
-//Update User
-routerUser.post('/edit/:id', validationToUpdateUser, userController.store);
 
 //logout
 routerUser.get('/logout', userController.logout);

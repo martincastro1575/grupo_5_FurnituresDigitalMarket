@@ -189,5 +189,17 @@
   "category": "user",
   "image": "user-1631616863133.jpg",
   "isActive": true
+ },
+ {
+  "id": 36,
+  "nombreApellido": "Pedro Castillo",
+  "sexo": "M",
+  "email": "pcastillo@gmial.com",
+  "telefono": "59713341",
+  "fechaNac": "2021-09-10",
+  "password": "$2a$10$W5SY5BUsJW2wEUJOiWqmEumDNz3/qXUGrjlY0qO2LWkXeP4m/.yL2",
+  "category": "user",
+  "image": "user-1631834726385.png",
+  "isActive": true
  }
 ]

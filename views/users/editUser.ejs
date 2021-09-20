@@ -5,10 +5,10 @@
     <%- include('../partials/header.ejs') %>
     <div class="main-form"> 
         <main> 
-            <h2>Edición de Usuario</h2>
-              
+            <h2>Edición de Usuario</h2>              
             <form action ="/user/edit/<%= oneUser.id %>" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
+                    <input type="hidden" value="<%= oneUser.id %>">   
                     <label for="nombreApellido">Nombre y apellido</label>
                     <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= oneUser.nombreApellido %>">
                     
@@ -20,9 +20,9 @@
                 </div>
                 <div class="form-control">
                     <label for="userEmail">Email</label>
-                    <input type="email" name="userEmail" id="userEmail" class="control" value="<%= oneUser.email %>">
+                    <input type="email" name="email" id="email" class="control" value="<%= oneUser.email %>">
                     <div class="text-danger">
-                        <% if (locals.errors && errors.userEmail) { %>
+                        <% if (locals.errors && errors.email) { %>
                             <%= errors.userEmail.msg %> 
                         <% } %>
                     </div>
@@ -62,33 +62,7 @@
                         <% } %>
                     </div>
                 </div>
-                <!-- <div class="form-control">
-                    <label for="imageUser" class="control">Seleccione Imagen</label>
-                    <input type="file" name="imageUser" id="imageUser">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.imageUser) { %>
-                            <%= errors.imageUser.msg %> 
-                        <% } %>
-                    </div>                    
-                </div> -->
-                <!-- <div class="form-control">
-                    <label for="userPass">Contraseña</label>
-                    <input type="password" name="userPass" id="userPass" class="control">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.userPass) { %>
-                            <%= errors.userPass.msg %> 
-                        <% } %>
-                    </div>
-                </div>
-                <div class="form-control">
-                    <label for="confirmPass">Confirmar contraseña</label>
-                    <input type="password" name="confirmPass" id="confirmPass" class="control">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.confirmPass) { %>
-                            <%= errors.confirmPass.msg %> 
-                        <% } %>
-                    </div>
-                </div> -->
+                
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Actualizar</button>
                     <button type="reset" class="button-form">Borrar</button>
