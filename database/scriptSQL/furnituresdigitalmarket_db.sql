@@ -54,7 +54,7 @@ CREATE TABLE `address` (
   `is_address_bill` tinyint DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id_user_idx` (`id_user`),
-  CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+  CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,7 +80,7 @@ CREATE TABLE `image` (
   `id_product` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_product_image_idx` (`id_product`),
-  CONSTRAINT `id_product_image` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE SET NULL
+  CONSTRAINT `id_product_image` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,13 +118,13 @@ LOCK TABLES `payment_method` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product` (
+CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` text NOT NULL,
   `price` decimal(10,0) NOT NULL,
@@ -148,22 +148,22 @@ CREATE TABLE `product` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product_action_type`
+-- Table structure for table `products_action_type`
 --
 
-DROP TABLE IF EXISTS `product_action_type`;
+DROP TABLE IF EXISTS `products_action_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product_action_type` (
+CREATE TABLE `products_action_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_product_action` int DEFAULT NULL,
   `id_action_type` int DEFAULT NULL,
@@ -177,12 +177,12 @@ CREATE TABLE `product_action_type` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product_action_type`
+-- Dumping data for table `products_action_type`
 --
 
-LOCK TABLES `product_action_type` WRITE;
-/*!40000 ALTER TABLE `product_action_type` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_action_type` ENABLE KEYS */;
+LOCK TABLES `products_action_type` WRITE;
+/*!40000 ALTER TABLE `products_action_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products_action_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -261,7 +261,7 @@ CREATE TABLE `purchase` (
   CONSTRAINT `id_address` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_payment` FOREIGN KEY (`id_payment`) REFERENCES `payment_method` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status_purchase` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `id_user_purchase` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE SET NULL
+  CONSTRAINT `id_user_purchase` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -289,7 +289,7 @@ CREATE TABLE `purchase_detail` (
   PRIMARY KEY (`id`),
   KEY `id_product_idx` (`id_product`),
   KEY `id_purchase` (`id_purchase`),
-  CONSTRAINT `id_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`),
+  CONSTRAINT `id_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`),
   CONSTRAINT `id_purchase` FOREIGN KEY (`id_purchase`) REFERENCES `purchase` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -304,13 +304,13 @@ LOCK TABLES `purchase_detail` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `role`
+-- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `role` (
+CREATE TABLE `roles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(12) NOT NULL,
   PRIMARY KEY (`id`)
@@ -318,12 +318,43 @@ CREATE TABLE `role` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `roles`
 --
 
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shopping_cart`
+--
+
+DROP TABLE IF EXISTS `shopping_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shopping_cart` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_product` int DEFAULT NULL,
+  `id_user` int DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_product_cart_idx` (`id_product`),
+  KEY `id_user_cart_idx` (`id_user`),
+  CONSTRAINT `id_product_cart` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `id_user_cart` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shopping_cart`
+--
+
+LOCK TABLES `shopping_cart` WRITE;
+/*!40000 ALTER TABLE `shopping_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shopping_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -352,13 +383,13 @@ LOCK TABLES `status` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
@@ -373,28 +404,28 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   KEY `id_role_idx` (`id_role`),
   KEY `id_status_idx` (`id_status`),
-  CONSTRAINT `id_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `id_role` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user_action_type`
+-- Table structure for table `users_action_type`
 --
 
-DROP TABLE IF EXISTS `user_action_type`;
+DROP TABLE IF EXISTS `users_action_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_action_type` (
+CREATE TABLE `users_action_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_action` int DEFAULT NULL,
@@ -405,18 +436,18 @@ CREATE TABLE `user_action_type` (
   KEY `id_user_idx` (`id_user`),
   KEY `id_admin_idx` (`id_admin`),
   CONSTRAINT `id_action` FOREIGN KEY (`id_action`) REFERENCES `action_type` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `id_admin_action` FOREIGN KEY (`id_admin`) REFERENCES `user` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `id_user_action` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE SET NULL
+  CONSTRAINT `id_admin_action` FOREIGN KEY (`id_admin`) REFERENCES `users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `id_user_action` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_action_type`
+-- Dumping data for table `users_action_type`
 --
 
-LOCK TABLES `user_action_type` WRITE;
-/*!40000 ALTER TABLE `user_action_type` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_action_type` ENABLE KEYS */;
+LOCK TABLES `users_action_type` WRITE;
+/*!40000 ALTER TABLE `users_action_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_action_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -428,4 +459,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-21 18:09:21
+-- Dump completed on 2021-09-23 17:53:16
