@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `furnituresdigitalmarket_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `furnituresdigitalmarket_db`;
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: furnituresdigitalmarket_db
+-- Host: localhost    Database: furnituresdigitalmarket_db
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.26-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -127,7 +129,7 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` text NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `discount` int DEFAULT '0',
   `quantity` int NOT NULL DEFAULT '0',
   `stock_min` int DEFAULT '0',
@@ -136,6 +138,7 @@ CREATE TABLE `products` (
   `id_category` int DEFAULT NULL,
   `id_measure` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_status_idx` (`id_status`),
   KEY `id_status_product_idx` (`id_status`),
@@ -486,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-24 17:43:15
+-- Dump completed on 2021-09-25 10:06:16
