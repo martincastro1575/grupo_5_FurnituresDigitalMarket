@@ -175,7 +175,7 @@ CREATE TABLE `products_action_type` (
   KEY `id_product_action_idx` (`id_product_action`),
   KEY `id_action_type_idx` (`id_action_type`),
   CONSTRAINT `id_action_type` FOREIGN KEY (`id_action_type`) REFERENCES `action_type` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `action_type` (`id`) ON DELETE SET NULL
+  CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `products` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -489,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-25 11:53:26
+-- Dump completed on 2021-09-25 13:25:15
