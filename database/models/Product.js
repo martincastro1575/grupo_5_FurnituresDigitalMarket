@@ -62,13 +62,17 @@ module.exports=(sequelize, dataTypes)=>{
             type:dataTypes.TIMESTAMP,
         },
 
-
     }
 
     let config = {
         timestamps: true,
-        createdAt: 'created_at',
+        stkMin: 'stock_min',
+        stkMax: 'stock_max',
+        idStatus: 'id_status',
+        idCategory: 'id_category',
+        idMeasure: 'id_measure',
         tableName: 'products',
+        createdAt: 'created_at',
     }
 
     const Product = sequelize.define(alias, cols, config)
