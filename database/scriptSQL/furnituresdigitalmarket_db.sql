@@ -286,6 +286,7 @@ CREATE TABLE `purchase_detail` (
   `id_purchase` int NOT NULL,
   `id_product` int NOT NULL,
   `price` decimal(10,0) NOT NULL,
+  `quantity` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_product_idx` (`id_product`),
   KEY `id_purchase` (`id_purchase`),
@@ -335,15 +336,11 @@ DROP TABLE IF EXISTS `shopping_cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shopping_cart` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_product` int DEFAULT NULL,
   `id_user` int DEFAULT NULL,
   `quantity` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_product_cart_idx` (`id_product`),
   KEY `id_user_cart_idx` (`id_user`),
-  CONSTRAINT `id_product_cart` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_user_cart` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -355,6 +352,36 @@ CREATE TABLE `shopping_cart` (
 LOCK TABLES `shopping_cart` WRITE;
 /*!40000 ALTER TABLE `shopping_cart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `shopping_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shopping_cart_detail`
+--
+
+DROP TABLE IF EXISTS `shopping_cart_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shopping_cart_detail` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `quantity` int NOT NULL,
+  `discount` int DEFAULT '0',
+  `category` varchar(50) DEFAULT NULL,
+  `description` text,
+  `id_shopping_cart` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_shopping_cart` FOREIGN KEY (`id`) REFERENCES `shopping_cart` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shopping_cart_detail`
+--
+
+LOCK TABLES `shopping_cart_detail` WRITE;
+/*!40000 ALTER TABLE `shopping_cart_detail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shopping_cart_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -459,4 +486,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-23 17:53:16
+-- Dump completed on 2021-09-24 17:43:15
