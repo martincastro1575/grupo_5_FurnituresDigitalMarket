@@ -22,5 +22,12 @@ module.exports=(sequelize, dataTypes)=>{
 
     const Rol = sequelize.define(alias, cols, config)
 
+        Rol.associate = function(model){
+            Product.belongsTo(models.User,{
+                as:'users',
+                foreignKey: 'id_role'
+            }),
+        }
+
     return Rol
 }
