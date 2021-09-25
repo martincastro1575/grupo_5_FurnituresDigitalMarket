@@ -1,5 +1,5 @@
 module.exports=(sequelize, dataTypes)=>{
-    let alias = 'Role';
+    let alias = 'Rol';
 
     let cols = {
         id:{
@@ -20,7 +20,7 @@ module.exports=(sequelize, dataTypes)=>{
 
 
 
-    const Role = sequelize.define(alias, cols, config)
+    const Rol = sequelize.define(alias, cols, config)
 
-    return Role
+    return Rol
 }
