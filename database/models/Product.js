@@ -59,7 +59,7 @@ module.exports=(sequelize, dataTypes)=>{
         },
 
         created_at:{
-            type:dataTypes.TIMESTAMP,
+            type:dataTypes.DATE,
         },
 
     }
@@ -78,20 +78,20 @@ module.exports=(sequelize, dataTypes)=>{
     const Product = sequelize.define(alias, cols, config)
     Product.associate = function(models){
 
-        Product.belongsTo(models.Statu,{
-            as:'status',
-            foreignKey: 'idStatus'
-        }),
+        // Product.belongsTo(models.Statu,{
+        //     as:'status',
+        //     foreignKey: 'idStatus'
+        // }),
         
-        Product.belongsTo(models.productsCategory,{
-            as:'categories',
-            foreignKey: 'idCategory'
-        }),
+        // Product.belongsTo(models.productsCategory,{
+        //     as:'categories',
+        //     foreignKey: 'idCategory'
+        // }),
 
-        Product.belongsTo(models.productsMeasure,{
-            as:'measures',
-            foreignKey: 'idMeasure'
-        }),
+        // Product.belongsTo(models.productsMeasure,{
+        //     as:'measures',
+        //     foreignKey: 'idMeasure'
+        // }),
         
         Product.belongsTo(models.Image,{
             as:'images',

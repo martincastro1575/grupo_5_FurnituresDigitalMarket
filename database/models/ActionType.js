@@ -19,7 +19,7 @@ module.exports=(sequelize, dataTypes)=>{
         },
 
         created_at:{
-            type:dataTypes.TIMESTAMP,
+            type:dataTypes.DATE,
         },
     }
 
