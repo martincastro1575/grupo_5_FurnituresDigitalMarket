@@ -33,6 +33,13 @@ module.exports=(sequelize, dataTypes)=>{
 
 
     const ActionType = sequelize.define(alias, cols, config)
+    
+    ActionType.associate = function(models){
+        // ActionType.belongsTo(models.products_action_type,{
+        //     as:'productsActions',
+        //     foreignKey: 'id_action_type'
+        // })
+    }
 
     return ActionType
 }
