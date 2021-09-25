@@ -20,10 +20,9 @@ module.exports=(sequelize, dataTypes)=>{
     }
 
     let config = {
-        tableName: 'image',
+        tableName: 'images',
         idProduct: 'id_product'
     }
-
 
 
     const Image = sequelize.define(alias, cols, config)
