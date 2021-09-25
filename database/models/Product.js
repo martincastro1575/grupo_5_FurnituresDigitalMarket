@@ -96,6 +96,13 @@ module.exports=(sequelize, dataTypes)=>{
         Product.belongsTo(models.Image,{
             as:'images',
             foreignKey: 'idProduct'
+        }),
+
+        Product.belongsToMany(models.ActionType,{
+            as:'actionType',
+            through:'products_action_type',
+            foreignKey: 'id_product_action',
+            otherKey: 'id_action_type',
         })
     }
 
