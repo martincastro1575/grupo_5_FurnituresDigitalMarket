@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `furnituresdigitalmarket_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `furnituresdigitalmarket_db`;
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: furnituresdigitalmarket_db
+-- Host: localhost    Database: furnituresdigitalmarket_db
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.26-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +27,7 @@ DROP TABLE IF EXISTS `action_type`;
 CREATE TABLE `action_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `description` varchar(45) DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -68,13 +70,13 @@ LOCK TABLES `address` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `image`
+-- Table structure for table `images`
 --
 
-DROP TABLE IF EXISTS `image`;
+DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `image` (
+CREATE TABLE `images` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(500) NOT NULL,
   `id_product` int DEFAULT NULL,
@@ -85,12 +87,12 @@ CREATE TABLE `image` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `image`
+-- Dumping data for table `images`
 --
 
-LOCK TABLES `image` WRITE;
-/*!40000 ALTER TABLE `image` DISABLE KEYS */;
-/*!40000 ALTER TABLE `image` ENABLE KEYS */;
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -127,7 +129,7 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` text NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `discount` int DEFAULT '0',
   `quantity` int NOT NULL DEFAULT '0',
   `stock_min` int DEFAULT '0',
@@ -136,6 +138,7 @@ CREATE TABLE `products` (
   `id_category` int DEFAULT NULL,
   `id_measure` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_status_idx` (`id_status`),
   KEY `id_status_product_idx` (`id_status`),
@@ -172,7 +175,7 @@ CREATE TABLE `products_action_type` (
   KEY `id_product_action_idx` (`id_product_action`),
   KEY `id_action_type_idx` (`id_action_type`),
   CONSTRAINT `id_action_type` FOREIGN KEY (`id_action_type`) REFERENCES `action_type` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `action_type` (`id`) ON DELETE SET NULL
+  CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `products` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -486,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-24 17:43:15
+-- Dump completed on 2021-09-25 13:25:15
