@@ -128,11 +128,7 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `high` int DEFAULT '0',
-  `width` int DEFAULT '0',
-  `length` int DEFAULT '0',
   `price` decimal(10,2) NOT NULL,
   `discount` int DEFAULT '0',
   `quantity` int NOT NULL DEFAULT '0',
@@ -140,12 +136,16 @@ CREATE TABLE `products` (
   `stock_max` int DEFAULT '0',
   `id_status` int DEFAULT NULL,
   `id_category` int DEFAULT NULL,
+  `id_measure` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_status_idx` (`id_status`),
   KEY `id_status_product_idx` (`id_status`),
   KEY `id_category_idx` (`id_category`),
+  KEY `id_measure_idx` (`id_measure`),
   CONSTRAINT `id_category` FOREIGN KEY (`id_category`) REFERENCES `products_category` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `id_measure` FOREIGN KEY (`id_measure`) REFERENCES `products_measures` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status_product` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -212,6 +212,32 @@ CREATE TABLE `products_category` (
 LOCK TABLES `products_category` WRITE;
 /*!40000 ALTER TABLE `products_category` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products_measures`
+--
+
+DROP TABLE IF EXISTS `products_measures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `products_measures` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `high` int DEFAULT '0',
+  `width` int DEFAULT '0',
+  `length` int DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products_measures`
+--
+
+LOCK TABLES `products_measures` WRITE;
+/*!40000 ALTER TABLE `products_measures` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products_measures` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -463,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-27 20:31:00
+-- Dump completed on 2021-09-25 13:25:15
