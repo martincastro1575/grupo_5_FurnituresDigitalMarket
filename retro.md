@@ -116,5 +116,7 @@
   
 - ***Maria Palavecino***
   
-- ***Nicolas Racciatti***
+- ***Josibel Hernandez***
+  
+- ***Niurka Rosas***
 

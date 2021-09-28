@@ -1,11 +1,13 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
 ## Furnitures Digital Market 🚀
+
 *Esta tienda electrónica fue concebida con la finalidad de antender las necesidades de un exclusivo y exigente público, ofreciendo productos de alta gama, fabricados bajo los estandares más altos de calidad y diseño.* :star2:🥇:star2:
 
 *Nuestro enfoque está dirigido a una parte de la población denomida como, Generaciòn Y. Caracterizada por estar abiertos al cambio y su conexión con el mundo globalizado además son nativos digitales* 📱 🖥️ 💻
 
 ## Fuentes de inspiración 🎨
+
 :one: [Ikea](https://www.ikea.com)
 
 :two: [Pardo](https://www.pardo.com.ar)
@@ -17,6 +19,7 @@
 :five: [Morph](https://www.morph.com.ar/)
 
 ## Integrantes: 🤩
+
 - ***Martin Castro***
   > Amante de la técnologia, colaborador, proactivo y organizado. Preparandome para formarme con ***Desarrollador FullStack 💪💪💪***
 
@@ -25,6 +28,12 @@
 
 - ***Nicolas Racciatti***
   > Mucho esfuerzo y estudio para cumplir el objetivo de ser Desarrollador FullStack, mecanica, juegos.
+
+- ***Josibel Hernandez***
+  > Frontend Jr, 27 años e Ingeniera en Informática.
+
+- ***Niurka Rosas***
+  > Frontend Jr y CSS Lover. Tengo 31 años, estoy adentrandome al mundo de React Js y aprendiendo a patinar.
 
 ## Tablero de Tareas: ☑️
 [Trello](https://trello.com/b/0oQhvEvG/sprint-2)
