@@ -41,7 +41,7 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false
         });
         Status.belongsToMany(models.User,{
-            as : 'user',
+            as : 'users',
             foreignKey: 'id_role',
             foreignKey: 'id_status',
             timestamps: false,
