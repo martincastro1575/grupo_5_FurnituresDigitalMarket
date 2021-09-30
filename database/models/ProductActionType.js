@@ -8,7 +8,7 @@ module.exports=(sequelize, dataTypes)=>{
             autoIncrement: true,
         },
         create_at:{
-            type: datatypes.DATE
+            type: dataTypes.DATE
         },
         action_type_id: dataTypes.INTEGER,
         product_id: dataTypes.INTEGER
@@ -21,12 +21,12 @@ module.exports=(sequelize, dataTypes)=>{
 
     const ProductActionType = sequelize.define(alias, cols, config)
 
-        ProductActionType.associate = function(model){
-            Movie.belongsTo(models.ActionType, { 
+        ProductActionType.associate = function(models){
+            ProductActionType.belongsTo(models.ActionType, { 
                 as: "action_type",
                 foreignKey: "action_type_id"
             }),
-            Movie.belongsTo(models.Product, { 
+            ProductActionType.belongsTo(models.Product, { 
                 as: "products",
                 foreignKey: "product_id"
             })
