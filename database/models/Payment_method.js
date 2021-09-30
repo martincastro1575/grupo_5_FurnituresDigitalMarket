@@ -19,9 +19,19 @@ module.exports = (sequelize, dataTypes) => {
   let config = {
     timestamps: true,
     tableName: "payment_method",
-    underscore: true,
+    underscored: true,
     updatedAt: false
   };
 
-  return PaymentMethod = sequelize.define(alias, cols, config);
+  
+  const PaymentMethod = sequelize.define(alias, cols, config)
+    
+  PaymentMethod.associate = function(models){
+      PaymentMethod.hasMany(models.Purchase,{
+          as:'purchase',
+          foreignKey: 'idPayment'
+      })
+  }
+
+  return PaymentMethod
 };
