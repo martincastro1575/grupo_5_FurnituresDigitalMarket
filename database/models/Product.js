@@ -83,15 +83,12 @@ module.exports=(sequelize, dataTypes)=>{
         //     foreignKey: 'idStatus'
         // }),
         
-        // Product.belongsTo(models.productsCategory,{
-        //     as:'categories',
-        //     foreignKey: 'idCategory'
-        // }),
+        Product.belongsTo(models.ProductCategory,{
+            as:'categories',
+            foreignKey: 'idCategory'
+        }),
 
-        // Product.belongsTo(models.productsMeasure,{
-        //     as:'measures',
-        //     foreignKey: 'idMeasure'
-        // }),
+        
         
         Product.belongsTo(models.Image,{
             as:'images',
