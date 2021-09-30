@@ -62,7 +62,24 @@
 *Establecimiento de prioridades en tareas.
 
 *Proxima semana se deberan completar actividades.
+### Meet 19/09/2021 🖊️
+*Discusión sobre las tablas para la base de datos.
 
+*Comienzo de la creación del DER y el .sql
+
+### Meet 21/09/2021 🖊️
+*Revisión de la base de datos y las relaciones.
+
+*Actualización del DER.
+
+### Meet 23/09/2021 🖊️
+*Asignación de modelos.
+
+*Discusión de las tablas para el carrito de compras.
+### Meet 28/09/2021 🖊️
+*Asignación de CRUD.
+
+*Actualización de la base de datos y el DER.
 
 ## Integrantes: 🤩
 - ***Martin Castro***
