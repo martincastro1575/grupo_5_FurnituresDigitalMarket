@@ -22,9 +22,19 @@ module.exports = (sequelize, dataTypes) => {
 
   let config = {
     timestamps: true,
-    tableName: "product_category",
-    underscore: true,
+    tableName: "products_category",
+    underscored: true,
     updatedAt: false
   };
-  return ProductCategory = sequelize.define(alias, cols, config);
+
+  const ProductCategory = sequelize.define(alias, cols, config)
+    
+  ProductCategory.associate = function(models){
+      ProductCategory.hasMany(models.Product,{
+          as:'products',
+          foreignKey: 'idCategory'
+      })
+  }
+
+  return ProductCategory
 };
