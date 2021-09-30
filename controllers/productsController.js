@@ -1,12 +1,17 @@
 const fs = require('fs');
 const path = require('path');
+const { signedCookie } = require('cookie-parser');
+const db = require('../database/models')
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+const moment = require('moment');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const productsController = {
     'crearProducto': (req, res) =>{
-
+        
         res.render('products/productAdd', {
             title:"Un nuevo Producto",
         })
