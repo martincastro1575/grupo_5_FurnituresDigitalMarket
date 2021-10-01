@@ -61,11 +61,11 @@ module.exports=(sequelize, dataTypes)=>{
             allowNull: false,
         },
 
-        id_status:{
+        idCategory:{
             type: dataTypes.INTEGER,
         },
 
-        id_category:{
+        idCategory:{
             type: dataTypes.INTEGER,
         },
 
@@ -84,6 +84,8 @@ module.exports=(sequelize, dataTypes)=>{
         idMeasure: 'id_measure',
         tableName: 'products',
         createdAt: 'created_at',
+        //underscored: true,
+        updatedAt: false
     }
 
     const Product = sequelize.define(alias, cols, config)
