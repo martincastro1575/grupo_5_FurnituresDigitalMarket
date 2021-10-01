@@ -61,11 +61,11 @@ module.exports=(sequelize, dataTypes)=>{
             allowNull: false,
         },
 
-        idCategory:{
+        id_category:{
             type: dataTypes.INTEGER,
         },
 
-        idCategory:{
+        idStatus:{
             type: dataTypes.INTEGER,
         },
 
@@ -80,11 +80,11 @@ module.exports=(sequelize, dataTypes)=>{
         stkMin: 'stock_min',
         stkMax: 'stock_max',
         idStatus: 'id_status',
-        idCategory: 'id_category',
-        idMeasure: 'id_measure',
+        //idCategory: 'id_category',
+        //idMeasure: 'id_measure',
         tableName: 'products',
         createdAt: 'created_at',
-        //underscored: true,
+        underscored: true,
         updatedAt: false
     }
 
