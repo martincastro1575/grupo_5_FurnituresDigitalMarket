@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
   let config = {
     timestamps: true,
     tableName: "address",
-    underscore: true,
+    underscored: true,
     updatedAt: false
   };
 

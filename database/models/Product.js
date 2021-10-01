@@ -18,6 +18,21 @@ module.exports=(sequelize, dataTypes)=>{
             allowNull: false,
         },
 
+        high:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
+        width:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
+        length:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
         price:{
             type: dataTypes.DECIMAL(10,2),
             allowNull: false,
@@ -46,15 +61,11 @@ module.exports=(sequelize, dataTypes)=>{
             allowNull: false,
         },
 
-        id_status:{
-            type: dataTypes.INTEGER,
-        },
-
         id_category:{
             type: dataTypes.INTEGER,
         },
 
-        id_measure:{
+        idStatus:{
             type: dataTypes.INTEGER,
         },
 
@@ -69,10 +80,12 @@ module.exports=(sequelize, dataTypes)=>{
         stkMin: 'stock_min',
         stkMax: 'stock_max',
         idStatus: 'id_status',
-        idCategory: 'id_category',
-        idMeasure: 'id_measure',
+        //idCategory: 'id_category',
+        //idMeasure: 'id_measure',
         tableName: 'products',
         createdAt: 'created_at',
+        underscored: true,
+        updatedAt: false
     }
 
     const Product = sequelize.define(alias, cols, config)
@@ -83,15 +96,10 @@ module.exports=(sequelize, dataTypes)=>{
         //     foreignKey: 'idStatus'
         // }),
         
-        // Product.belongsTo(models.productsCategory,{
-        //     as:'categories',
-        //     foreignKey: 'idCategory'
-        // }),
-
-        // Product.belongsTo(models.productsMeasure,{
-        //     as:'measures',
-        //     foreignKey: 'idMeasure'
-        // }),
+        Product.belongsTo(models.ProductCategory,{
+            as:'categories',
+            foreignKey: 'idCategory'
+        }),        
         
         Product.belongsTo(models.Image,{
             as:'images',
