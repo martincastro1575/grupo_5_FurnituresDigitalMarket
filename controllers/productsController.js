@@ -63,8 +63,6 @@ const productsController = {
 		// products.push(nuevoProducto);
 		// fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
-        
-		
     },
 
     'productsEdit': (req, res)=>{
@@ -94,8 +92,8 @@ const productsController = {
                 product.h = req.body.alto;
             }
         });
-        fs.writeFileSync(productsPath, JSON.stringify(products));
-        res.redirect('/producto/editar/' + idProduct);
+        // fs.writeFileSync(productsPath, JSON.stringify(products));
+        // res.redirect('/producto/editar/' + idProduct);
         
 
     },
