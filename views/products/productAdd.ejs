@@ -21,8 +21,9 @@
                     <label for="categoriaProd" class="control">Categoría</label>
                     
 					<select name="categoriaProd" id="categoriaProd" class="control">
-						<% categories.forEach(category => { %>
-                            <option value="<%= category.id %> "><%= category.title %> </option>
+						<option value=""></option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.title %> </option>
                         <% }) %>
 					</select>
                 </div>
