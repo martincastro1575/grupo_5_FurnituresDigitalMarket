@@ -18,6 +18,21 @@ module.exports=(sequelize, dataTypes)=>{
             allowNull: false,
         },
 
+        high:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
+        width:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
+        length:{
+            type: dataTypes.INTEGER,
+            defaultValue: true,
+        },
+
         price:{
             type: dataTypes.DECIMAL(10,2),
             allowNull: false,
@@ -54,10 +69,6 @@ module.exports=(sequelize, dataTypes)=>{
             type: dataTypes.INTEGER,
         },
 
-        id_measure:{
-            type: dataTypes.INTEGER,
-        },
-
         created_at:{
             type:dataTypes.DATE,
         },
@@ -86,9 +97,7 @@ module.exports=(sequelize, dataTypes)=>{
         Product.belongsTo(models.ProductCategory,{
             as:'categories',
             foreignKey: 'idCategory'
-        }),
-
-        
+        }),        
         
         Product.belongsTo(models.Image,{
             as:'images',
