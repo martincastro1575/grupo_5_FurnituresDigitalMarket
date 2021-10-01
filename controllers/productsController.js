@@ -11,32 +11,57 @@ let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const productsController = {
     'crearProducto': (req, res) =>{
-        
-        res.render('products/productAdd', {
-            title:"Un nuevo Producto",
-        })
+        // let allStatus = db.
+        let allCategory = db.ProductCategory.findAll({
+            order: [
+                ['title','ASC']
+            ]
+        }).then((allCategory)=>{
+
+            //return res.send(allCategory)
+            res.render('products/productAdd', {
+                title:"Un nuevo Producto",
+                categories: allCategory,
+            })
+        });
+
        
     },
 
     'guardarProducto': (req, res) =>{
-        let nuevoId = products[products.length - 1].id + 1;
-
-		let nuevoProducto = {
-			id: nuevoId,
+        //let nuevoId = products[products.length - 1].id + 1
+        db.Product.create({
             name: req.body.nombreProducto,
-			price: req.body.precioProducto,
-			category: req.body.categoriaProd,
-			discount: req.body.discountProducto,
-			description: req.body.descripcionProd,
-			image: req.file.filename, //de este manera se llama usando multer
-            w: req.body.ancho,
-            h: req.body.alto,
-            l: req.body.largo,
-            stock: req.body.cantidadProducto,
-		}
+            price: req.body.precioProducto,
+            id_category: req.body.categoriaProd,
+            discount: req.body.discountProducto,
+            description: req.body.descripcionProd,
+            //image: req.file.filename, //de este manera se llama usando multer
+            width: req.body.ancho,
+            high: req.body.alto,
+            length: req.body.largo,
+            quantity: req.body.cantidadProducto,
+            stock_min: req.body.cantidadMinima,
+            stock_max: req.body.cantidadMaxima,
+            
+        })
 
-		products.push(nuevoProducto);
-		fs.writeFileSync(productsPath, JSON.stringify(products));
+		// let nuevoProducto = {
+        //     id: nuevoId,
+        //     name: req.body.nombreProducto,
+        //     price: req.body.precioProducto,
+        //     category: req.body.categoriaProd,
+        //     discount: req.body.discountProducto,
+        //     description: req.body.descripcionProd,
+        //     image: req.file.filename, //de este manera se llama usando multer
+        //     w: req.body.ancho,
+        //     h: req.body.alto,
+        //     l: req.body.largo,
+        //     stock: req.body.cantidadProducto,
+		// }
+
+		// products.push(nuevoProducto);
+		// fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
         
 		
