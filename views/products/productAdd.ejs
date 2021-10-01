@@ -19,12 +19,19 @@
                 </div>
                 <div class="form-control">
                     <label for="categoriaProd" class="control">Categoría</label>
-                    <!-- <input type="text" name="categoryProducto" id="categoryProducto" class="control"> -->
+                    
 					<select name="categoriaProd" id="categoriaProd" class="control">
-						<option value="">Elegí</option>
-						<option value="inSale">En oferta</option>
-						<option value="hotSales">Más vendidos</option>
-                        <option value="newSales">Novedades</option>
+						<option value=""></option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.title %> </option>
+                        <% }) %>
+					</select>
+                </div>
+                <div class="form-control">
+                    <label for="statusProd" class="control">Estatus</label>
+					<select name="statusProd" id="statusProd" class="control">
+						<option value="">Activo</option>
+						<option value="">Inactivo</option>
 					</select>
                 </div>
                 <div class="form-control">
@@ -66,6 +73,16 @@
                 <div class="form-control">
                     <label for="discount-producto">Cantidad Producto</label>
                     <input type="text" name="cantidadProducto" id="cantidadProducto" 
+                    class="control precio" required>
+                </div>
+                <div class="form-control">
+                    <label for="discount-producto">Cantidad Minima</label>
+                    <input type="text" name="cantidadMinima" id="cantidadMinima" 
+                    class="control precio" required>
+                </div>
+                <div class="form-control">
+                    <label for="discount-producto">Cantidad Máxima</label>
+                    <input type="text" name="cantidadMaxima" id="cantidadMaxima" 
                     class="control precio" required>
                 </div>
                 
