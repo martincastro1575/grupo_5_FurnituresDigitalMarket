@@ -5,6 +5,7 @@ const db = require('../database/models')
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
+const { response } = require('express');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
@@ -31,19 +32,31 @@ const productsController = {
     'guardarProducto': (req, res) =>{
         //let nuevoId = products[products.length - 1].id + 1
         db.Product.create({
-            name: req.body.nombreProducto,
-            price: req.body.precioProducto,
-            id_category: req.body.categoriaProd,
-            discount: req.body.discountProducto,
-            description: req.body.descripcionProd,
-            //image: req.file.filename, //de este manera se llama usando multer
-            width: req.body.ancho,
-            high: req.body.alto,
-            length: req.body.largo,
-            quantity: req.body.cantidadProducto,
-            stock_min: req.body.cantidadMinima,
-            stock_max: req.body.cantidadMaxima,
+                name: req.body.nombreProducto,
+                price: req.body.precioProducto,
+                id_category: req.body.categoriaProd,
+                discount: req.body.discountProducto,
+                description: req.body.descripcionProd,
+                width: req.body.ancho,
+                high: req.body.alto,
+                length: req.body.largo,
+                quantity: req.body.cantidadProducto,
+                stock_min: req.body.cantidadMinima,
+                stock_max: req.body.cantidadMaxima,
             
+            }).then(response => {                
+                //obtengo el del producto para poder relacionar con img
+                let idPro = response.id
+                //almaceno los archivos devueltos
+                let files = req.files
+                
+                files.forEach(file => {
+                    db.Image.create({
+                        id_product: idPro,
+                        name: file.filename
+
+                    })
+                })
         })
 
 		// let nuevoProducto = {
