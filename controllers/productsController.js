@@ -5,6 +5,7 @@ const db = require('../database/models')
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
+const { response } = require('express');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
@@ -36,7 +37,6 @@ const productsController = {
             id_category: req.body.categoriaProd,
             discount: req.body.discountProducto,
             description: req.body.descripcionProd,
-            //image: req.file.filename, //de este manera se llama usando multer
             width: req.body.ancho,
             high: req.body.alto,
             length: req.body.largo,
@@ -44,6 +44,17 @@ const productsController = {
             stock_min: req.body.cantidadMinima,
             stock_max: req.body.cantidadMaxima,
             
+        }).then(response => {
+            
+            //obtengo el del producto para poder relacionar con img
+            let idPro = response.id
+            
+            db.Image.create({
+                name: req.file.filename, //de este manera se llama usando multer,
+                id_product: idPro
+            })
+            
+            //return res.send(`Este es el id del PRod ${idPro}`)
         })
 
 		// let nuevoProducto = {
