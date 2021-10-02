@@ -10,13 +10,14 @@ module.exports=(sequelize, dataTypes)=>{
         create_at:{
             type: dataTypes.DATE
         },
-        action_type_id: dataTypes.INTEGER,
-        product_id: dataTypes.INTEGER
+        id_action_type: dataTypes.INTEGER,
+        id_product_action: dataTypes.INTEGER,
+        id_user: dataTypes.INTEGER
     }
 
     let config = {
         timestamps: false,
-        tableName: 'product_action_type'
+        tableName: 'products_action_type'
     }
 
     const ProductActionType = sequelize.define(alias, cols, config)
@@ -24,11 +25,11 @@ module.exports=(sequelize, dataTypes)=>{
         ProductActionType.associate = function(models){
             ProductActionType.belongsTo(models.ActionType, { 
                 as: "action_type",
-                foreignKey: "action_type_id"
+                foreignKey: "id_action_type"
             }),
             ProductActionType.belongsTo(models.Product, { 
                 as: "products",
-                foreignKey: "product_id"
+                foreignKey: "id_product_action"
             })
         }
 
