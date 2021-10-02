@@ -6,6 +6,7 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
 const { response } = require('express');
+const session = require('express-session');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
@@ -24,13 +25,13 @@ const productsController = {
                 title:"Un nuevo Producto",
                 categories: allCategory,
             })
-        });
-
-       
+        });       
     },
 
     'guardarProducto': (req, res) =>{
         //let nuevoId = products[products.length - 1].id + 1
+        let idUser = res.locals.userLogin.id
+        
         db.Product.create({
                 name: req.body.nombreProducto,
                 price: req.body.precioProducto,
@@ -56,6 +57,12 @@ const productsController = {
                         name: file.filename
 
                     })
+                })
+
+                db.ProductActionType.create({
+                    id_action_type: 1,
+                    id_product_action: idPro,
+                    id_user: idUser
                 })
         })
 
