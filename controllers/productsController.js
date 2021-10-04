@@ -1,40 +1,88 @@
 const fs = require('fs');
 const path = require('path');
+const { signedCookie } = require('cookie-parser');
+const db = require('../database/models')
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+const moment = require('moment');
+const { response } = require('express');
+const session = require('express-session');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const productsController = {
     'crearProducto': (req, res) =>{
+        // let allStatus = db.
+        let allCategory = db.ProductCategory.findAll({
+            order: [
+                ['title','ASC']
+            ]
+        }).then((allCategory)=>{
 
-        res.render('products/productAdd', {
-            title:"Un nuevo Producto",
-        })
-       
+            //return res.send(allCategory)
+            res.render('products/productAdd', {
+                title:"Un nuevo Producto",
+                categories: allCategory,
+            })
+        });       
     },
 
     'guardarProducto': (req, res) =>{
-        let nuevoId = products[products.length - 1].id + 1;
-
-		let nuevoProducto = {
-			id: nuevoId,
-            name: req.body.nombreProducto,
-			price: req.body.precioProducto,
-			category: req.body.categoriaProd,
-			discount: req.body.discountProducto,
-			description: req.body.descripcionProd,
-			image: req.file.filename, //de este manera se llama usando multer
-            w: req.body.ancho,
-            h: req.body.alto,
-            l: req.body.largo,
-            stock: req.body.cantidadProducto,
-		}
-
-		products.push(nuevoProducto);
-		fs.writeFileSync(productsPath, JSON.stringify(products));
-        res.redirect('/producto/listado');
+        //let nuevoId = products[products.length - 1].id + 1
+        let idUser = res.locals.userLogin.id
         
-		
+        db.Product.create({
+                name: req.body.nombreProducto,
+                price: req.body.precioProducto,
+                id_category: req.body.categoriaProd,
+                discount: req.body.discountProducto,
+                description: req.body.descripcionProd,
+                width: req.body.ancho,
+                high: req.body.alto,
+                length: req.body.largo,
+                quantity: req.body.cantidadProducto,
+                stock_min: req.body.cantidadMinima,
+                stock_max: req.body.cantidadMaxima,
+            
+            }).then(response => {                
+                //obtengo el del producto para poder relacionar con img
+                let idPro = response.id
+                //almaceno los archivos devueltos
+                let files = req.files
+                
+                files.forEach(file => {
+                    db.Image.create({
+                        id_product: idPro,
+                        name: file.filename
+
+                    })
+                })
+
+                db.ProductActionType.create({
+                    id_action_type: 1,
+                    id_product_action: idPro,
+                    id_user: idUser
+                })
+        })
+
+		// let nuevoProducto = {
+        //     id: nuevoId,
+        //     name: req.body.nombreProducto,
+        //     price: req.body.precioProducto,
+        //     category: req.body.categoriaProd,
+        //     discount: req.body.discountProducto,
+        //     description: req.body.descripcionProd,
+        //     image: req.file.filename, //de este manera se llama usando multer
+        //     w: req.body.ancho,
+        //     h: req.body.alto,
+        //     l: req.body.largo,
+        //     stock: req.body.cantidadProducto,
+		// }
+
+		// products.push(nuevoProducto);
+		// fs.writeFileSync(productsPath, JSON.stringify(products));
+        res.redirect('/producto/listado');
     },
 
     'productsEdit': (req, res)=>{
@@ -64,8 +112,8 @@ const productsController = {
                 product.h = req.body.alto;
             }
         });
-        fs.writeFileSync(productsPath, JSON.stringify(products));
-        res.redirect('/producto/editar/' + idProduct);
+        // fs.writeFileSync(productsPath, JSON.stringify(products));
+        // res.redirect('/producto/editar/' + idProduct);
         
 
     },
