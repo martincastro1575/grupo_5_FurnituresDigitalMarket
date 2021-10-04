@@ -4,16 +4,48 @@
 <body>
     <%- include('../partials/header.ejs') %>
     <div class="main-form"> 
-        <main> 
-            <h2>ProcFile de Usuario: (<%= user.category %>) </h2>
+        <main class="page-container product-container-perfil"> 
+            <h2>Perfil de Usuario: (<%= user.roles.name %>) </h2>
               
-            <div>
-                <h2>Hi! <%= user.nombreApellido %> </h2>
-                <img src="/images/avatars/<%= user.image %>" alt="foto de usuario">
-                <br>
-                <br>
-                <div><%= user.email %></div>
-            </div>
+
+            <section class="products-content-perfil">
+                <div class="product-details">
+                    <form>                    
+                        <div>
+                            <h2>Hi! <%= user.name + ' ' + user.lastname %> </h2>
+                            <img src= <%=user.image %> alt="foto de usuario">
+                            </br>    
+                        </div>
+                        <div class="form-perfil-item">
+                          <label for="name" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="name" aria-describedby="nameHelp" value=<%= user.name %>  disabled>
+                        </div>
+                        <div class="form-perfil-item">
+                          <label for="lastname" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="lastname" aria-describedby="apellidoHelp" value=<%= user.lastname %>  disabled>
+                        </div>
+                        <div class="form-perfil-item">
+                          <label for="email" class="form-label">Correo Electrónico</label>
+                          <input type="email" class="form-control" id="email" aria-describedby="email" value=<%= user.email %> disabled>
+                        </div>
+                        <div class="form-perfil-item">
+                          <label for="address" class="form-label">Dirección de envío</label>
+                         
+                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address.find(a => a.isAddressBill === 1).description %></textarea>
+                        </div>
+                        <div class="form-perfil-item">
+                          <label for="address" class="form-label">Dirección de facturación</label>
+                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address.find(a => a.isAddressBill === 0).description %></textarea>
+                        </div>
+                        <div class="buttons-form">
+                            <button type="submit" class="btn btn-secondary">Edit <i class="fas fa-edit"></i></button>
+                            <button type="submit" class="btn btn-default">Submit</button>                        
+                        </div>
+    
+                      </form>
+    
+                </div>
+            </section>  
         </main>
     </div>
     <%- include('../partials/footer.ejs') %>

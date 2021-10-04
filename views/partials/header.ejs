@@ -9,8 +9,8 @@
            <nav class="nav-create-login">
                
                <% if (locals.isUserlogged) { %>
-                <i class="fas fa-user"></i>
-                <a href="/user/profile">Hi! <%= locals.userLogin.nombreApellido%> </a>
+              
+                <a href="/user/profile">  <i class="fas fa-user"></i> Hi! <%= user.name + ' ' + user.lastname %> </a>
                 
                 <% if (locals.userLogin.category == 'admin') { %>
                  
@@ -18,14 +18,12 @@
                     <i class="fas fa-list-ul"></i>
                 <% } %>
                 
-                <a href="/user/logout">Logout</a>
-                <i class="fas fa-sign-out-alt"></i>
+                <a href="/user/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+               
                <% } else { %>
-                    
-                 <i class="fas fa-user-plus"></i>
-                 <a href="/user/registro">Crea cuenta</a>
-                 <i class="fas fa-sign-in-alt"></i>
-                 <a href="/user/login">Login</a>
+                 <a href="/user/registro"> <i class="fas fa-user-plus"></i>Crea cuenta</a>
+                
+                 <a href="/user/login"> <i class="fas fa-sign-in-alt"></i> Login</a>
                  <% } %>
            </nav>
        </div>

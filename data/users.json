@@ -5,8 +5,8 @@
   "last_name": "Castro",
   "email": "martin.castro1575@gmail.com",
   "telefono": "59713341",
-  "password": "123",
-  "category": "admin",
+  "password": "$2a$12$Qobqwatq.2Y10NqLpTgv0.74fRdgvLlPdiJDwyAo9RkHSTwLHm/8m",
+  "category": "user",
   "image": "default.png",
   "isActive": true
  },

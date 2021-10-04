@@ -5,41 +5,60 @@
 <body>
     <main>
     <%- include('../partials/header.ejs') %>
-    <h1 class="title-hot-sale">Listado Usuarios</h1>
+    <h1 class="title-user-list">Listado Usuarios</h1>
     <div class="products-hot">
-        
-        <table class="medidas" >
-            <tr>
-                <th>Id Usuario</th>
-                <th>Nombre apellido</th>
-                <th>Perfil</th>
-            </tr>
+        <div class="table-responsive">
+        <table class="table-user" >
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Nombre apellido</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
             <% for (let i=0; i < users.length; i++) { %>
                 <tr>
                     <td>
-                        <a  href="/user/edit/<%= users[i].id %>">
-                            <%= users[i].id %>
-                        </a>
+                        <%= users[i].email %>
                     </td>
                     <td>
-                        <%= users[i].nombreApellido %>
+                        <%= users[i].name + ' ' + users[i].lastname %>
                     </td>
                     <td>
-                        <%= users[i].category %>
+                        <%= users[i].roles.name %>
+                    </td>                        
+                    <td>
+                        <a href="/user/edit/<%= users[i].id %>" class="btn-icon btn-edit"><i class="fas fa-edit"></i> </a>
+                        <button id="<%= users[i].id %>" onclick="show(event)" class="btn-icon btn-times"></button>
                     </td>                        
                 </tr>  
             <% } %>                  
         </table>
+        </div>
     </div> 
-    <!-- <ul>
-        <% for (let i=0; i < users.length; i++) { %>
-            <a href="/user/edit/<%= users[i].id %>">
-                <li>id: <%= users[i].id %>-<%= users[i].nombreApellido %></li>
-            </a>
-       <% } %>
-    </ul> -->
-    
+
 </main>
+<!-- Modal delete user -->
+    <div id="modal-delete" class="modal fade modal-danger">
+        <div class="modal-dialog">
+            <div class="modal-title">
+                <h2>Borrar usuario</h2>                   
+            </div>
+            <div class="modal-body"> 
+                <p>Estas seguro que quieres borrar este usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <form id="test" method="POST" class="form-delete-product">
+                    <button type="submit"  class="btn btn-danger">Eliminar</button>
+                </form>
+                <button id="cancel" onclick="hideModal()" href class="btn btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal delete user -->
+<script src="/js/index.js"></script>
 <%- include('../partials/footer.ejs') %>
 </body>
 </html>

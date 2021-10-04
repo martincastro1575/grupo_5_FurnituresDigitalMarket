@@ -145,12 +145,16 @@ table.table-product td:nth-child(4){
     width: 30%;
 } */
 
+
 table.table-product, th, td{
     border: 1px solid #377a76;
     border-collapse: collapse;
     color: #377a76;
-    padding: 0px;
-    
+    padding: 6px;  
+}
+
+table.table-product, th:nth-child(1), table.table-product, td:nth-child(1){
+    min-width: 240px;    
 }
 
 table.table-product td{

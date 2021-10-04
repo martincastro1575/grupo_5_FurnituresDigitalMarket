@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs')
 
 //requiriendo modelo JSON
 const User = require('../models/Users');
-const { send } = require('process');
+const models = require('../database/models')
 
 
 const usersPath = path.join(__dirname, '../data/users.json');
@@ -19,13 +19,27 @@ const userController = {
         })
     },
 
-    'processLogin': (req, res)=>{
+    'processLogin': async (req, res)=>{
         const resultErros = validationResult(req)       
 
         //busco en el modelo so existe el usuario
-        let userLogin = User.findByField('email', req.body.nombreUser)
-
-        if (userLogin){
+        //let userLogin = User.findByField('email', req.body.nombreUser)
+        const userLogin = await models.User.findOne({
+            where: {
+                email: req.body.nombreUser
+            },
+            include: [{
+                model: models.Rol,
+                as: 'roles'
+            },{
+                model: models.Status,
+                as: 'status'
+            },{
+                model: models.Address,
+                as: 'address'
+            }]
+        })
+        if (userLogin !== undefined){
             let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
 
             if(verificaPassword){
@@ -132,22 +146,59 @@ const userController = {
 
     'profile': (req, res)=>{
         //console.log(req.cookies.userEmail);
+                    console.log(req.session.userLogin)
+
         return res.render('./users/userProfile', {
             title: 'Procfile de Usuario',
             user : req.session.userLogin,
         });
     },
 
-    'userEdit': (req, res) =>{        
-        let oneUser = User.findByPk(req.params.id);
-
+    'userEdit': async (req, res) =>{  
+        console.log( req.body)      
+        const user = await models.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [{
+                model: models.Rol,
+                as: 'roles'
+            },{
+                model: models.Status,
+                as: 'status'
+            },{
+                model: models.Address,
+                as: 'address'
+            }]
+        })
         res.render('users/editUser',{
             title: 'Edición de Usuarios',
-            oneUser: oneUser,
+            user: user,
         })
     },
+
+    'userDelete': async (req, res) =>{  
+         await models.User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect('/user/listado')
+    },
     
-    'usersList': (req,res)=>{
+    'usersList': async (req,res)=>{
+        const users = await models.User.findAll({
+            include: [{
+                model: models.Rol,
+                as: 'roles'
+            },{
+                model: models.Status,
+                as: 'status'
+            },{
+                model: models.Address,
+                as: 'address'
+            }]
+        })
         //res.send('9')
         res.render('users/userList',{
             users:users,
@@ -170,9 +221,6 @@ const userController = {
         console.log(req.body)
         res.redirect('Todo validado')
         //res.redirect('/user/edit/' + req.body.id)
-
-
-        
     }
 }
 
