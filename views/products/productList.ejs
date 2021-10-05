@@ -12,18 +12,19 @@
              </div> -->
          </div>
          <div class="products-hot">
-             <% products.forEach(element => { %>
-                <a href="/producto/editar/<%= element.id %>">
+             <% products.forEach(product => { %>
+               
                     <article>
+                         <a href="/producto/editar/<%= product.id %>">
                         <div class="img-description">
-                            <img src="/images/<%= element.image %>" alt="Set comedor"
+                            <img src="/images/<%= product.images[0]?.name %>" alt="<%= product.images[0]?.name %>"
                         class="product-image">
-                            <h4><%= element.name %></h4>
+                            <h4><%= product.name %></h4>
                         </div>
                         <div class="product-detail">
                             <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
-                            <p class="price">$<%= element.price %></p>
-                            <p class="discount"><%= element.discount %>%</p>  
+                            <p class="price">$<%= product.price %></p>
+                            <p class="discount"><%= product.discount %>%</p>  
                         </div>
                     </article>
                 </a>
