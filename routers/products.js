@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 // const producController = require('../controllers/productsController');
 const router = express.Router();
+
+//MiddleWare de validacion
+const addProductValMiddleware = require('../middlewares/addProductValMiddleware')
+
 //Requeriendo Multer
 //const multer = require('multer');
 //declaramos el middleware a nivel de ruta
@@ -35,7 +39,7 @@ router.get('/agregar', productController.crearProducto);
 //colocamos el middleware entre la ruta y el controller
 // router.post('/guardarProducto', logMiddleWareDB, productController.guardarProducto)
 //router.post('/guardarProducto', upload.single('imageProduct'),productController.guardarProducto);
-router.post('/guardarProducto', upload_image.array('imageProduct'),productController.guardarProducto);
+router.post('/guardarProducto', upload_image.array('imageProduct'),addProductValMiddleware,productController.guardarProducto);
 
 router.post('/eliminar/:id', productController.productDelete);
 
