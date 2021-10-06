@@ -264,12 +264,11 @@ main{
     padding: 5px;
     position: absolute;
     right: 20px;
-    top: -15px;
+    top: 18px;
 }
 
 .product-detail, h4{
     padding:0 10px 0px 10px;
-    margin: 15px 0px;
     color: rgb(110, 109, 109);
     display: flex;
     align-items: center;
@@ -290,13 +289,45 @@ main{
 
 .product-detail i{
     color: #42938E;
-    font: 16px;
+    font-size: 16px;
 }
 
 .products-hot article, .products-week article, .products-new article{
-    background-color: rgba(66, 147, 142, 0.3);
+    /* background-color: rgba(66, 147, 142, 0.3); */
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+}
+
+.products-hot article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.products-hot article a{
+    width: 100%;
+    overflow: hidden;
+    flex: 0.9;
+}
+.products-hot article:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.02);
+}
+.products-hot article .product-detail{
+    border-top: 3px solid #42938e;
+}
+.products-hot article a img{
+    display: flex;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.products-hot article .product-detail{
+    width: 100%;
+    flex: 0.1;
 }
 
 /* .main-form{
@@ -493,6 +524,12 @@ div.contact{
     
     .img-description{
         position: relative;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
     .img-description h4:hover{
@@ -588,9 +625,10 @@ div.contact{
     }
 
     .products-hot article, .products-week article{
-        width: 22%;
+        width: 16%;
         transition: width, 0.5s;
         border-radius: 8px;
+        max-height: 420px;
     }
 
     .description-new-sales{
