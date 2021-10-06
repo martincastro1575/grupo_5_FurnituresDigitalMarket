@@ -101,9 +101,9 @@ module.exports=(sequelize, dataTypes)=>{
             foreignKey: 'idCategory'
         }),        
         
-        Product.belongsTo(models.Image,{
+        Product.hasMany(models.Image,{
             as:'images',
-            foreignKey: 'idProduct'
+            foreignKey: 'id_product'
         }),
 
         Product.belongsToMany(models.ActionType,{
