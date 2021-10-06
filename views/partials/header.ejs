@@ -10,15 +10,10 @@
                
                <% if (locals.isUserlogged) { %>
                 <a href="/user/profile"> <i class="fas fa-user"></i> Hi! <%= locals.userLogin.name + ' ' + locals.userLogin.lastname%> </a>
-            
                 <a href="/user/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-                
                <% } else { %>
-                    
-                 <i class="fas fa-user-plus"></i>
-                 <a href="/user/registro">Crea cuenta</a>
-                 <i class="fas fa-sign-in-alt"></i>
-                 <a href="/user/login">Login</a>
+                 <a href="/user/registro"><i class="fas fa-user-plus"></i>Crea cuenta</a>
+                 <a href="/user/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                  <% } %>
            </nav>
        </div>
@@ -39,16 +34,15 @@
                <nav class="nav-top-bottom">
                    <ul class="content-menu-top-bottom">
                         <!-- si user admin puede agregar prodcutos -->
-                      <% if (locals.isUserlogged  && locals.userLogin.roles?.name) { %>
+                        <% if (locals.userLogin?.roles.name == 'Admin') { %>
                             <li><a href="/producto/agregar">Agregar producto</a></li>
                         <% } %>
                         <% if (locals.userLogin?.roles.name == 'Admin') { %>
                             <li><a href="/user/listado">Listado de usuarios</a></li>
-                        <% } %>                       
+                        <% } %>  
+                        <li><a href="/producto/listado">Productos</a></li>                     
                         <li><a href="#">Ofertas</a></li>
                        <li><a href="#">Decoración</a></li>
-                       <li><a href="/producto/listado">Productos <%= locals.errors %></a></li>
-                       
                        <li><a href="#">Cocina</a></li>
                        <li><a href="#">Baño</a></li>
                        <% if (locals.userLogin?.roles.name !== 'Admin') { %>

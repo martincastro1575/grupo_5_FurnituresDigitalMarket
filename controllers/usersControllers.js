@@ -7,6 +7,7 @@ const bcryptjs = require('bcryptjs')
 const User = require('../models/Users');
 const models = require('../database/models')
 
+const {isEmpty} = require('lodash')
 
 // const usersPath = path.join(__dirname, '../data/users.json');
 // let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
@@ -24,8 +25,7 @@ const userController = {
         //busco en el modelo so existe el usuario
         let userLogin = await User.findByField(req.body.nombreUser)
 
-        if (userLogin !== undefined){
-            console.log("🚀 ~ file: usersControllers.js ~ line 28 ~ 'processLogin':async ~ userLogin", userLogin.roles)
+        if (!isEmpty(userLogin)){
             let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
 
             if(verificaPassword){

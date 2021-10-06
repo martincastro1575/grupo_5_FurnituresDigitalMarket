@@ -230,6 +230,16 @@ main{
     color: white;
 
 }
+.title-hot-sale{
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 5px 0px;
+    text-align: center;
+    color: #42938e;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
 
 .title-user-list{
     color: #42938E;
@@ -279,53 +289,68 @@ main{
 
 .product-detail .price{
     flex-grow: 3;
-    
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
 .product-detail .discount{
     flex-grow: 7;
-    
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
 .product-detail i{
-    color: #42938E;
+    color: #fff;
     font-size: 16px;
 }
 
 .products-hot article, .products-week article, .products-new article{
-    /* background-color: rgba(66, 147, 142, 0.3); */
+    
+    background-color: rgb(66 147 142);
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
+.products-new article{
+border-radius: 7px;
+}
 
-.products-hot article{
+.products-hot article,
+.products-week article{
+    width: 18%;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    
 }
-.products-hot article a{
+.products-hot article a,
+.products-week article a{
     width: 100%;
     overflow: hidden;
     flex: 0.9;
 }
-.products-hot article:hover {
+.products-hot article:hover,
+.products-week article:hover {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.02);
 }
-.products-hot article .product-detail{
+.products-hot article .product-detail,
+.products-week article .product-detail{
     border-top: 3px solid #42938e;
 }
-.products-hot article a img{
+.products-hot article a img,
+.products-week article a img{
     display: flex;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
-.products-hot article .product-detail{
+.products-hot article .product-detail,
+.products-week article .product-detail{
     width: 100%;
     flex: 0.1;
 }
@@ -487,6 +512,7 @@ div.contact{
 /* ==================================== */
 
 /* AQUI INICIAN LOS MEDIAS QUERYS */
+
 @media (min-width: 361px) {
 
     .logo img{
@@ -568,7 +594,6 @@ div.contact{
 @media (min-width: 768px) {
     .login-menu-hamb{
         display: none;
-        
     }
 
     .header-bottom{
@@ -625,7 +650,7 @@ div.contact{
     }
 
     .products-hot article, .products-week article{
-        width: 16%;
+        width: 30%;
         transition: width, 0.5s;
         border-radius: 8px;
         max-height: 420px;
@@ -675,11 +700,10 @@ div.contact{
     footer .contact{
         padding-left: 30px;
     }
-
-    
+   
 }
 
-@media (min-widht: 768px) {
+@media (min-width: 768px) {
     footer .secion-footer h5{
         font-size: 18px;
     }
@@ -708,6 +732,17 @@ div.contact{
         padding-left: 30px;
     }    
 }
+@media (min-width: 992px){
+    .products-hot article, .products-week article{
+        width: 20%;
+    }  
+}
+@media (min-width: 1200px){
+    .products-hot article, .products-week article{
+        width: 16%;
+    }  
+}
+
 
 /* AQUI TERMINAN LOS MEDIAS QUERYS */
 
@@ -771,18 +806,18 @@ div.contact{
 
 /*btn secondary style*/
 .btn.btn-secondary{
-    background-color: #255a91;
+    background-color: #42938e;
     color: #fff;
 }
 
 .btn.btn-secondary:hover {
-    color: #255a91;
-    border: 1px solid #255a91;
+    color: #42938e;
+    border: 1px solid #42938e;
     background-color: #fff;
     transition: 0.5s;
 }
 .btn.btn-secondary:hover i {
-    color: #255a91;
+    color: #42938e;
 }
 
 /*button cancel style*/
