@@ -100,15 +100,24 @@ const productsController = {
     },
 
     'productsEdit': (req, res)=>{
-        let idProduct = req.params.id;
-
-        let oneProduct = products.find(product=>
-                product.id == idProduct
-            )
-        res.render('products/productEdit',{
-            title: 'Edición de Productos',
-            oneProduct: oneProduct,
+        db.Product.findByPk(req.params.id,{
+            include : ['categories']
         })
+        .then(product=> {
+            res.send(product)
+        })
+        .catch(error => res.send(error))
+        
+        
+        // let idProduct = req.params.id;
+
+        // let oneProduct = products.find(product=>
+        //         product.id == idProduct
+        //     )
+        // res.render('products/productEdit',{
+        //     title: 'Edición de Productos',
+        //     oneProduct: oneProduct,
+        // })
     },
 
     'productsUpdate':(req, res)=>{
