@@ -170,10 +170,6 @@ const userController = {
         //console.log(req.body)
         res.redirect('Todo validado')
         //res.redirect('/user/edit/' + req.body.id)
-
-
-        
     }
 }
-
 module.exports = userController;
