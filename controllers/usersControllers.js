@@ -160,14 +160,14 @@ const userController = {
         //const oneUSer = User.findByPk(req.body.id)        
         
         if (resultErros.errors.length > 0){
-            return res.send(resultErros)
+            //return res.send(resultErros)
             return res.render('users/editUser',{
                 errors: resultErros.mapped(),
                 oneUser: oneUser,
                 title: 'Edición de Usuario'    
             })        
         }
-        console.log(req.body)
+        //console.log(req.body)
         res.redirect('Todo validado')
         //res.redirect('/user/edit/' + req.body.id)
 
