@@ -39,3 +39,4 @@ crearPelicula.ejs
 editarPelicula.ejs
 
  public/images
+ public/images/products/
