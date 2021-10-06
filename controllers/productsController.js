@@ -99,15 +99,18 @@ const productsController = {
         res.redirect('/producto/listado');
     },
 
-    'productsEdit': (req, res)=>{
+    'productsEdit': async (req, res)=>{
+        let allCategory = await productsController.bucarCategorias()
+
         db.Product.findByPk(req.params.id,{
             include : ['categories']
         })
         .then(product=> {
-            //res.send(product)
+            //return res.send(product)
             res.render('products/productEdit',{
                 title: 'Edición de Productos',
                 oneProduct: product,
+                categories: allCategory
             })
         })
         .catch(error => res.send(error))
@@ -126,6 +129,7 @@ const productsController = {
 
     'productsUpdate':(req, res)=>{
         let idProduct = req.params.id;
+        return res.send(req.body)
 
         products.forEach(product => {
             if (product.id == idProduct){
