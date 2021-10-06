@@ -104,7 +104,11 @@ const productsController = {
             include : ['categories']
         })
         .then(product=> {
-            res.send(product)
+            //res.send(product)
+            res.render('products/productEdit',{
+                title: 'Edición de Productos',
+                oneProduct: product,
+            })
         })
         .catch(error => res.send(error))
         
