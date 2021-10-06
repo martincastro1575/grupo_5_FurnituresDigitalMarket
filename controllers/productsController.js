@@ -128,21 +128,41 @@ const productsController = {
     },
 
     'productsUpdate':(req, res)=>{
-        let idProduct = req.params.id;
-        return res.send(req.body)
+        let idProduct = req.params.id
+        //return res.send(req.body)
 
-        products.forEach(product => {
-            if (product.id == idProduct){
-                product.name = req.body.nombreProducto;
-                product.description = req.body.descripcionProd;
-                product.category = req.body.categoryProducto;
-                product.price = req.body.precioProducto;
-                product.discount = req.body.discountProducto;
-                product.w = req.body.ancho;
-                product.l = req.body.largo;
-                product.h = req.body.alto;
-            }
-        });
+        db.Product.update({
+            name: req.body.nombreProducto,
+            price: req.body.precioProducto,
+            id_category: req.body.categoriaProd,
+            discount: req.body.discountProducto,
+            description: req.body.descripcionProd,
+            width: req.body.ancho,
+            high: req.body.alto,
+            length: req.body.largo,
+            quantity: req.body.cantidadProducto,
+            stock_min: req.body.cantidadMinima,
+            stock_max: req.body.cantidadMaxima,
+        
+        }, {
+            where: {id: idProduct}
+        })
+        .then(()=> {
+            return res.redirect('/producto/editar/' + idProduct)})            
+        .catch(error => res.send(error))
+
+        // products.forEach(product => {
+        //     if (product.id == idProduct){
+        //         product.name = req.body.nombreProducto;
+        //         product.description = req.body.descripcionProd;
+        //         product.category = req.body.categoryProducto;
+        //         product.price = req.body.precioProducto;
+        //         product.discount = req.body.discountProducto;
+        //         product.w = req.body.ancho;
+        //         product.l = req.body.largo;
+        //         product.h = req.body.alto;
+        //     }
+        // });
         // fs.writeFileSync(productsPath, JSON.stringify(products));
         // res.redirect('/producto/editar/' + idProduct);
         
