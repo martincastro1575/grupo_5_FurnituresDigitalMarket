@@ -6,30 +6,44 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
 const { response } = require('express');
+const { validationResult } = require('express-validator');
 const session = require('express-session');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const productsController = {
-    'crearProducto': (req, res) =>{
-        // let allStatus = db.
-        let allCategory = db.ProductCategory.findAll({
+    'bucarCategorias': async function(){
+        let resultado = await db.ProductCategory.findAll({
             order: [
                 ['title','ASC']
             ]
-        }).then((allCategory)=>{
+        });  
+        return resultado      
+    },
 
-            //return res.send(allCategory)
+    'crearProducto': async (req, res) =>{
+        let allCategory = await productsController.bucarCategorias()
+        
             res.render('products/productAdd', {
                 title:"Un nuevo Producto",
                 categories: allCategory,
-            })
-        });       
+            })    
     },
 
-    'guardarProducto': (req, res) =>{
-        //let nuevoId = products[products.length - 1].id + 1
+    'guardarProducto': async (req, res) =>{
+        
+        const resultErros = validationResult(req)        
+        if (resultErros.errors.length > 0 ){
+                
+            let allCategory = await productsController.bucarCategorias()
+            return res.render('products/productAdd',{
+                errors: resultErros.mapped(),
+                oldData: req.body,
+                title: 'Registro de Producto',
+                categories: allCategory,
+            })        
+        }
         let idUser = res.locals.userLogin.id
         
         db.Product.create({
@@ -129,10 +143,28 @@ const productsController = {
 
     },
 
-    'productList': (req, res) =>{  
+    // 'productList': (req, res) =>{  
         
+    //     res.render('products/productList',{
+    //         products: products,
+    //         title: 'Listado de Productos'
+    //     })
+
+    // },
+    'productList': async (req, res) =>{
+        const allProducts = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+
         res.render('products/productList',{
-            products: products,
+            products: allProducts,
             title: 'Listado de Productos'
         })
 
