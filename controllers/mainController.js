@@ -7,7 +7,7 @@ let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'))
 const models = require('../database/models')
 
 const mainController = {
-    'home': (req, res) => {
+    'home': async (req, res) => {
         let producthotSales = products.filter(product =>
                 product.category == 'hotSales'
             )
@@ -19,12 +19,11 @@ const mainController = {
         let newProducts = products.find(product =>
                 product.category == 'newSales'
             )
-
         return res.render('home', {
             producthotSales: producthotSales,
             productsInSales: productsInSales,
             newProducts: newProducts,
-            title: 'Home FDMk'
+            title: 'Home FDMk',
         });
     },
     list: async (req, res) => {

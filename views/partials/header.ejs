@@ -9,21 +9,16 @@
            <nav class="nav-create-login">
                
                <% if (locals.isUserlogged) { %>
-              
-                <a href="/user/profile">  <i class="fas fa-user"></i> Hi! <%= user.name + ' ' + user.lastname %> </a>
-                
-                <% if (locals.userLogin.category == 'admin') { %>
-                 
-                    <a href="/user/listado">Listado de usuarios</a>
-                    <i class="fas fa-list-ul"></i>
-                <% } %>
-                
+                <a href="/user/profile"> <i class="fas fa-user"></i> Hi! <%= locals.userLogin.name + ' ' + locals.userLogin.lastname%> </a>
+            
                 <a href="/user/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-               
-               <% } else { %>
-                 <a href="/user/registro"> <i class="fas fa-user-plus"></i>Crea cuenta</a>
                 
-                 <a href="/user/login"> <i class="fas fa-sign-in-alt"></i> Login</a>
+               <% } else { %>
+                    
+                 <i class="fas fa-user-plus"></i>
+                 <a href="/user/registro">Crea cuenta</a>
+                 <i class="fas fa-sign-in-alt"></i>
+                 <a href="/user/login">Login</a>
                  <% } %>
            </nav>
        </div>
@@ -43,17 +38,23 @@
            </div>         
                <nav class="nav-top-bottom">
                    <ul class="content-menu-top-bottom">
-                       <li><a href="#">Ofertas</a></li>
-                       <li><a href="#">Decoración</a></li>
-                       <li><a href="/producto/listado">Productos <%= locals.errors %></a></li>
                         <!-- si user admin puede agregar prodcutos -->
-                        <% if (locals.isUserlogged  && locals.userLogin.category == 'admin') { %>
+                      <% if (locals.isUserlogged  && locals.userLogin.roles?.name) { %>
                             <li><a href="/producto/agregar">Agregar producto</a></li>
                         <% } %>
+                        <% if (locals.userLogin?.roles.name == 'Admin') { %>
+                            <li><a href="/user/listado">Listado de usuarios</a></li>
+                        <% } %>                       
+                        <li><a href="#">Ofertas</a></li>
+                       <li><a href="#">Decoración</a></li>
+                       <li><a href="/producto/listado">Productos <%= locals.errors %></a></li>
                        
                        <li><a href="#">Cocina</a></li>
                        <li><a href="#">Baño</a></li>
-                       <li><a href="#">Ayuda</a></li>
+                       <% if (locals.userLogin?.roles.name !== 'Admin') { %>
+                        <li><a href="#">Ayuda</a></li>
+                    <% } %>
+
                    </ul>
                </nav>         
            <div class="cart-option-menu">
