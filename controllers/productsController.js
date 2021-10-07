@@ -127,10 +127,20 @@ const productsController = {
         // })
     },
 
-    'productsUpdate':(req, res)=>{
-        let idProduct = req.params.id
+    'productsUpdate':async (req, res)=>{
+        //let idProduct = req.params.id
         //return res.send(req.body)
-
+        const resultErros = validationResult(req)        
+        if (resultErros.errors.length > 0 ){                
+            let allCategory = await productsController.bucarCategorias()
+            console.log(req.body)
+            return res.render('products/productEdit',{
+                oneProduct: req.body,
+                title: 'Registro de Producto',                
+                categories: allCategory,
+                errors: resultErros.mapped(),
+            })        
+        }
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
