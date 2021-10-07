@@ -6,7 +6,7 @@
     <div class="main-form"> 
         <main class="page-container product-container-perfil"> 
           <% if (user.roles.name == 'Admin') { %>
-            <h2>Perfil de Usuario: (<%= user.roles?.name %>) </h2>
+            <h2>Perfil de Usuario: (<%= user.roles.name %>) </h2>
         <% } %>
             <section class="products-content-perfil">
                 <div class="product-details">
@@ -31,11 +31,11 @@
                         <div class="form-perfil-item">
                           <label for="address" class="form-label">Dirección de envío</label>
                          
-                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address?.find(a => a.isAddressBill === 1) ? user.address.find(a => a.isAddressBill === 1).description : '' %></textarea>
+                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address.find(a => a.isAddressBill === 1) ? user.address.find(a => a.isAddressBill === 1).description : '' %></textarea>
                         </div>
                         <div class="form-perfil-item">
                           <label for="address" class="form-label">Dirección de facturación</label>
-                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address?.find(a => a.isAddressBill === 0) ? user.address.find(a => a.isAddressBill === 0).description : '' %></textarea>
+                          <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address.find(a => a.isAddressBill === 0) ? user.address.find(a => a.isAddressBill === 0).description : '' %></textarea>
                         </div>
                         <% if (user.roles.name == 'Admin') { %>
                           <div class="buttons-form">
