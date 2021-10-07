@@ -179,3 +179,8 @@ table.table-user thead tr th:last-child {
  table.table-user th:nth-child(3) {
     width: 180px;
 }
+
+.user-list{
+    max-width: 1440px;
+    margin: auto;
+}

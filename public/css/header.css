@@ -1,0 +1,23 @@
+/*search style*/
+
+.header-top .form-search .search-fm{
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    border-radius: 8px;
+}
+.header-top .form-search .search-fm button{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 42px;
+    background-color: #109f96;
+    border: 0;
+    color: #42938e;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+}
+.header-top .form-search .search-fm button i{
+    color: #fcfdfd;
+}

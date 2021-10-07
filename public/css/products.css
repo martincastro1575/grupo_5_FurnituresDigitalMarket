@@ -210,3 +210,20 @@ td img{
 
 
 /* Fin de listado de productos*/
+
+
+/*products search*/
+
+.products-search{
+    justify-content: center;
+    min-height: 480px;
+}
+.products-search article{
+    width: 18%;
+}
+.products-search .img-noresult{
+    width: 100%;
+    max-width: 840px;
+    margin-bottom: 40px;
+    margin: auto;
+}

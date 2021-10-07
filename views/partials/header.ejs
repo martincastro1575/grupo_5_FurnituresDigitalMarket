@@ -2,8 +2,10 @@
     <div class="main-menu">
        <div class="header-top">
            <div class="form-search">
-               <form action="/producto/search" method="get" class="search-fm">
-                   <input type="text" name="searchProd" id="searchProd" max-length="120" class="form-control-header">
+               <form action="/producto/search" method="get" class="search-fm" id="searchProduct">
+                   <input type="text" name="searchProd" id="searchProd" max-length="120" class="form-control-header" placeholder="Ingrese un nombre o letra para buscar su producto">
+                   <button type="submit" form="searchProduct"> <i class="fas fa-search"></i></button>
+                  
                </form>
            </div>
            <nav class="nav-create-login">

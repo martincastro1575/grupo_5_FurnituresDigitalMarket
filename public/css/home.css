@@ -54,7 +54,7 @@ main{
     /* position: fixed;
     width: 100%; 
     z-index: 10; */
-    padding: 5px;
+    padding: 10px;
     background-color: #42938E; /* #6DADE0; */
     
 }
@@ -313,6 +313,10 @@ main{
 }
 .products-new article{
 border-radius: 7px;
+}
+
+.products-hot{
+  min-height: 480px; 
 }
 
 .products-hot article,
