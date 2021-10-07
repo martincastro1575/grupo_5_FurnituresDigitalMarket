@@ -69,16 +69,13 @@ const productsController = {
         
 
     },
-
-    'productDelete':(req, res)=>{
-        let idProduct = req.params.id;
-
-        products = products.filter(product=>{
-            return product.id != idProduct
+    'delete':(req, res)=>{
+        db.Product.destroy({
+            where:{
+                id: req.params.id
+            }
         })
-        fs.writeFileSync(productsPath, JSON.stringify(products));
-        res.redirect('/producto/listado');
-
+        res.redirect('/productList');
     },
 
     'productList': (req, res) =>{  

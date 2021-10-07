@@ -35,7 +35,7 @@ router.get('/agregar', productController.crearProducto);
 // router.post('/guardarProducto', logMiddleWareDB, productController.guardarProducto)
 router.post('/guardarProducto', upload.single('imageProduct'),productController.guardarProducto);
 
-router.post('/eliminar/:id', productController.productDelete);
+router.post('/eliminar/:id', productController.delete);
 
 router.get('/listado', productController.productList);
 router.get('/search', productController.search);
