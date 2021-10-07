@@ -126,26 +126,39 @@ const productsController = {
         res.redirect('/productList');
     },
 
-    'productList': (req, res) =>{  
-        
+    'productList': async (req, res) =>{
+        const allProducts = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+
         res.render('products/productList',{
-            products: products,
+            products: allProducts,
             title: 'Listado de Productos'
         })
 
     },
 
-    'search':(req, res) =>{
+    'search': async (req, res) =>{
         let buscaProduct = req.query.searchProd;
-
-        let resultado = [];
-
-        products.forEach(product => {
-            if (product.name.includes(buscaProduct)){
-                resultado.push(product)
-            }
+        const allProducts = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
         })
 
+       let resultado = allProducts.filter(product => product.name.toLowerCase().includes(buscaProduct.toLowerCase()))
         res.render('./products/productSearch', {
             resultado : resultado,
             title: 'Resultado de Busqueda',

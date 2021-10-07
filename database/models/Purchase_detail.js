@@ -1,5 +1,4 @@
 module.exports = function(sequelize, DataTypes){
-    const Purchase_detail = sequelize.define(alias, cols, config);
 
     let alias = 'Purchase_detail';
 
@@ -24,6 +23,7 @@ module.exports = function(sequelize, DataTypes){
         tableName: "purchase_detail",
         timestamps: false
     };
+    const Purchase_detail = sequelize.define(alias, cols, config);
 
     Purchase_detail.associate = function(models){
         Purchase_detail.belongsTo(models.Purchase,{
@@ -36,8 +36,6 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false
         });
     }
-
-    let Status = sequelize.define(alias, cols, config);
 
     return Purchase_detail;
 }

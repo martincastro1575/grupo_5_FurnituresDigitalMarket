@@ -37,3 +37,5 @@ peliculasDrama.ejs
 top.ejs
 crearPelicula.ejs
 editarPelicula.ejs
+
+.env

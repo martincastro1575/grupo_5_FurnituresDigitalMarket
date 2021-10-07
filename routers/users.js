@@ -45,6 +45,9 @@ routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdate
 //Editarusuario
 routerUser.get('/edit/:id', userController.userEdit);
 
+// Delete user
+routerUser.post('/delete/:id', userController.userDelete);
+
 
 //logout
 routerUser.get('/logout', userController.logout);

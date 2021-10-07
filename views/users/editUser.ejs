@@ -6,11 +6,11 @@
     <div class="main-form"> 
         <main> 
             <h2>Edición de Usuario</h2>              
-            <form action ="/user/edit/<%= oneUser.id %>" method="POST" class="form-register" enctype="multipart/form-data">
+            <form action ="/user/edit/<%= user.id %>" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
-                    <input type="hidden" value="<%= oneUser.id %>">   
+                    <input type="hidden" value="<%= user.id %>">   
                     <label for="nombreApellido">Nombre y apellido</label>
-                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= oneUser.nombreApellido %>">
+                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= user.name %>">
                     
                     <div class="text-danger">
                         <% if (locals.errors && errors.nombreApellido) { %>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-control">
                     <label for="userEmail">Email</label>
-                    <input type="email" name="email" id="email" class="control" value="<%= oneUser.email %>">
+                    <!-- <input type="email" name="email" id="email" class="control" value="<%= user.email %>"> -->
                     <div class="text-danger">
                         <% if (locals.errors && errors.email) { %>
                             <%= errors.userEmail.msg %> 
@@ -31,10 +31,10 @@
                     <label for="sexo">Sexo</label>
                     <select name="sexo" id="sexo" class="control" <%=  %>>
                         <option value="">Seleccione su Sexo</option>
-                        <option value="M" <%= locals.oneUser && (oneUser.sexo === 'M') ? 'selected' : null %>>
+                        <option value="M" <%= locals.user && (user.sexo === 'M') ? 'selected' : null %>>
                             Masculino
                         </option>
-                        <option value="F" <%= locals.oneUser && (oneUser.sexo === 'F') ? 'selected' : null %>>
+                        <option value="F" <%= locals.user && (user.sexo === 'F') ? 'selected' : null %>>
                             Femenino
                         </option>
                     </select>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-control">
                     <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" class="control" value="<%= oneUser.telefono %>">
+                    <input type="number" name="telefono" id="telefono" class="control" value="<%= user.telefono %>">
                     <div class="text-danger">
                         <% if (locals.errors && errors.telefono) { %>
                             <%= errors.telefono.msg %> 
@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-control">
                     <label for="fechaNac">Fecha de nacimiento</label>
-                    <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= oneUser.fechaNac %>">
+                    <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= user.fechaNac %>">
                     <div class="text-danger">
                         <% if (locals.errors && errors.fechaNac) { %>
                             <%= errors.fechaNac.msg %> 
@@ -65,7 +65,6 @@
                 
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Actualizar</button>
-                    <button type="reset" class="button-form">Borrar</button>
                 </div>
             </form>
         </main>
