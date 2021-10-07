@@ -47,7 +47,7 @@
                    <ul class="content-menu-top-bottom">
                        <li><a href="#">Ofertas</a></li>
                        <li><a href="#">Decoración</a></li>
-                       <li><a href="/producto/listado">Productos <%= locals.errors %></a></li>
+                       <li><a href="/producto/listado">Productos</a></li>
                         <!-- si user admin puede agregar prodcutos -->
                         <% if (locals.isUserlogged  && locals.userLogin.category == 'admin') { %>
                             <li><a href="/producto/agregar">Agregar producto</a></li>

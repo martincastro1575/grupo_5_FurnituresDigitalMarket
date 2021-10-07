@@ -33,7 +33,7 @@ const upload_image = require('../middlewares/multerProductsMiddlewares');
 
 
 router.get('/editar/:id/', productController.productsEdit);
-router.put('/editar/:id', productController.productsUpdate);
+router.post('/editar/:id', addProductValMiddleware, productController.productsUpdate);
 
 router.get('/agregar', productController.crearProducto);
 //colocamos el middleware entre la ruta y el controller

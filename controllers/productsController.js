@@ -126,7 +126,6 @@ const productsController = {
         //     oneProduct: oneProduct,
         // })
     },
-
     'productsUpdate':async (req, res)=>{
         //let idProduct = req.params.id
         //return res.send(req.body)
