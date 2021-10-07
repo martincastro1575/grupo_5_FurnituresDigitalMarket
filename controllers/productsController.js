@@ -168,13 +168,13 @@ const productsController = {
         
 
     },
-    'delete':(req, res)=>{
-        db.Product.destroy({
+    'delete':async (req, res)=>{
+        await db.Product.destroy({
             where:{
                 id: req.params.id
             }
         })
-        res.redirect('/productList');
+        res.redirect('/producto/listado');
     },
 
     // 'productList': (req, res) =>{  

@@ -36,10 +36,10 @@
                <nav class="nav-top-bottom">
                    <ul class="content-menu-top-bottom">
                         <!-- si user admin puede agregar prodcutos -->
-                        <% if (locals.userLogin?.roles.name == 'Admin') { %>
+                        <% if (locals.userLogin && locals.userLogin.roles !== undefined) { %>
                             <li><a href="/producto/agregar">Agregar producto</a></li>
                         <% } %>
-                        <% if (locals.userLogin?.roles.name == 'Admin') { %>
+                        <% if (locals.userLogin && locals.userLogin.roles !== undefined) { %>
                             <li><a href="/user/listado">Listado de usuarios</a></li>
                         <% } %>  
                         <li><a href="/producto/listado">Productos</a></li>                     
@@ -47,7 +47,7 @@
                        <li><a href="#">Decoración</a></li>
                        <li><a href="#">Cocina</a></li>
                        <li><a href="#">Baño</a></li>
-                       <% if (locals.userLogin?.roles.name !== 'Admin') { %>
+                       <% if ( locals.userLogin && locals.userLogin.roles.name !== 'Admin') { %>
                         <li><a href="#">Ayuda</a></li>
                     <% } %>
 
