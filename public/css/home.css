@@ -218,18 +218,27 @@ main{
 } */
 .banner-main img{
     width: 90%;
+    display: flex;
+    margin: auto;
+}
+.banner-main{
+    margin-bottom: 40px;
 }
 
 /*=========*/
 .title-hot-sale, .title-week-sale, 
 .title-new-sale{
-    background-color: #42938E;
+    background-color: #fff;
     margin-top: 15px;
     padding: 5px 0px;
     text-align: center;
-    color: white;
-
+    color: #42938e;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
+
+
 .title-hot-sale{
     background-color: #fff;
     margin-top: 15px;
@@ -255,8 +264,14 @@ main{
 
 .description-hot-sales p
 , .description-new-sales p{
+    text-align: center;
+    color: #545454;
+    font-size: 17px;
+}
+.description-new-sales p{
     text-align: justify;
-    color: #424242;
+    color: #545454;
+    font-size: 17px;
 }
 
 .products-hot, .products-week, .products-new{

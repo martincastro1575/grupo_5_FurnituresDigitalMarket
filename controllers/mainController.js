@@ -1,5 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models')
+
+const {slice} = require('lodash')
+
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'))
@@ -8,17 +12,35 @@ const models = require('../database/models')
 
 const mainController = {
     'home': async (req, res) => {
-        let producthotSales = products.filter(product =>
-                product.category == 'hotSales'
-            )
+        const allProducts = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+        const lastProduct = await db.Product.findAll({
+            order: [
+                ['created_at', 'DESC'],
+            ],
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+
+        let producthotSales = slice(allProducts, 0 , 5)
         
-        let productsInSales = products.filter(product =>
-                product.category == 'inSale'
-            )
+        let productsInSales =  slice(allProducts, 6 , 11)
         
-        let newProducts = products.find(product =>
-                product.category == 'newSales'
-            )
+        let newProducts = allProducts[0]
         return res.render('home', {
             producthotSales: producthotSales,
             productsInSales: productsInSales,
@@ -26,14 +48,6 @@ const mainController = {
             title: 'Home FDMk',
         });
     },
-    list: async (req, res) => {
-        const user  = await models.ProductCategory.findAll()
-        res.json(
-            {
-                data: user
-            }
-        )
-    }
 };
 
 module.exports = mainController;
