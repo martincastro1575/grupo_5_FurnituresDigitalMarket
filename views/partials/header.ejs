@@ -11,7 +11,7 @@
            <nav class="nav-create-login">
                
                <% if (locals.isUserlogged) { %>
-                <a href="/user/profile"> <i class="fas fa-user"></i> Hi! <%= locals.userLogin.name + ' ' + locals.userLogin.lastname%> </a>
+                <a href="/user/profile"> <i class="fas fa-user"></i> Hi! <%= locals.userLogin?.name + ' ' + locals.userLogin?.lastname%> </a>
                 <a href="/user/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
                <% } else { %>
                  <a href="/user/registro"><i class="fas fa-user-plus"></i>Crea cuenta</a>
