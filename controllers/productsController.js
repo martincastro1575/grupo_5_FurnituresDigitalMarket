@@ -6,30 +6,44 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
 const { response } = require('express');
+const { validationResult } = require('express-validator');
 const session = require('express-session');
 
 const productsPath = path.join(__dirname, '../data/products.json');
 let products = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
 
 const productsController = {
-    'crearProducto': (req, res) =>{
-        // let allStatus = db.
-        let allCategory = db.ProductCategory.findAll({
+    'bucarCategorias': async function(){
+        let resultado = await db.ProductCategory.findAll({
             order: [
                 ['title','ASC']
             ]
-        }).then((allCategory)=>{
+        });  
+        return resultado      
+    },
 
-            //return res.send(allCategory)
+    'crearProducto': async (req, res) =>{
+        let allCategory = await productsController.bucarCategorias()
+        
             res.render('products/productAdd', {
                 title:"Un nuevo Producto",
                 categories: allCategory,
-            })
-        });       
+            })    
     },
 
-    'guardarProducto': (req, res) =>{
-        //let nuevoId = products[products.length - 1].id + 1
+    'guardarProducto': async (req, res) =>{
+        
+        const resultErros = validationResult(req)        
+        if (resultErros.errors.length > 0 ){
+                
+            let allCategory = await productsController.bucarCategorias()
+            return res.render('products/productAdd',{
+                errors: resultErros.mapped(),
+                oldData: req.body,
+                title: 'Registro de Producto',
+                categories: allCategory,
+            })        
+        }
         let idUser = res.locals.userLogin.id
         
         db.Product.create({
@@ -85,47 +99,92 @@ const productsController = {
         res.redirect('/producto/listado');
     },
 
-    'productsEdit': (req, res)=>{
-        let idProduct = req.params.id;
+    'productsEdit': async (req, res)=>{
+        let allCategory = await productsController.bucarCategorias()
 
-        let oneProduct = products.find(product=>
-                product.id == idProduct
-            )
-        res.render('products/productEdit',{
-            title: 'Edición de Productos',
-            oneProduct: oneProduct,
+        db.Product.findByPk(req.params.id,{
+            include : ['categories']
         })
+        .then(product=> {
+            //return res.send(product)
+            res.render('products/productEdit',{
+                title: 'Edición de Productos',
+                oneProduct: product,
+                categories: allCategory
+            })
+        })
+        .catch(error => res.send(error))
+        
+        
+        // let idProduct = req.params.id;
+
+        // let oneProduct = products.find(product=>
+        //         product.id == idProduct
+        //     )
+        // res.render('products/productEdit',{
+        //     title: 'Edición de Productos',
+        //     oneProduct: oneProduct,
+        // })
     },
 
     'productsUpdate':(req, res)=>{
-        let idProduct = req.params.id;
+        let idProduct = req.params.id
+        //return res.send(req.body)
 
-        products.forEach(product => {
-            if (product.id == idProduct){
-                product.name = req.body.nombreProducto;
-                product.description = req.body.descripcionProd;
-                product.category = req.body.categoryProducto;
-                product.price = req.body.precioProducto;
-                product.discount = req.body.discountProducto;
-                product.w = req.body.ancho;
-                product.l = req.body.largo;
-                product.h = req.body.alto;
-            }
-        });
+        db.Product.update({
+            name: req.body.nombreProducto,
+            price: req.body.precioProducto,
+            id_category: req.body.categoriaProd,
+            discount: req.body.discountProducto,
+            description: req.body.descripcionProd,
+            width: req.body.ancho,
+            high: req.body.alto,
+            length: req.body.largo,
+            quantity: req.body.cantidadProducto,
+            stock_min: req.body.cantidadMinima,
+            stock_max: req.body.cantidadMaxima,
+        
+        }, {
+            where: {id: idProduct}
+        })
+        .then(()=> {
+            return res.redirect('/producto/editar/' + idProduct)})            
+        .catch(error => res.send(error))
+
+        // products.forEach(product => {
+        //     if (product.id == idProduct){
+        //         product.name = req.body.nombreProducto;
+        //         product.description = req.body.descripcionProd;
+        //         product.category = req.body.categoryProducto;
+        //         product.price = req.body.precioProducto;
+        //         product.discount = req.body.discountProducto;
+        //         product.w = req.body.ancho;
+        //         product.l = req.body.largo;
+        //         product.h = req.body.alto;
+        //     }
+        // });
         // fs.writeFileSync(productsPath, JSON.stringify(products));
         // res.redirect('/producto/editar/' + idProduct);
         
 
     },
-    'delete':(req, res)=>{
-        db.Product.destroy({
+    'delete':async (req, res)=>{
+        await db.Product.destroy({
             where:{
                 id: req.params.id
             }
         })
-        res.redirect('/productList');
+        res.redirect('/producto/listado');
     },
 
+    // 'productList': (req, res) =>{  
+        
+    //     res.render('products/productList',{
+    //         products: products,
+    //         title: 'Listado de Productos'
+    //     })
+
+    // },
     'productList': async (req, res) =>{
         const allProducts = await db.Product.findAll({
             include: [{

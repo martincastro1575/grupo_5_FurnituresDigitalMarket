@@ -10,8 +10,7 @@
             <form action ="/user/registro/" method="POST" class="form-register" enctype="multipart/form-data">
                 <div class="form-control">
                     <label for="nombreApellido">Nombre y apellido</label>
-                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= locals.oldData ? oldData.nombreApellido : null %>">
-                    
+                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= locals.oldData ? oldData.nombreApellido : null %>">                    
                     <div class="text-danger">
                         <% if (locals.errors && errors.nombreApellido) { %>
                             <%= errors.nombreApellido.msg %> 
