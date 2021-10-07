@@ -1,4 +1,27 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
+## Sprint \# 5
+
+### Lo Malo 😞
+* Problemas al momento de trabajar con las ramas.
+
+* Pocos encuentros con la totalidad del grupo.
+
+* Poca comunicción para culminar las tareas pendientes.
+
+### Lo Bueno 🤓
+
+* Solución de problemas con ramas.
+
+### Qué deberiamos a comenzar hacer? 🤔
+
+*Tener mejor comunicación.
+
+*Avisar con antelación cuando no se llega a realizar una tarea.
+
+### Qué deberiamos dejar de hacer? ☢️
+
+* 
+
 
 ## Sprint \# 4
 
@@ -93,5 +116,7 @@
   
 - ***Maria Palavecino***
   
-- ***Nicolas Racciatti***
+- ***Josibel Hernandez***
+  
+- ***Niurka Rosas***
 

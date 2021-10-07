@@ -28,28 +28,35 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //************************************************* */
 
-// Se agregan para el uso de cookies
-app.use(cookieParser());
-//************************************************ */
-
 //Se agrega esta linea para poder trabajar con PUT y DELETE
 app.use(methodOverride('_method'));
 //************************************************** */
 
-//Creamos el middleware session y lo ejecutamos global
-app.use(session({secret: 'Esto es un secreto!!!'}))
+//Creamos el middleware session de aplicacion  y lo ejecutamos global
+app.use(session({
+    secret: 'LPMQLP!!!',
+    resave: false,
+    saveUninitialized:false,
+}))
+
+// Se agregan para el uso de cookies
+app.use(cookieParser());
+//************************************************ */
+
+//requiriendo Middleware de usuario logeado
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //Hago uso del middleware global o aplicacion 
 app.use(recordameMiddleware);
 
+//Hago uso del middleware de logeado
+app.use(userLoggedMiddleware)
 
+//seteo el template de vistas
 app.set('view engine', 'ejs');
 
 app.use('/', routes);
 app.use('/producto', routesProducts);
-// app.use('/editar', routesProducts);
-// app.use('/listar', routesProducts);
-// app.use('/agregar', routesProducts);
 app.use('/user', routerUser);
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA

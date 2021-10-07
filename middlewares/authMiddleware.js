@@ -1,8 +1,9 @@
 const authMiddleware = (req, res, next)=>{
-    if (req.session.usuarioLogueado != undefined) {
-        next();
+    if (!req.session.userLogin) {
+        return res.redirect('/user/login')
+        
     }else{
-        res.send('Esta pagina es solo para usuarios');
+        next();
     }
 }
 

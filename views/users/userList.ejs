@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head.ejs') %>
+<body>
+    <main>
+    <%- include('../partials/header.ejs') %>
+    <h1 class="title-hot-sale">Listado Usuarios</h1>
+    <div class="products-hot">
+        
+        <table class="medidas" >
+            <tr>
+                <th>Id Usuario</th>
+                <th>Nombre apellido</th>
+                <th>Perfil</th>
+            </tr>
+            <% for (let i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <a  href="/user/edit/<%= users[i].id %>">
+                            <%= users[i].id %>
+                        </a>
+                    </td>
+                    <td>
+                        <%= users[i].nombreApellido %>
+                    </td>
+                    <td>
+                        <%= users[i].category %>
+                    </td>                        
+                </tr>  
+            <% } %>                  
+        </table>
+    </div> 
+    <!-- <ul>
+        <% for (let i=0; i < users.length; i++) { %>
+            <a href="/user/edit/<%= users[i].id %>">
+                <li>id: <%= users[i].id %>-<%= users[i].nombreApellido %></li>
+            </a>
+       <% } %>
+    </ul> -->
+    
+</main>
+<%- include('../partials/footer.ejs') %>
+</body>
+</html>

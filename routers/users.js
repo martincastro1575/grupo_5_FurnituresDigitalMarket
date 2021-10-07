@@ -16,6 +16,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const upload_image = require('../middlewares/multerMiddlewares');
 const validationUser = require('../middlewares/registerValMiddleware')
 const validationLogin = require('../middlewares/loginValMiddleware')
+const validationToUpdateUser = require('../middlewares/updateValMiddleware')
 
 //Comentada por Martin
 //routerUser.post('/register', userController.processRegister);
@@ -23,7 +24,7 @@ const validationLogin = require('../middlewares/loginValMiddleware')
 //routerUser.get('/profile/:userId', userController.userProfile);
 
 
-routerUser.get('/login', userController.userLogin);
+routerUser.get('/login', guestMiddleware, userController.userLogin);
 routerUser.post('/login', validationLogin, userController.processLogin);
 
 //muestra form de registro
@@ -32,8 +33,21 @@ routerUser.get('/registro', guestMiddleware, userController.usersAdd);
 routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUser);
 
 //Perfil de Usuario
-routerUser.get('profile/:userId', userController.profile);
+//routerUser.get('profile/:userId', userController.profile);
+routerUser.get('/profile', authMiddleware, userController.profile);
 
+//Listado users
+routerUser.get('/listado', userController.usersList);
+
+//Update User
+routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.store);
+
+//Editarusuario
+routerUser.get('/edit/:id', userController.userEdit);
+
+
+//logout
+routerUser.get('/logout', userController.logout);
 
 // *** Ruta de prueba
 routerUser.get('/check', (req, res) => {

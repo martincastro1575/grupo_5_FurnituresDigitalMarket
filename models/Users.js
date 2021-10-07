@@ -27,7 +27,7 @@ const User = {
     //Busca un Usuario
     findByPk: function(id){
         let allUsers = this.findAll();
-        let userFound = allUsers.find(oneUser => oneUser.id === id);
+        let userFound = allUsers.find(oneUser => oneUser.id == id);
 
         return userFound;
     },
@@ -39,7 +39,6 @@ const User = {
 
         return userFound;
     },
-
     //crea un usuario
     create: function(userData){
         let allUsers = this.findAll();
@@ -54,6 +53,12 @@ const User = {
 
         return newUser;
     },
+    update: function(id){
+        let userToUpdate = this.findByPk(id)
+
+        console.log(userToUpdate)
+        return true
+    },
     delete: function(id){
         let allUsers = this.findAll();
         let finalUsers = allUsers.filter(user => user.id !== id)
@@ -64,5 +69,5 @@ const User = {
 
 }
 
-//console.log(User.generateId())
+//console.log(User.update(34))
 module.exports = User;

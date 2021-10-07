@@ -1,201 +1,12 @@
 [
  {
   "id": 1,
-  "first_name": "Martin",
+  "nombreApellido": "Martin Castro",
   "last_name": "Castro",
   "email": "martin.castro1575@gmail.com",
+  "telefono": "59713341",
   "password": "123",
   "category": "admin",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 2,
-  "first_name": "Clarey",
-  "last_name": "Pitfield",
-  "email": "cpitfield1@nasa.gov",
-  "password": "2DDKtfPC",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 3,
-  "first_name": "Shurlocke",
-  "last_name": "Nangle",
-  "email": "snangle2@ovh.net",
-  "password": "B5COuPovp7",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 4,
-  "first_name": "Sarette",
-  "last_name": "Gonzalvo",
-  "email": "sgonzalvo3@list-manage.com",
-  "password": "52z5n3Uw",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 5,
-  "first_name": "Thom",
-  "last_name": "Barrs",
-  "email": "tbarrs4@ehow.com",
-  "password": "UWm1xOYb6hx",
-  "category": "user",
-  "image": "user_5.jpg",
-  "isActive": true
- },
- {
-  "id": 6,
-  "first_name": "Humfrey",
-  "last_name": "Jolley",
-  "email": "hjolley5@acquirethisname.com",
-  "password": "xNQuQe",
-  "category": "admin",
-  "image": "default.png",
-  "isActive": false
- },
- {
-  "id": 7,
-  "first_name": "Ewen",
-  "last_name": "Hutchinges",
-  "email": "ehutchinges6@usatoday.com",
-  "password": "ZKSJIlxpUXT",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 8,
-  "first_name": "Lamar",
-  "last_name": "Weedenburg",
-  "email": "lweedenburg7@alibaba.com",
-  "password": "GunT3Djpy",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 9,
-  "first_name": "Warde",
-  "last_name": "Barthram",
-  "email": "wbarthram8@sun.com",
-  "password": "VfS9VsEVC4",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 10,
-  "first_name": "Pierrette",
-  "last_name": "Mengue",
-  "email": "pmengue9@facebook.com",
-  "password": "zlldz7VusI1",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 11,
-  "first_name": "Dian",
-  "last_name": "Walpole",
-  "email": "dwalpolea@multiply.com",
-  "password": "wLjgXD",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 12,
-  "first_name": "Winifield",
-  "last_name": "McCarly",
-  "email": "wmccarlyb@mapquest.com",
-  "password": "6pNch7cfbDt",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 13,
-  "first_name": "Garrett",
-  "last_name": "Poile",
-  "email": "gpoilec@photobucket.com",
-  "password": "NpupLuSkNngK",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 14,
-  "first_name": "Delbert",
-  "last_name": "Scoggan",
-  "email": "dscoggand@sakura.ne.jp",
-  "password": "tSSA3c2g",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 15,
-  "first_name": "Marylou",
-  "last_name": "Cammiemile",
-  "email": "mcammiemilee@cdc.gov",
-  "password": "0NNYqr7MzM82",
-  "category": "user",
-  "image": "default.png",
-  "isActive": false
- },
- {
-  "id": 16,
-  "first_name": "Adrian",
-  "last_name": "Brewster",
-  "email": "abrewsterf@va.gov",
-  "password": "PH2Hwf",
-  "category": "user",
-  "image": "default.png",
-  "isActive": false
- },
- {
-  "id": 17,
-  "first_name": "Burch",
-  "last_name": "Conningham",
-  "email": "bconninghamg@buzzfeed.com",
-  "password": "OavGqcyvF",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 18,
-  "first_name": "Barbara-anne",
-  "last_name": "Phethean",
-  "email": "bphetheanh@bizjournals.com",
-  "password": "JbtOekZ",
-  "category": "user",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 19,
-  "first_name": "Ethan",
-  "last_name": "Brosetti",
-  "email": "ebrosettii@gravatar.com",
-  "password": "7rqWsLh5tX",
-  "category": "admin",
-  "image": "default.png",
-  "isActive": true
- },
- {
-  "id": 20,
-  "first_name": "Myrle",
-  "last_name": "Moretto",
-  "email": "mmorettoj@whitehouse.gov",
-  "password": "jUAnZ1F0",
-  "category": "user",
   "image": "default.png",
   "isActive": true
  },
@@ -353,6 +164,42 @@
   "password": "$2a$10$1.4TWsXQNPPe1EyGS7ChJOzz05WT2fzKp8AAi.auq5Tde10JII20W",
   "category": "user",
   "image": "201603161238201f5e7f2748adabf08629a6312ac3bfdd.jpg",
+  "isActive": true
+ },
+ {
+  "id": 34,
+  "nombreApellido": "Martin Castro",
+  "sexo": "M",
+  "email": "marcasmal@gmail.com",
+  "telefono": "1122223333",
+  "fechaNac": "2021-09-02",
+  "password": "$2a$10$U3N8PXzRDdjOLS8UCYV1K.3gj5sCYvL0THnVHkjq4XRtwYlGENIsm",
+  "category": "admin",
+  "image": "user-1631060054119.png",
+  "isActive": true
+ },
+ {
+  "id": 35,
+  "nombreApellido": "Patricia Campos",
+  "sexo": "F",
+  "email": "pcampos@gmail.com",
+  "telefono": "1111112222",
+  "fechaNac": "1950-09-15",
+  "password": "$2a$10$iLJ.mD2VllzWDNBlUyVmSuag.mJk2uGmalhEObClP9bFHmD2aDRlm",
+  "category": "user",
+  "image": "user-1631616863133.jpg",
+  "isActive": true
+ },
+ {
+  "id": 36,
+  "nombreApellido": "Pedro Castillo",
+  "sexo": "M",
+  "email": "pcastillo@gmial.com",
+  "telefono": "59713341",
+  "fechaNac": "2021-09-10",
+  "password": "$2a$10$W5SY5BUsJW2wEUJOiWqmEumDNz3/qXUGrjlY0qO2LWkXeP4m/.yL2",
+  "category": "user",
+  "image": "user-1631834726385.png",
   "isActive": true
  }
 ]

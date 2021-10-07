@@ -8,66 +8,80 @@ const User = require('../models/Users');
 const { send } = require('process');
 
 
-const productsPath = path.join(__dirname, '../data/users.json');
-let users = JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
+const usersPath = path.join(__dirname, '../data/users.json');
+let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
 
 const userController = {
     'userLogin': (req, res)=>{
+        console.log(req.session)
         res.render('users/loginUser',{
             title:'Login de Usuario'
         })
     },
 
     'processLogin': (req, res)=>{
-        let errors = validationResult(req);
+        const resultErros = validationResult(req)       
 
-        let contraseña = req.body.userPass;
+        //busco en el modelo so existe el usuario
+        let userLogin = User.findByField('email', req.body.nombreUser)
 
-        if (usserPass !== confirmPass){
-            return res.send('Las contraseñas no coinciden')
-        }
-        
-        let emailUser = req.body.nombreUser;         
-        
-        //res.send('Estoy en el proceso de login')
-        if (errors.isEmpty()){
-            let encontrarUser = users.find(user => 
-                user.email ==  emailUser
-            )
-    
-            if (!encontrarUser){                
-                return res.render('./users/loginUser', {
-                    errors: [
-                        {msg: 'Usuario Invalido'}
-                    ],
-                    title: 'usuario no existe',
-                });
+        if (userLogin){
+            let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
+
+            if(verificaPassword){
+                //por seguridad borramos de la session el password
+                delete userLogin.password
+                //creo la session
+                req.session.userLogin = userLogin
+                
+                //creo la cookie
+                if(req.body.recordame){
+                    res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+                }
+
+                return res.redirect('/user/profile');
+
+            }else{
+                return res.render('users/loginUser',{
+                    errors:{
+                        nombreUser:{
+                            msg: 'Verique las credenciales ingresadas',
+                        }
+                    },
+                    title:'Login de Usuario',
+                })
             }
-            
-            req.session.usuarioLogueado = encontrarUser;
-            //Guardando en cookie
-            if (req.body.recordame != undefined) {
-                res.cookie('recordame', encontrarUser.email, {maxAge: 90000})
-            }
-            
-            // res.send('Success');
-            res.send(req.body);
-
         }else{
-            return res.render('users/loginUser', {
-                errors: errors.errors,
-                title: 'Login de Usuario',
-            });
+            //si no se encuentra el usuario
+            return res.render('users/loginUser',{
+                errors:{
+                    nombreUser:{
+                        msg: 'Verifique el mail ingresado',
+                    }
+                },
+                title:'Login de Usuario',
+                oldData: req.body,
+            })
         }
+
+    },
+    
+    'logout':(req,res)=>{
+        res.clearCookie('userEmail');
+        req.session.destroy();
+        
+        return res.redirect('/')
     },
 
+    //Muestra el form de registro
     'usersAdd': (req, res)=>{
-        res.render('users/register',{
+        return res.render('users/register',{
             title: 'Registro de Usuario'
         })
 
     },
 
+    //Procesa el form de registro
     'processUser': (req, res)=>{
         const resultErros= validationResult(req)
         
@@ -109,25 +123,57 @@ const userController = {
             isActive: true
             
         }
+        
         let createuser = User.create(userCreate)
 
          return res.redirect('/user/login')
-        //return res.send('Se almaceno el registro');
-        
 
     },
 
     'profile': (req, res)=>{
-        res.send('Estoy en Procfile');
+        //console.log(req.cookies.userEmail);
+        return res.render('./users/userProfile', {
+            title: 'Procfile de Usuario',
+            user : req.session.userLogin,
+        });
     },
 
-    'usersEdit': (req, res) =>{
+    'userEdit': (req, res) =>{        
+        let oneUser = User.findByPk(req.params.id);
 
+        res.render('users/editUser',{
+            title: 'Edición de Usuarios',
+            oneUser: oneUser,
+        })
+    },
+    
+    'usersList': (req,res)=>{
+        //res.send('9')
+        res.render('users/userList',{
+            users:users,
+            title:'Listado de Usuarios'
+        }) 
     },
 
-    'usersInquery': (req, res) =>{
+    'store':(req, res)=>{
+        const resultErros= validationResult(req)
+        //const oneUSer = User.findByPk(req.body.id)        
+        
+        if (resultErros.errors.length > 0){
+            return res.send(resultErros)
+            return res.render('users/editUser',{
+                errors: resultErros.mapped(),
+                oneUser: oneUser,
+                title: 'Edición de Usuario'    
+            })        
+        }
+        console.log(req.body)
+        res.redirect('Todo validado')
+        //res.redirect('/user/edit/' + req.body.id)
 
-    },
+
+        
+    }
 }
 
 module.exports = userController;

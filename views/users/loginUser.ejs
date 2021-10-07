@@ -6,7 +6,7 @@
     <div class="main-form">  
         <main>
             <h2>Login</h2>
-                <% if (typeof errors != 'undefined') { %>
+                <!-- <% if (typeof errors != 'undefined') { %>
                     <p class="is-danger">Error</p>
                     <ul>
                         <% for( let index = 0; index < errors.length; index++ ) { %>
@@ -15,13 +15,23 @@
                             </li>
                         <% } %>
                     </ul>
-                <% } %>
+                <% } %> -->
                 <form action="/user/login" method="POST" class="form-login">
                     <div class="form-control">
-                        <input type="text" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email">
+                        <input type="text" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email" value="<%= locals.oldData ? oldData.nombreUser : null %>">
+                        <div class="text-danger">
+                            <% if (locals.errors && errors.nombreUser) { %>
+                                <%= errors.nombreUser.msg %> 
+                            <% } %>
+                        </div>
                     </div>
                     <div class="form-control">
                         <input type="password" name="passUser" id="passUser" class="control" placeholder="Ingrese su contraseña">
+                        <div class="text-danger">
+                            <% if (locals.errors && errors.passUser) { %>
+                                <%= errors.passUser.msg %> 
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div class="form-control-button">
