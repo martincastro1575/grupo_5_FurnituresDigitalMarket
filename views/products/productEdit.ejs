@@ -6,47 +6,35 @@
     <div class="main-form">
     <!-- <div class="form-register"> -->
         <main>
-            <h2>Edición de Producto</h2>
-            <!-- <form action="/home.html" method="POST" class="create-form"> -->
-            <form action="/producto/editar/<%= oneProduct.id %>?_method=PUT" method="POST" class="form-edit-product">
+            <h2>Edición de Producto <%= oneProduct.id %></h2>
+            <!-- ?_method=PUT -->
+            <form action="/producto/editar/<%= oneProduct.id %>" method="POST" class="form-edit-product">
                 <div class="form-control">
                     <label for="nombre-producto">Nombre del Producto</label>
                     <input type="text" name="nombreProducto" id="nombreProducto" 
-                    value="<%= oneProduct.name %>" class="control" required>
+                    value="<%= oneProduct.name %>" class="control">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.nombreProducto) { %>
+                            <%= errors.nombreProducto.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="descripcion-prod" class="control">Descripción</label>
                     <textarea name="descripcionProd" id="descripcionProd" 
-                    cols="30" rows="5" class="control"><%= oneProduct.description %></textarea>
+                    cols="30" rows="5" class="control"><%= oneProduct.descripcionProd %></textarea>
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.descripcionProd) { %>
+                            <%= errors.descripcionProd.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="categoriaProd" class="control">Categoría</label>                    
 					<select name="categoriaProd" id="categoriaProd" class="control">
 						<option value=""></option>
-                            <% categories.forEach(category => { %>  
-                                <option value="<%= category.id %>" <%= oneProduct.categories.id == category.id ? "selected" : null  %>>
-                                    <%= category.title %> 
-                                </option>
-                            <% }) %>                                
+                                                          
 					</select>
-                    <!-- <label for="categoryProducto" class="control">Categoría</label>
-                    <select name="categoryProducto" id="categoryProducto" class="control">
-                        <option value="">Elegí</option>
-                        <% if (oneProduct.category == 'hotSales') { %>
-                            <option value="inSale">En oferta</option>
-                            <option value="hotSales" selected>Más vendidos</option>
-                            <option value="newSales">Nuevo Lanzamiento</option>
-                        <% } else if (oneProduct.category == 'inSale') { %>
-                            <option value="inSale" selected>En oferta</option>
-                            <option value="hotSales">Más vendidos</option>
-                            <option value="newSales">Nuevo Lanzamiento</option>
-                        <% } else { %>
-                            <option value="inSale">En oferta</option>
-                            <option value="hotSales">Más vendidos</option>
-                            <option value="newSales" selected>Nuevo Lanzamiento</option>
-                          
-                        <% } %>
-                    </select> -->
                 </div>
                 <div class="form-control">
                     <label for="statusProd" class="control">Estatus</label>
