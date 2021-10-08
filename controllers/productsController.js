@@ -86,7 +86,7 @@ const productsController = {
 
     'productsEdit': async (req, res)=>{
         let allCategory = await productsController.bucarCategorias()
-        console.log("Id producto antes del update: " + req.params.id)
+        
         db.Product.findByPk(req.params.id,{
             include : ['categories']
         })
@@ -99,7 +99,7 @@ const productsController = {
         })
         .catch(error => res.send(error))
     },
-    
+
     'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
