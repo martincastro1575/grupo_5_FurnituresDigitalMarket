@@ -32,7 +32,7 @@ const upload_image = require('../middlewares/multerProductsMiddlewares');
 //********************************************* */
 
 
-router.get('/editar/:id/', productController.productsEdit);
+router.get('/editar/:id', productController.productsEdit);
 router.post('/editar/:id', addProductValMiddleware, productController.productsUpdate);
 
 router.get('/agregar', productController.crearProducto);
