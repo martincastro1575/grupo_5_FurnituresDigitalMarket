@@ -84,7 +84,8 @@
                     <a href="/producto/editar/<%= newProducts.id %>">
                         <article>
                             <div class="img-description">
-                                class="product-image">
+                                <img src="/images/<%- newProducts.images[0] ? newProducts.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
+                            class="product-image" class="product-image">
                                 <h4><%= newProducts.name %></h4>                    
                             </div>
                             <div class="product-detail">
