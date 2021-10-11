@@ -290,6 +290,7 @@ td img{
     max-height: 420px;
      object-fit: contain;
     object-position: center;
+    overflow: hidden;
 }
 .main-product-detail .articulo-elegido img{
     display:flex;
@@ -364,7 +365,7 @@ td img{
     font-style: italic;
     flex-direction: column;
     max-width: 520px;
-    margin: auto;
+    margin-left: auto;
 }
 .main-product-detail .tarjetas{
     display: flex;
