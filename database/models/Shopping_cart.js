@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes){
     let Shopping_cart = sequelize.define(alias, cols, config);
 
     Shopping_cart.associate = function(models){
-        Shopping_cart.belongsToMany(models.Shopping_cart_detail,{
+     /*   Shopping_cart.belongsToMany(models.Shopping_cart_detail,{
             as : 'shopping_cart_detail',
             timestamps: false,
             allowNull: false
@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes){
             timestamps: false,
             allowNull: false
         });
-    };
+    }; */
     };
 
     return Shopping_cart;

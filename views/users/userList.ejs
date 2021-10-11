@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<%- include('../partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
 <body>
     <main>
     <%- include('../partials/header.ejs') %>
@@ -11,8 +10,12 @@
         <table class="medidas" >
             <tr>
                 <th>Id Usuario</th>
-                <th>Nombre apellido</th>
-                <th>Perfil</th>
+                <th>Nombre y apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Rol de usuario</th>
+                <th>Status de usuario</th>
             </tr>
             <% for (let i=0; i < users.length; i++) { %>
                 <tr>
@@ -22,11 +25,23 @@
                         </a>
                     </td>
                     <td>
-                        <%= users[i].nombreApellido %>
+                        <%= users[i].name + " " + users[i].lastname  %> 
                     </td>
                     <td>
-                        <%= users[i].category %>
-                    </td>                        
+                        <%= users[i].email %> 
+                    </td>
+                    <td>
+                        <%= users[i].phone %>
+                    </td>   
+                    <td>
+                        <%= users[i].birthdate %>
+                    </td>         
+                    <td>
+                        <%= users[i].idRole %>
+                    </td>    
+                    <td>
+                        <%= users[i].idStatus%>
+                    </td>                             
                 </tr>  
             <% } %>                  
         </table>

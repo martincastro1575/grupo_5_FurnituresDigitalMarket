@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes){
     let Status = sequelize.define(alias, cols, config);
 
     Status.associate = function(models){
-        Status.belongsTo(models.Purchase,{
+       /* Status.belongsTo(models.Purchase,{
             as : 'purchase',
             foreignKey: 'id_user',
             otherKey: 'id_status',
@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes){
             foreignKey: 'id_status',
             timestamps: false,
             allowNull: false
-        });
+        });*/
     }
 
     return Status;

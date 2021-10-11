@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs')
+const db = require("../database/models")
 
 //requiriendo modelo JSON
 const User = require('../models/Users');
@@ -109,8 +110,21 @@ const userController = {
                 title: 'Registro de Usuario'    
             })
         }
+
+        db.User.create({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        })
         
-        let userCreate = {
+        /*let userCreate = {
             
             nombreApellido: req.body.nombreApellido,
             sexo: req.body.sexo,
@@ -124,9 +138,9 @@ const userController = {
             
         }
         
-        let createuser = User.create(userCreate)
+        let createuser = User.create(userCreate) */
 
-         return res.redirect('/user/login')
+         return res.redirect('/user/listado')
 
     },
 
@@ -139,20 +153,56 @@ const userController = {
     },
 
     'userEdit': (req, res) =>{        
-        let oneUser = User.findByPk(req.params.id);
+        /*let oneUser = User.findByPk(req.params.id); */
 
-        res.render('users/editUser',{
+        db.User.findByPk(req.params.id)
+            .then(function(user){
+                res.render('users/editUser',{
+                    title: 'Edición de Usuarios',
+                    user: user
+                })
+            })
+
+        /*res.render('users/editUser',{
             title: 'Edición de Usuarios',
             oneUser: oneUser,
+        }) */
+    },
+
+    'updateUser': (req, res) =>{
+        db.User.update({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: req.body.sexo,
+            email: req.body.email,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        }, {
+            where: {
+                id: req.params.id
+            }
         })
+
+        return res.redirect('/user/listado')
+        
     },
     
     'usersList': (req,res)=>{
         //res.send('9')
-        res.render('users/userList',{
+
+        db.User.findAll()
+            .then(function(users){
+                res.render("users/userList", {users: users, title:'Listado de Usuarios'}  )
+            }) 
+
+        /*res.render('users/userList',{
             users:users,
             title:'Listado de Usuarios'
-        }) 
+        }) */
     },
 
     'store':(req, res)=>{
