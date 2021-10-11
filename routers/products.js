@@ -47,5 +47,7 @@ router.get('/eliminar/:id', productController.delete);
 router.get('/listado', productController.productList);
 router.get('/search', productController.search);
 
+router.get('/detail/:id', productController.detail);
+
 
 module.exports = router

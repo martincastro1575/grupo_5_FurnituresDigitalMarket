@@ -100,6 +100,26 @@ const productsController = {
         .catch(error => res.send(error))
     },
 
+    'detail':async (req, res)=>{
+        const producto = await db.Product.findOne({
+            where:{
+                id: req.params.id
+            },
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+        res.render('./products/productDetail', {
+            product : producto,
+            title: 'hola'
+        })
+    },
+
     'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
