@@ -80,33 +80,17 @@ const productsController = {
                 })
         })
 
-		// let nuevoProducto = {
-        //     id: nuevoId,
-        //     name: req.body.nombreProducto,
-        //     price: req.body.precioProducto,
-        //     category: req.body.categoriaProd,
-        //     discount: req.body.discountProducto,
-        //     description: req.body.descripcionProd,
-        //     image: req.file.filename, //de este manera se llama usando multer
-        //     w: req.body.ancho,
-        //     h: req.body.alto,
-        //     l: req.body.largo,
-        //     stock: req.body.cantidadProducto,
-		// }
 
-		// products.push(nuevoProducto);
-		// fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
     },
 
     'productsEdit': async (req, res)=>{
         let allCategory = await productsController.bucarCategorias()
-
+        
         db.Product.findByPk(req.params.id,{
             include : ['categories']
         })
-        .then(product=> {
-            //return res.send(product)
+        .then(product=> {            
             res.render('products/productEdit',{
                 title: 'Edición de Productos',
                 oneProduct: product,
@@ -114,23 +98,23 @@ const productsController = {
             })
         })
         .catch(error => res.send(error))
-        
-        
-        // let idProduct = req.params.id;
-
-        // let oneProduct = products.find(product=>
-        //         product.id == idProduct
-        //     )
-        // res.render('products/productEdit',{
-        //     title: 'Edición de Productos',
-        //     oneProduct: oneProduct,
-        // })
     },
 
-    'productsUpdate':(req, res)=>{
+    'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
-
+        const resultErros = validationResult(req)        
+        if (resultErros.errors.length > 0 ){                
+            let allCategory = await productsController.bucarCategorias()
+            
+            return res.render('products/productEdit',{
+                errors: resultErros.mapped(),
+                oneProduct: req.body,
+                title: 'Registro de Producto',                
+                categories: allCategory,
+                idProduct: idProduct
+            })        
+        }
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
@@ -148,24 +132,11 @@ const productsController = {
             where: {id: idProduct}
         })
         .then(()=> {
-            return res.redirect('/producto/editar/' + idProduct)})            
+           
+           return res.redirect('/producto/editar/' + idProduct)
+           
+        })            
         .catch(error => res.send(error))
-
-        // products.forEach(product => {
-        //     if (product.id == idProduct){
-        //         product.name = req.body.nombreProducto;
-        //         product.description = req.body.descripcionProd;
-        //         product.category = req.body.categoryProducto;
-        //         product.price = req.body.precioProducto;
-        //         product.discount = req.body.discountProducto;
-        //         product.w = req.body.ancho;
-        //         product.l = req.body.largo;
-        //         product.h = req.body.alto;
-        //     }
-        // });
-        // fs.writeFileSync(productsPath, JSON.stringify(products));
-        // res.redirect('/producto/editar/' + idProduct);
-        
 
     },
     'delete':async (req, res)=>{
@@ -177,14 +148,6 @@ const productsController = {
         res.redirect('/producto/listado');
     },
 
-    // 'productList': (req, res) =>{  
-        
-    //     res.render('products/productList',{
-    //         products: products,
-    //         title: 'Listado de Productos'
-    //     })
-
-    // },
     'productList': async (req, res) =>{
         const allProducts = await db.Product.findAll({
             include: [{
