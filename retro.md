@@ -1,4 +1,32 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
+
+## Sprint \# 6
+
+### Lo Malo 😞
+
+* Pocos encuentros con la totalidad del grupo.
+
+
+### Lo Bueno 🤓
+
+*Solución en el manejo de problemas con ramas.
+
+*Organizaciòn y distribución equitativas de tareas.
+
+*Fusion de equipos.
+
+### Qué deberiamos a comenzar hacer? 🤔
+
+*Tener mejor comunicación.
+
+*Avisar con antelación cuando no se llega a realizar una tarea.
+
+### Qué deberiamos dejar de hacer? ☢️
+
+*Mejorar los tiempos de entrega.
+
+*Buscar aspectos a mejorar en el proyecto.
+
 ## Sprint \# 5
 
 ### Lo Malo 😞
