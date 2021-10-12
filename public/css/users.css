@@ -135,52 +135,28 @@ is-invalid:focus{
 }
 /* Fin de Formulario de edicion de login */  
 
-/*table user*/
+/* User form */
 
-table.table-user {
+.container-form{
+    max-width: 750px;
     width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    border-collapse: collapse;
-}
-table.table-user thead tr th:first-child {
-    border-radius: 8px 0 0 0;
-}
-table.table-user thead tr th:last-child {
-    border-radius: 0 8px 0 0;
-}
-
- table.table-user thead tr th {
-    background-color: #42938E;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    border-color: transparent;
-}
- table.table-user th {
-    width: 280px;
-}
- table.table-user tbody tr td .btn-times:before{
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f00d";
-    display: block;
-    color: #d7133a;
-    font-size: 22px;
-    background-size: 100%;
-    line-height: 1.2;
-}
- table.table-user tbody tr td .btn-edit i {
-    color: rgb(68, 68, 68);
-    font-size: 20px;
-}
- table.table-user th:nth-child(3) {
-    width: 180px;
-}
-
-.user-list{
-    max-width: 1440px;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid #377a76;
+}
+
+.container-form .row-form{
+    display: flex;
+}
+
+.container-form .col-form{
+    width: 50%;
+}
+
+.container-form .col-form input{
+    max-width: 450px;
+    width: 100%;
 }

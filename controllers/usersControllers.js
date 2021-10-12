@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs')
+const db = require("../database/models")
 
 //requiriendo modelo JSON
 const User = require('../models/Users');
@@ -97,7 +98,7 @@ const userController = {
         //dos veces.
         let userExists = User.findByField(req.body.userEmail)
 
-        if(userExists){
+       /* if(userExists){
             return res.render('users/register',{
                 errors: {
                     userEmail:{
@@ -107,9 +108,22 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })
-        }
+        } */
+
+        db.User.create({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        })
         
-        let userCreate = {
+        /*let userCreate = {
             
             nombreApellido: req.body.nombreApellido,
             sexo: req.body.sexo,
@@ -123,9 +137,9 @@ const userController = {
             
         }
         
-        let createuser = User.create(userCreate)
+        let createuser = User.create(userCreate) */
 
-         return res.redirect('/user/login')
+         return res.redirect('/user/listado')
 
     },
 
@@ -158,13 +172,40 @@ const userController = {
         })
     },
 
+    'updateUser': (req, res) =>{
+        db.User.update({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: req.body.sexo,
+            email: req.body.email,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            /*password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename, */
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+
+        return res.redirect('/user/listado')
+       
+        
+    },
+
+
     'userDelete': async (req, res) =>{  
          await models.User.destroy({
             where: {
                 id: req.params.id
             }
         })
-        res.redirect('/user/listado')
+
+        return res.redirect('/user/listado')
+        
+
     },
     
     'usersList': async (req,res)=>{
@@ -181,10 +222,16 @@ const userController = {
             }]
         })
         //res.send('9')
-        res.render('users/userList',{
+
+        db.User.findAll()
+            .then(function(users){
+                res.render("users/userList", {users: users, title:'Listado de Usuarios'}  )
+            }) 
+
+        /*res.render('users/userList',{
             users:users,
             title:'Listado de Usuarios'
-        }) 
+        }) */
     },
 
     'store':(req, res)=>{

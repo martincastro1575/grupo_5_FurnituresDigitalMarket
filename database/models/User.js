@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATE,
     },
     password: {
-      type: dataTypes.STRING(12),
+      type: dataTypes.STRING(150),
     },
     image: {
       type: dataTypes.TEXT,
