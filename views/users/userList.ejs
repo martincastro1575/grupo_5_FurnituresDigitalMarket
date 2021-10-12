@@ -9,20 +9,28 @@
         
         <table class="medidas" >
             <tr>
-                <th>Id Usuario</th>
+                <th>Accion</th>
                 <th>Nombre y apellido</th>
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Fecha de Nacimiento</th>
+                <th>Sexo</th>
                 <th>Rol de usuario</th>
                 <th>Status de usuario</th>
             </tr>
             <% for (let i=0; i < users.length; i++) { %>
                 <tr>
+                   <!--<td>
+                            <a href="/user/edit/<%= users[i].id %>" class="btn-icon btn-edit"><i class="fas fa-edit"></i> </a>
+                            <button id="<%= users[i].id %>" onclick="show(event)" class="btn-icon btn-times"><%= users[i].id %></button>
+                        
+                    </td> -->
                     <td>
                         <a  href="/user/edit/<%= users[i].id %>">
-                            <%= users[i].id %>
+                            Modificar
                         </a>
+                        <a href="/user/edit/<%= users[i].id %>" class="btn-icon btn-edit"><i class="fas fa-edit"></i> </a>
+                        <button id="<%= users[i].id %>" onclick="show(event)" class="btn-icon btn-times"> Eliminar</button>
                     </td>
                     <td>
                         <%= users[i].name + " " + users[i].lastname  %> 
@@ -35,6 +43,9 @@
                     </td>   
                     <td>
                         <%= users[i].birthdate %>
+                    </td>   
+                    <td>
+                        <%= users[i].gender%>
                     </td>         
                     <td>
                         <%= users[i].idRole %>
@@ -45,16 +56,29 @@
                 </tr>  
             <% } %>                  
         </table>
+        </div>
     </div> 
-    <!-- <ul>
-        <% for (let i=0; i < users.length; i++) { %>
-            <a href="/user/edit/<%= users[i].id %>">
-                <li>id: <%= users[i].id %>-<%= users[i].nombreApellido %></li>
-            </a>
-       <% } %>
-    </ul> -->
-    
+
 </main>
+<!-- Modal delete user -->
+    <div id="modal-delete" class="modal fade modal-danger">
+        <div class="modal-dialog">
+            <div class="modal-title">
+                <h2>Borrar usuario</h2>                   
+            </div>
+            <div class="modal-body"> 
+                <p>Estas seguro que quieres borrar este usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <form id="test" method="POST" class="form-delete-product">
+                    <button type="submit"  class="btn btn-danger">Eliminar</button>
+                </form>
+                <button id="cancel" onclick="hideModal()" href class="btn btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal delete user -->
+<script src="/js/index.js"></script>
 <%- include('../partials/footer.ejs') %>
 </body>
 </html>

@@ -23,15 +23,14 @@ module.exports = function(sequelize, DataTypes){
     let User_action_type = sequelize.define(alias, cols, config);
 
     User_action_type.associate = function(models){
-       /* User_action_type.belongsToMany(models.User,{
-            as : 'user',
-            foreignKey: 'id_role',
-            foreignKey: 'id_status',
-            timestamps: false,
-            allowNull: false
-        }); */
+        // User_action_type.belongsToMany(models.User,{
+        //     as : 'user',
+        //     foreignKey: 'id_role',
+        //     foreignKey: 'id_status',
+        //     timestamps: false,
+        //     allowNull: false
+        // });
     }
-
 
     return User_action_type;
 }

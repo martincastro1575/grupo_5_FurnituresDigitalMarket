@@ -7,6 +7,7 @@ const multer = require('multer');
             cb(null, path.join(__dirname, '../public/images/products'))
         },
         filename: (req, file, cb)=>{
+            
             const newFilename = 'prod-' + Date.now() + path.extname(file.originalname);
             //console.log("Estoy en Multer " + newFilename);
             cb(null, newFilename);

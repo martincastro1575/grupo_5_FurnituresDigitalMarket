@@ -40,7 +40,7 @@
                         <div class="col-form">
                             <div class="form-control">
                                 <label for="userEmail">Email</label>
-                                <input type="email" name="userEmail" id="userEmail" class="control" value="<%= locals.oldData ? oldData.userEmail : null %>">
+                                <input type="email" name="userEmail" id="userEmail" class="control" value="">
                                 <div class="text-danger">
                                     <% if (locals.errors && errors.userEmail) { %>
                                         <%= errors.userEmail.msg %> 
@@ -51,12 +51,12 @@
                         <div class="col-form">
                             <div class="form-control">
                                 <label for="sexo">Sexo</label>
-                                <select name="sexo" id="sexo" class="control" <%= locals.oldData ? oldData.userEmail : null %>>
-                                    <option value="">Seleccione su Sexo</option>
-                                    <option value="M" <%= locals.oldData && (oldData.sexo === 'M') ? 'selected' : null %>>
+                                <select name="sexo" id="sexo" class="control">
+                                    <option value="">Seleccione sexo</option>
+                                    <option value="Male">
                                         Masculino
                                     </option>
-                                    <option value="F" <%= locals.oldData && (oldData.sexo === 'F') ? 'selected' : null %>>
+                                    <option value="Female">
                                         Femenino
                                     </option>
                                 </select>
@@ -66,7 +66,7 @@
                                     <% } %>
                                 </div>
                             </div>
-                        </div>
+                         </div>
                     </div>
                     <!-- Row-->
                     <div class="row-form">
