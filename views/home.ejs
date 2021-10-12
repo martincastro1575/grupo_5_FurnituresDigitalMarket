@@ -19,7 +19,7 @@
                 <a href="/producto/editar/<%= element.id %>">
                     <article>
                         <div class="img-description">
-                            <img src="/images/<%- element.images[0] ? element.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
+                            <img src="/images/products/<%- element.images[0] ? element.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
                         class="product-image">
                             <h4><%= element.name %></h4>
                         </div>
@@ -84,7 +84,7 @@
                     <a href="/producto/editar/<%= newProducts.id %>">
                         <article>
                             <div class="img-description">
-                                <img src="/images/<%- newProducts.images[0] ? newProducts.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
+                                <img src="/images/products/<%- newProducts.images[0] ? newProducts.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
                             class="product-image" class="product-image">
                                 <h4><%= newProducts.name %></h4>                    
                             </div>

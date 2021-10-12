@@ -96,7 +96,7 @@ const userController = {
 
         //valido que usuario con el mismo email, no se registre
         //dos veces.
-        let userExists = User.findByField('email', req.body.userEmail)
+        let userExists = User.findByField(req.body.userEmail)
 
        /* if(userExists){
             return res.render('users/register',{
