@@ -9,7 +9,7 @@ const routesProducts = require('./routers/products');
 const routerUser = require('./routers/users');
 
 //OJO!!!!! SE DEBE QUITAR ESTA LINEA
-//const moviesRouter = require('./routers/movies');//
+//const moviesRouter = require('./routers/movies');
 
 //requerimos express session
 const session = require('express-session');
@@ -60,10 +60,10 @@ app.use('/producto', routesProducts);
 app.use('/user', routerUser);
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA
-//app.use('/movies', moviesRouter);//
+//app.use('/movies', moviesRouter);
 
 //app.use(logMiddleWare);
 
-app.listen(process.env.PORT || 3500, ()=>{
-    console.log('Corriendo servidor Express:3500');
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log('Corriendo servidor Express:3000');
 })

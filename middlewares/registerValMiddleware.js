@@ -2,7 +2,7 @@ const path = require('path');
 const { body } = require('express-validator');
 
 const validationUser = [
-    body('nameUser').notEmpty().withMessage('Ingrese su nombre completo'),
+    body('nombreApellido').notEmpty().withMessage('Ingrese su nombre completo'),
     body('userEmail')
         .notEmpty().withMessage('Ingrese un email').bail()
         .isEmail().withMessage('Debes ingresar un email valido'),
@@ -38,8 +38,6 @@ const validationUser = [
         return true;
 
     }),
-    body('rol').notEmpty().withMessage('Seleccione rol de usuario'),
-    body('status').notEmpty().withMessage('Seleccione status de usuario'),
 
 ]
 

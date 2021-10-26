@@ -29,10 +29,10 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.DATE,
     },
     password: {
-      type: dataTypes.STRING(150),
+      type: dataTypes.STRING(12),
     },
     image: {
-      type: dataTypes.TEXT,
+      type: dataTypes.STRING(250),
     },
     idRole: {
       type: dataTypes.INTEGER,
@@ -54,19 +54,15 @@ module.exports = (sequelize, dataTypes) => {
 
   const User = sequelize.define(alias, cols, config);
     User.associate = function (models) {
-     User.belongsTo(models.Status,{
-        as:'status',
-        foreignKey: 'idStatus'
-    }), 
+    //  User.belongsTo(models.Status,{
+    //     as:'status',
+    //     foreignKey: 'idStatus'
+    // }), 
     User.belongsTo(models.Rol,{
         as:'roles',
         foreignKey: 'idRole'
     })
-    User.hasMany(models.Address,{
-        as:'address',
-        foreignKey: 'idUser'
-    })
   };
-  
+
   return User;
 };

@@ -30,7 +30,7 @@ CREATE TABLE `action_type` (
   `description` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,6 @@ CREATE TABLE `action_type` (
 
 LOCK TABLES `action_type` WRITE;
 /*!40000 ALTER TABLE `action_type` DISABLE KEYS */;
-INSERT INTO `action_type` VALUES (1,'Insertar','Inserta un nuevo registro','2021-10-02 15:43:33'),(2,'Modificar','Modifica el registro seleccionado','2021-10-02 15:43:33'),(3,'Consultar','Consulta uno o mas registros','2021-10-02 15:44:14'),(4,'Elminar','Eliminar un producto','2021-10-02 15:44:14');
 /*!40000 ALTER TABLE `action_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +83,7 @@ CREATE TABLE `images` (
   PRIMARY KEY (`id`),
   KEY `id_product_image_idx` (`id_product`),
   CONSTRAINT `id_product_image` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +92,6 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'prod-1633182031906.png',15),(2,'prod-1633182270293.png',16),(3,'user-1633183239291.png',17),(4,'prod-1633188510166.png',19),(5,'prod-1633188510169.png',19),(6,'prod-1633188510170.png',19),(7,'prod-1633194783977.png',20),(8,'prod-1633194959321.png',21),(9,'prod-1633195263298.png',23),(10,'prod-1633195443902.png',24),(11,'prod-1633195443904.png',24);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,11 +128,7 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `high` int DEFAULT '0',
-  `width` int DEFAULT '0',
-  `length` int DEFAULT '0',
   `price` decimal(10,2) NOT NULL,
   `discount` int DEFAULT '0',
   `quantity` int NOT NULL DEFAULT '0',
@@ -142,14 +136,18 @@ CREATE TABLE `products` (
   `stock_max` int DEFAULT '0',
   `id_status` int DEFAULT NULL,
   `id_category` int DEFAULT NULL,
+  `id_measure` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_status_idx` (`id_status`),
   KEY `id_status_product_idx` (`id_status`),
   KEY `id_category_idx` (`id_category`),
+  KEY `id_measure_idx` (`id_measure`),
   CONSTRAINT `id_category` FOREIGN KEY (`id_category`) REFERENCES `products_category` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `id_measure` FOREIGN KEY (`id_measure`) REFERENCES `products_measures` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status_product` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +156,6 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Set Comedor NUEVO','fffffffff',1,1,1,200000.00,0,100,5,100,1,1,'2021-10-01 10:24:56'),(2,'Bacha de marmol de Baño','Bacha de baño',0,0,0,45000.00,10,20,1,20,1,2,'2021-10-01 10:51:09'),(3,'Bacha de Cristal','Bacha de Cristal',0,0,0,30000.00,0,10,1,10,1,2,'2021-10-01 10:54:54'),(4,'Set Comedor NUEVO','COMEDOR',0,0,0,200000.00,20,20,3,20,1,3,'2021-10-01 11:04:14'),(5,'dddd','dddd',0,0,0,222.00,2,2,2,2,NULL,1,'2021-10-01 23:49:20'),(6,'sss','sss',4,4,4,4.00,4,4,4,4,NULL,2,'2021-10-01 23:50:27'),(7,'Nuevo Producto','eeee',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 12:24:18'),(8,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:32:58'),(9,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:53'),(10,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:58'),(11,'ddd','ddd',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 12:34:39'),(12,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 13:03:21'),(13,'sss','ssss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 13:37:16'),(14,'Nuevo Producto','fdsf',0,0,0,111.00,111,111,111,111,NULL,2,'2021-10-02 13:38:06'),(15,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,4,'2021-10-02 13:40:31'),(16,'Modulo de Juego Completo','ssss',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 13:44:30'),(17,'Modulo de Juego Completo','ddd',0,0,0,1.00,1,1,1,1,NULL,2,'2021-10-02 14:00:39'),(18,'Set Comedor NUEVO','dddd',0,0,0,9.00,9,9,9,9,NULL,2,'2021-10-02 15:20:31'),(19,'Set Comedor NUEVO','mkmkmk',0,0,0,7.00,7,7,7,7,NULL,1,'2021-10-02 15:28:30'),(20,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 17:13:03'),(21,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 17:15:59'),(22,'Modulo de Juego Completo','hhh',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 17:18:21'),(23,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 17:21:03'),(24,'Set Comedor NUEVO','sss',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 17:24:03');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,13 +171,12 @@ CREATE TABLE `products_action_type` (
   `id_product_action` int DEFAULT NULL,
   `id_action_type` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_user` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_product_action_idx` (`id_product_action`),
   KEY `id_action_type_idx` (`id_action_type`),
   CONSTRAINT `id_action_type` FOREIGN KEY (`id_action_type`) REFERENCES `action_type` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `products` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +185,6 @@ CREATE TABLE `products_action_type` (
 
 LOCK TABLES `products_action_type` WRITE;
 /*!40000 ALTER TABLE `products_action_type` DISABLE KEYS */;
-INSERT INTO `products_action_type` VALUES (1,NULL,NULL,'2021-10-02 17:21:03',34),(2,24,1,'2021-10-02 17:24:04',34);
 /*!40000 ALTER TABLE `products_action_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +202,7 @@ CREATE TABLE `products_category` (
   `is_active` tinyint DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,8 +211,33 @@ CREATE TABLE `products_category` (
 
 LOCK TABLES `products_category` WRITE;
 /*!40000 ALTER TABLE `products_category` DISABLE KEYS */;
-INSERT INTO `products_category` VALUES (1,'cocina','Productos para cocina',0,'2021-09-30 06:56:37'),(2,'baño','Productos para el baño',0,'2021-09-30 06:56:37'),(3,'sala','Productos para sala',0,'2021-09-30 06:57:19'),(4,'cuarto','Productos para el cuarto',0,'2021-09-30 06:57:19');
 /*!40000 ALTER TABLE `products_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products_measures`
+--
+
+DROP TABLE IF EXISTS `products_measures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `products_measures` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `high` int DEFAULT '0',
+  `width` int DEFAULT '0',
+  `length` int DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products_measures`
+--
+
+LOCK TABLES `products_measures` WRITE;
+/*!40000 ALTER TABLE `products_measures` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products_measures` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -380,7 +400,7 @@ CREATE TABLE `status` (
   `description` varchar(200) NOT NULL,
   `dominio` enum('USER','PRODUCT','BUY') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,7 +409,6 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'activo','el producto esta disponible','PRODUCT'),(2,'inactivo','el producto esta disponible','PRODUCT');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-02 14:32:31
+-- Dump completed on 2021-09-25 13:25:15
