@@ -2,31 +2,30 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs')
-const db = require("../database/models")
 
 //requiriendo modelo JSON
 const User = require('../models/Users');
-const models = require('../database/models')
+const { send } = require('process');
 
-const {isEmpty} = require('lodash')
 
-// const usersPath = path.join(__dirname, '../data/users.json');
-// let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
+const usersPath = path.join(__dirname, '../data/users.json');
+let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
 
 const userController = {
     'userLogin': (req, res)=>{
+        console.log(req.session)
         res.render('users/loginUser',{
             title:'Login de Usuario'
         })
     },
 
-    'processLogin': async(req, res)=>{
+    'processLogin': (req, res)=>{
         const resultErros = validationResult(req)       
 
         //busco en el modelo so existe el usuario
-        let userLogin = await User.findByField(req.body.nombreUser)
-        //console.log(userLogin)
-        if (!isEmpty(userLogin)){
+        let userLogin = User.findByField('email', req.body.nombreUser)
+
+        if (userLogin){
             let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
 
             if(verificaPassword){
@@ -34,6 +33,7 @@ const userController = {
                 delete userLogin.password
                 //creo la session
                 req.session.userLogin = userLogin
+                
                 //creo la cookie
                 if(req.body.recordame){
                     res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
@@ -96,9 +96,9 @@ const userController = {
 
         //valido que usuario con el mismo email, no se registre
         //dos veces.
-        let userExists = User.findByField(req.body.userEmail)
+        let userExists = User.findByField('email', req.body.userEmail)
 
-       /* if(userExists){
+        if(userExists){
             return res.render('users/register',{
                 errors: {
                     userEmail:{
@@ -108,22 +108,9 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })
-        } */
-
-        db.User.create({
-            name: req.body.nameUser,
-            lastname: req.body.lastnameUser,
-            gender: "male",
-            email: req.body.userEmail,
-            phone: req.body.telefono,
-            birthdate: req.body.fechaNac,
-            password: bcryptjs.hashSync(req.body.userPass),
-            image: req.file.filename,
-            idRole: req.body.rol,
-            idStatus: req.body.status
-        })
+        }
         
-        /*let userCreate = {
+        let userCreate = {
             
             nombreApellido: req.body.nombreApellido,
             sexo: req.body.sexo,
@@ -137,101 +124,35 @@ const userController = {
             
         }
         
-        let createuser = User.create(userCreate) */
+        let createuser = User.create(userCreate)
 
-         return res.redirect('/user/listado')
+         return res.redirect('/user/login')
 
     },
 
     'profile': (req, res)=>{
+        //console.log(req.cookies.userEmail);
         return res.render('./users/userProfile', {
             title: 'Procfile de Usuario',
             user : req.session.userLogin,
         });
     },
 
-    'userEdit': async (req, res) =>{    
-        const user = await models.User.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: [{
-                model: models.Rol,
-                as: 'roles'
-            },{
-                model: models.Status,
-                as: 'status'
-            },{
-                model: models.Address,
-                as: 'address'
-            }]
-        })
+    'userEdit': (req, res) =>{        
+        let oneUser = User.findByPk(req.params.id);
+
         res.render('users/editUser',{
             title: 'Edición de Usuarios',
-            user: user,
+            oneUser: oneUser,
         })
-    },
-
-    'updateUser': (req, res) =>{
-        db.User.update({
-            name: req.body.nameUser,
-            lastname: req.body.lastnameUser,
-            gender: req.body.sexo,
-            email: req.body.email,
-            phone: req.body.telefono,
-            birthdate: req.body.fechaNac,
-            /*password: bcryptjs.hashSync(req.body.userPass),
-            image: req.file.filename, */
-            idRole: req.body.rol,
-            idStatus: req.body.status
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
-
-        return res.redirect('/user/listado')
-       
-        
-    },
-
-
-    'userDelete': async (req, res) =>{  
-         await models.User.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-
-        return res.redirect('/user/listado')
-        
-
     },
     
-    'usersList': async (req,res)=>{
-        const users = await models.User.findAll({
-            include: [{
-                model: models.Rol,
-                as: 'roles'
-            },{
-                model: models.Status,
-                as: 'status'
-            },{
-                model: models.Address,
-                as: 'address'
-            }]
-        })
+    'usersList': (req,res)=>{
         //res.send('9')
-
-        db.User.findAll()
-            .then(function(users){
-                res.render("users/userList", {users: users, title:'Listado de Usuarios'}  )
-            }) 
-
-        /*res.render('users/userList',{
+        res.render('users/userList',{
             users:users,
             title:'Listado de Usuarios'
-        }) */
+        }) 
     },
 
     'store':(req, res)=>{
