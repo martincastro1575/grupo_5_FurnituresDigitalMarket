@@ -40,7 +40,7 @@ module.exports = (sequelize, dataTypes) => {
     idStatus: {
       type: dataTypes.INTEGER,
     },
-    createdAt: {
+    created_at: {
       type: dataTypes.DATE,
     },
   };
@@ -49,7 +49,8 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: true,
     tableName: "users",
     underscored: true,
-    updatedAt: false
+    updatedAt: false,
+    
   };
 
   const User = sequelize.define(alias, cols, config);

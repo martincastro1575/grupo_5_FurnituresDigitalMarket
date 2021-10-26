@@ -25,7 +25,7 @@ const userController = {
 
         //busco en el modelo so existe el usuario
         let userLogin = await User.findByField(req.body.nombreUser)
-
+        //console.log(userLogin)
         if (!isEmpty(userLogin)){
             let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
 

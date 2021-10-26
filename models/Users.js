@@ -36,6 +36,7 @@ const User = {
 
     //Buscando usuario por email
     findByField:  async function(email){
+    //console.log('Desde funcion buscar: ' + email)
        const userFound = await models.User.findOne({
             where: {
                 email: email
@@ -51,7 +52,7 @@ const User = {
                 as: 'address'
             }]
         })
-
+        //console.log('Retornando valor de usuario: ' + userFound)
         return userFound;
     },
     //crea un usuario
