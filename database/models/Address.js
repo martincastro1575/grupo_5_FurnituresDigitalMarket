@@ -14,7 +14,7 @@ module.exports = (sequelize, dataTypes) => {
     idUser: {
       type: dataTypes.INTEGER,
     },
-    isAddressBill: {
+    idAddressBill: {
       type: dataTypes.INTEGER,
     },
   };
@@ -23,8 +23,7 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: true,
     tableName: "address",
     underscored: true,
-    updatedAt: false,
-    createdAt: false
+    updatedAt: false
   };
 
   const Address = sequelize.define(alias, cols, config)
