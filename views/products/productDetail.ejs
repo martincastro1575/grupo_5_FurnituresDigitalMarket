@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="main-form">
+      <!-- <div class="form-register"> -->
+      <main class="main-product-detail">
+        <div class="main-product">
+          <section class="detalle-producto">
+            <article>
+              <div class="articulo-elegido">
+                <img
+                  src="/images/products/<%- product.images[0] ? product.images[0].name : 'no-image-available.jpg' %>"
+                  alt="<%- product.images[0] ? product.images[0].name : '' %>"
+                  class="product-image"
+                />
+              </div>
+              <div class="caracteristicas">
+                <div class="precio-articulo">
+                  <p>Nombre del producto: </p>
+                  <strong><p><%- product.name %></p></strong>
+                </div>
+                <div class="precio-articulo">
+
+                  <p>Precio del producto: </p>
+                  <strong><p><%- product.price %></p></strong>
+                </div>
+                
+                <div class="descripcion">
+                  <p>Descripción del producto: </p>
+                  <strong><p><%- product.description %></p></strong>
+                </div>
+                <div class="opciones">
+                  <div class="medidas">
+                    <strong
+                      >Ancho
+                      <p><%- product.width %></p></strong
+                    >
+                    <strong
+                      >Alto
+                      <p><%- product.high %></p></strong
+                    >
+                    <strong
+                      >Largo
+                      <p><%- product.length %></p></strong
+                    >
+                  </div>
+
+
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+        <div class="medios-de-pago">
+        <div class="tarjetas">
+            <i class="far fa-credit-card"></i>
+            <i class="far fa-credit-card"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fas fa-credit-card"></i>
+            <i class="fab fa-cc-mastercard"></i>
+          </div>
+          <div class="envios">
+            <strong
+              ><p>Envíos a través de Correo Argentino y OCA</p></strong
+            ><i class="fas fa-truck"></i>
+          </div>
+        </div>
+
+<div class="footer-buttons">
+        <button type="submit" class="btn btn-default">
+          Agregar al carrito +
+        </button>
+        <button type="submit" class="btn btn-secondary">
+          Ver medios de pago
+        </button>
+</div>
+      </main>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

@@ -100,6 +100,26 @@ const productsController = {
         .catch(error => res.send(error))
     },
 
+    'detail':async (req, res)=>{
+        const producto = await db.Product.findOne({
+            where:{
+                id: req.params.id
+            },
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+        res.render('./products/productDetail', {
+            product : producto,
+            title: 'hola'
+        })
+    },
+
     'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
@@ -139,15 +159,13 @@ const productsController = {
         .catch(error => res.send(error))
 
     },
-    'productDelete':(req, res)=>{
-        let idProduct = req.params.id;
-
-        products = products.filter(product=>{
-            return product.id != idProduct
+    'delete':async (req, res)=>{
+        await db.Product.destroy({
+            where:{
+                id: req.params.id
+            }
         })
-        fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
-
     },
 
     'productList': async (req, res) =>{
@@ -169,17 +187,20 @@ const productsController = {
 
     },
 
-    'search':(req, res) =>{
+    'search': async (req, res) =>{
         let buscaProduct = req.query.searchProd;
-
-        let resultado = [];
-
-        products.forEach(product => {
-            if (product.name.includes(buscaProduct)){
-                resultado.push(product)
-            }
+        const allProducts = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
         })
 
+       let resultado = allProducts.filter(product => product.name.toLowerCase().includes(buscaProduct.toLowerCase()))
         res.render('./products/productSearch', {
             resultado : resultado,
             title: 'Resultado de Busqueda',

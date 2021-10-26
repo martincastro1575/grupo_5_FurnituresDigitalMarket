@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const models = require('../database/models')
+
 
 const User = {
     filename: './data/users.json',
@@ -33,9 +35,22 @@ const User = {
     },
 
     //Buscando usuario por email
-    findByField: function(field, text){
-        let allUsers = this.findAll();
-        let userFound = allUsers.find(oneUser => oneUser[field] === text);
+    findByField:  async function(email){
+       const userFound = await models.User.findOne({
+            where: {
+                email: email
+            },
+            include: [{
+                model: models.Rol,
+                as: 'roles'
+            },{
+                model: models.Status,
+                as: 'status'
+            },{
+                model: models.Address,
+                as: 'address'
+            }]
+        })
 
         return userFound;
     },
