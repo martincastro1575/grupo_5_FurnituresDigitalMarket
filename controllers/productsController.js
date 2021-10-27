@@ -109,9 +109,11 @@ const productsController = {
         //return res.send(req.body)
         const resultErros = validationResult(req)
         console.log('Id de producto: ' + idProduct)
-        console.log(req.body)    
         if (resultErros.errors.length > 0 ){                
-            let allCategory = await productsController.bucarCategorias()
+            let allCategory = await productsController.bucarCategorias();
+            console.log('Dentro de errores: ')   
+            console.log(req.body)
+            console.log(resultErros)
             
             return res.render('products/productEdit',{
                 errors: resultErros.mapped(),
@@ -121,7 +123,8 @@ const productsController = {
                 idProduct: idProduct
             })        
         }
-        
+        // console.log("Antes del update: " )
+        // console.log(req.body)
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
@@ -138,8 +141,7 @@ const productsController = {
         }, {
             where: {id: idProduct}
         })
-        .then(()=> {
-           
+        .then(()=> {           
            return res.redirect('/producto/editar/' + idProduct)
            
         })            
