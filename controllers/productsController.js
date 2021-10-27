@@ -33,7 +33,10 @@ const productsController = {
 
     'guardarProducto': async (req, res) =>{
         
-        const resultErros = validationResult(req)        
+        const resultErros = validationResult(req)
+        console.log(req.body)
+        console.log("Contendido de File en el controlador: " + req.files)
+        //return res.send(req.files)
         if (resultErros.errors.length > 0 ){
                 
             let allCategory = await productsController.bucarCategorias()
@@ -60,7 +63,8 @@ const productsController = {
                 stock_max: req.body.cantidadMaxima,
             
             }).then(response => {                
-                //obtengo el del producto para poder relacionar con img
+                //obtengo el id del producto para poder relacionar con img
+                //console.log('Recuperando Id del Producto: ' + response)
                 let idPro = response.id
                 //almaceno los archivos devueltos
                 let files = req.files
@@ -103,7 +107,9 @@ const productsController = {
     'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
-        const resultErros = validationResult(req)        
+        const resultErros = validationResult(req)
+        console.log('Id de producto: ' + idProduct)
+        console.log(req.body)    
         if (resultErros.errors.length > 0 ){                
             let allCategory = await productsController.bucarCategorias()
             
@@ -115,6 +121,7 @@ const productsController = {
                 idProduct: idProduct
             })        
         }
+        
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
