@@ -9,7 +9,7 @@ const multer = require('multer');
         filename: (req, file, cb)=>{
             
             const newFilename = 'prod-' + Date.now() + path.extname(file.originalname);
-            //console.log("Estoy en Multer " + newFilename);
+            //console.log("Estoy en Multer nombre Archivo " + newFilename);
             cb(null, newFilename);
         },
     

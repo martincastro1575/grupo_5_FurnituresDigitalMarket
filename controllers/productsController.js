@@ -33,7 +33,10 @@ const productsController = {
 
     'guardarProducto': async (req, res) =>{
         
-        const resultErros = validationResult(req)        
+        const resultErros = validationResult(req)
+        console.log(req.body)
+        console.log("Contendido de File en el controlador: " + req.files)
+        //return res.send(req.files)
         if (resultErros.errors.length > 0 ){
                 
             let allCategory = await productsController.bucarCategorias()
@@ -60,7 +63,8 @@ const productsController = {
                 stock_max: req.body.cantidadMaxima,
             
             }).then(response => {                
-                //obtengo el del producto para poder relacionar con img
+                //obtengo el id del producto para poder relacionar con img
+                //console.log('Recuperando Id del Producto: ' + response)
                 let idPro = response.id
                 //almaceno los archivos devueltos
                 let files = req.files
@@ -100,32 +104,16 @@ const productsController = {
         .catch(error => res.send(error))
     },
 
-    'detail':async (req, res)=>{
-        const producto = await db.Product.findOne({
-            where:{
-                id: req.params.id
-            },
-            include: [{
-                model: db.ProductCategory,
-                as: 'categories'
-            },
-            {
-                model: db.Image,
-                as: 'images'
-            }]
-        })
-        res.render('./products/productDetail', {
-            product : producto,
-            title: 'hola'
-        })
-    },
-
     'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
-        const resultErros = validationResult(req)        
+        const resultErros = validationResult(req)
+        console.log('Id de producto: ' + idProduct)
         if (resultErros.errors.length > 0 ){                
-            let allCategory = await productsController.bucarCategorias()
+            let allCategory = await productsController.bucarCategorias();
+            console.log('Dentro de errores: ')   
+            console.log(req.body)
+            console.log(resultErros)
             
             return res.render('products/productEdit',{
                 errors: resultErros.mapped(),
@@ -135,6 +123,8 @@ const productsController = {
                 idProduct: idProduct
             })        
         }
+        // console.log("Antes del update: " )
+        // console.log(req.body)
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
@@ -151,21 +141,22 @@ const productsController = {
         }, {
             where: {id: idProduct}
         })
-        .then(()=> {
-           
+        .then(()=> {           
            return res.redirect('/producto/editar/' + idProduct)
            
         })            
         .catch(error => res.send(error))
 
     },
-    'delete':async (req, res)=>{
-        await db.Product.destroy({
-            where:{
-                id: req.params.id
-            }
+    'productDelete':(req, res)=>{
+        let idProduct = req.params.id;
+
+        products = products.filter(product=>{
+            return product.id != idProduct
         })
+        fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
+
     },
 
     'productList': async (req, res) =>{
@@ -187,20 +178,17 @@ const productsController = {
 
     },
 
-    'search': async (req, res) =>{
+    'search':(req, res) =>{
         let buscaProduct = req.query.searchProd;
-        const allProducts = await db.Product.findAll({
-            include: [{
-                model: db.ProductCategory,
-                as: 'categories'
-            },
-            {
-                model: db.Image,
-                as: 'images'
-            }]
+
+        let resultado = [];
+
+        products.forEach(product => {
+            if (product.name.includes(buscaProduct)){
+                resultado.push(product)
+            }
         })
 
-       let resultado = allProducts.filter(product => product.name.toLowerCase().includes(buscaProduct.toLowerCase()))
         res.render('./products/productSearch', {
             resultado : resultado,
             title: 'Resultado de Busqueda',
