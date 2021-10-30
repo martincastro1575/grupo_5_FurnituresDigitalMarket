@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %> 
+<!-- <%- include('../partials/head') %>  -->
 <body>
     <%- include('../partials/header') %> 
     <div class="main-form">
@@ -46,6 +46,12 @@
 						<option value="">Activo</option>
 						<option value="">Inactivo</option>
 					</select>
+                </div>
+                <div class="form-control" style="display: none;">
+                    <label for="imageProduct" class="control">Seleccione Imagen</label>
+                    <input type="file" name="imageProduct" id="imageProduct" 
+                    accept="image/png, image/jpg, image/gif" value="X" multiple />
+                    
                 </div>
                 <div class="form-control">
                     <label for="medidas" class="control">Medidas</label>
@@ -105,7 +111,10 @@
                     <label for="discount-producto">Cantidad Máxima</label>
                     <input type="text" name="cantidadMaxima" id="cantidadMaxima" 
                     class="control precio" value="<%= oneProduct.stock_max == undefined ? oneProduct.cantidadMaxima : oneProduct.stock_max %>">
-                </div>            
+                </div>
+                <div class="form-control text-danger val-front">
+                    <ul></ul>
+                </div>      
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar Cambios</button>
                     <button type="reset" class="button-form">Limpiar</button>

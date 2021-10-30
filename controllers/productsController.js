@@ -34,8 +34,8 @@ const productsController = {
     'guardarProducto': async (req, res) =>{
         
         const resultErros = validationResult(req)
-        console.log(req.body)
-        console.log("Contendido de File en el controlador: " + req.files)
+        // console.log(req.body)
+        // console.log("Contendido de File en el controlador: " + req.files)
         //return res.send(req.files)
         if (resultErros.errors.length > 0 ){
                 
@@ -108,12 +108,12 @@ const productsController = {
         let idProduct = req.params.id
         //return res.send(req.body)
         const resultErros = validationResult(req)
-        console.log('Id de producto: ' + idProduct)
+        //console.log('Id de producto: ' + idProduct)
         if (resultErros.errors.length > 0 ){                
             let allCategory = await productsController.bucarCategorias();
-            console.log('Dentro de errores: ')   
-            console.log(req.body)
-            console.log(resultErros)
+            // console.log('Dentro de errores: ')   
+            // console.log(req.body)
+            // console.log(resultErros)
             
             return res.render('products/productEdit',{
                 errors: resultErros.mapped(),
