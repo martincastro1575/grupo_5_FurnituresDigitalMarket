@@ -40,5 +40,18 @@ function onInputPassword(event){
     }else{
         document.getElementById('password-error').innerHTML = ''
     }
+}
+function onInputEmail(event){
+  document.getElementById('back-email-error').innerHTML = ''
+
+  const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     
+  const rule = regexEmail.test(event.target.value)  
+
+  if(!rule){
+    console.log(rule)
+      document.getElementById('email-error').innerHTML = 'El campo debe ser un email válido, ejemplo: name@mail.com'
+  }else{
+      document.getElementById('email-error').innerHTML = ''
+  }
 }

@@ -18,11 +18,13 @@
                 <% } %> -->
                 <form action="/user/login" method="POST" class="form-login">
                     <div class="form-control">
-                        <input type="text" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email" value="<%= locals.oldData ? oldData.nombreUser : null %>">
+                        <input type="email" oninput="onInputEmail(event)" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email" value="<%= locals.oldData ? oldData.nombreUser : null %>">
                         <div class="text-danger">
                             <% if (locals.errors && errors.nombreUser) { %>
                                 <%= errors.nombreUser.msg %> 
                             <% } %>
+                        </div>
+                        <div class="text-danger" id="email-error">
                         </div>
                     </div>
                     <div class="form-control">
@@ -31,8 +33,8 @@
                             <% if (locals.errors && errors.passUser) { %>
                                 <%= errors.passUser.msg %> 
                             <% } %>
-                            <div class="text-danger" id="password-error">
-                            </div>
+                        </div>
+                        <div class="text-danger" id="password-error">
                         </div>
                     </div>
                     
