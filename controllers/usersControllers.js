@@ -21,36 +21,47 @@ const userController = {
 
     'processLogin': (req, res)=>{
         const resultErros = validationResult(req)       
+        const regEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
 
         //busco en el modelo so existe el usuario
         let userLogin = User.findByField('email', req.body.nombreUser)
 
-        if (userLogin){
-            let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
-
-            if(verificaPassword){
-                //por seguridad borramos de la session el password
-                delete userLogin.password
-                //creo la session
-                req.session.userLogin = userLogin
-                
-                //creo la cookie
-                if(req.body.recordame){
-                    res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+        if (!isEmpty(userLogin)){
+            if(regEx.test(req.body.passUser)){
+                let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
+                if(verificaPassword){
+                    //por seguridad borramos de la session el password
+                    delete userLogin.password
+                    //creo la session
+                    req.session.userLogin = userLogin
+                    //creo la cookie
+                    if(req.body.recordame){
+                        res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+                    }
+    
+                    return res.redirect('/user/profile');
+    
+                }else{
+                     res.render('users/loginUser',{
+                        errors:{
+                            passUser:{
+                                msg: 'Verique las credenciales ingresadas',
+                            }
+                        },
+                        title:'Login de Usuario',
+                    })
                 }
-
-                return res.redirect('/user/profile');
-
             }else{
-                return res.render('users/loginUser',{
+                res.render('users/loginUser', {
                     errors:{
-                        nombreUser:{
+                        passUser:{
                             msg: 'Verique las credenciales ingresadas',
                         }
                     },
                     title:'Login de Usuario',
                 })
             }
+
         }else{
             //si no se encuentra el usuario
             return res.render('users/loginUser',{
