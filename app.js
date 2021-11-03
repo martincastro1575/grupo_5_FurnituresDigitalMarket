@@ -5,6 +5,9 @@ const methodOverride = require('method-override');
 const routes = require('./routers/mainRoutes');
 const routesProducts = require('./routers/products');
 
+//Rutas para API
+const routeApiProducts = require('./routers/api/products')
+
 // const routerEjemplo = require('./routers/rutaEjemplo')
 const routerUser = require('./routers/users');
 
@@ -58,6 +61,7 @@ app.set('view engine', 'ejs');
 app.use('/', routes);
 app.use('/producto', routesProducts);
 app.use('/user', routerUser);
+app.use('/api',routeApiProducts)
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA
 //app.use('/movies', moviesRouter);
