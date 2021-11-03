@@ -2,10 +2,16 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs')
+const db = require("../database/models");
+
 
 //requiriendo modelo JSON
-const User = require('../models/Users');
+//const User = require('../models/Users');
 const { send } = require('process');
+
+//Requerimos la BD de users
+
+
 
 
 const usersPath = path.join(__dirname, '../data/users.json');
@@ -105,11 +111,24 @@ const userController = {
             })        
         }
 
+        db.User.create({
+            name: req.body.nombreApellido,
+            lastname: req.body.nombreApellido,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        })
+
         //valido que usuario con el mismo email, no se registre
         //dos veces.
-        let userExists = User.findByField('email', req.body.userEmail)
+        /*let userExists = db.User.findByField('email', req.body.userEmail)*/
 
-        if(userExists){
+        /*if(userExists){
             return res.render('users/register',{
                 errors: {
                     userEmail:{
@@ -119,7 +138,7 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })
-        }
+        } 
         
         let userCreate = {
             
@@ -135,7 +154,7 @@ const userController = {
             
         }
         
-        let createuser = User.create(userCreate)
+        let createuser = User.create(userCreate) */
 
          return res.redirect('/user/login')
 
@@ -160,10 +179,14 @@ const userController = {
     
     'usersList': (req,res)=>{
         //res.send('9')
-        res.render('users/userList',{
-            users:users,
-            title:'Listado de Usuarios'
-        }) 
+
+        db.User.findAll()
+        .then(function(users){
+            res.render('users/userList',{users:users,
+                title:'Listado de Usuarios'
+            }) 
+        })
+        
     },
 
     'store':(req, res)=>{

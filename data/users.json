@@ -201,5 +201,41 @@
   "category": "user",
   "image": "user-1631834726385.png",
   "isActive": true
+ },
+ {
+  "id": 37,
+  "nombreApellido": "Jose pena",
+  "sexo": "F",
+  "email": "jose@email.com",
+  "telefono": "04122058139",
+  "fechaNac": "2021-11-03",
+  "password": "$2a$10$8Qc5WDyMfCSYD0ty44qqFOXtYjULKsa9t6qxLg6/u9EFiiS.Nd.hC",
+  "category": "user",
+  "image": "user-1635965578186.png",
+  "isActive": true
+ },
+ {
+  "id": 38,
+  "nombreApellido": "Jose pena",
+  "sexo": "F",
+  "email": "jose28@email.com",
+  "telefono": "04122058139",
+  "fechaNac": "2021-11-03",
+  "password": "$2a$10$WfbvJldcWj/Nruio6UMmG.gauuYuOZbM788UbOsBWCprUvim6T6iC",
+  "category": "user",
+  "image": "user-1635965669035.jpg",
+  "isActive": true
+ },
+ {
+  "id": 39,
+  "nombreApellido": "Jose pena",
+  "sexo": "M",
+  "email": "josiherz28@gmail.com",
+  "telefono": "04122058139",
+  "fechaNac": "2021-11-03",
+  "password": "$2a$10$.G6zHiqCXpciTkEBoh524e1.dPUQuWRsByvpICL9C6uolOWmexvhi",
+  "category": "user",
+  "image": "user-1635965767673.jpg",
+  "isActive": true
  }
 ]
