@@ -40,10 +40,13 @@ routerUser.get('/profile', authMiddleware, userController.profile);
 routerUser.get('/listado', userController.usersList);
 
 //Update User
-routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.store);
+routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.updateUser);
 
 //Editarusuario
 routerUser.get('/edit/:id', userController.userEdit);
+
+// Delete user
+routerUser.post('/delete/:id', userController.userDelete);
 
 
 //logout
