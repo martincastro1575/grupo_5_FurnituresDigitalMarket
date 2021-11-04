@@ -3,12 +3,25 @@ const  Op = db.Sequelize.Op;
 
 const productsController = {
     listado: async (req,res)=>{
-        const productsList = await db.Product.findAll()
-        console.log(productsList)
+        const products = await db.Product.findAll({
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            }],
+            attributes: {
+                exclude:[
+                    'high','width','length','price','discount','quantity','stock_min',
+                    'stock_max', 'idCategory','idStatus','created_at','id_category'
+                ]
+            }
+        })
+        products.forEach(product => {
+            console.log(product.dataValues.id)
+        });
         return res.status(200).json({
             status: 200,
-            data: productsList,
-            total: productsList.length,
+            total: products.length,
+            data: products,
         })
 
     }

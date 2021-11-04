@@ -18,20 +18,28 @@
                 <% } %> -->
                 <form action="/user/login" method="POST" class="form-login">
                     <div class="form-control">
-                        <input type="text" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email" value="<%= locals.oldData ? oldData.nombreUser : null %>">
+                        <input type="email" oninput="onInputEmail(event)" name="nombreUser" id="nombreUser" class="control" placeholder="Ingrese su email" value="<%= locals.oldData ? oldData.nombreUser : null %>">
                         <div class="text-danger">
                             <% if (locals.errors && errors.nombreUser) { %>
                                 <%= errors.nombreUser.msg %> 
                             <% } %>
                         </div>
+                        <div class="text-danger" id="email-error">
+                        </div>
                     </div>
                     <div class="form-control">
-                        <input type="password" name="passUser" id="passUser" class="control" placeholder="Ingrese su contraseña">
-                        <div class="text-danger">
+                        <input type="password" name="passUser" oninput="onInputPassword(event)" id="passUser" class="control" placeholder="Ingrese su contraseña" required>
+                        <div class="text-danger" id="back-error">
                             <% if (locals.errors && errors.passUser) { %>
                                 <%= errors.passUser.msg %> 
                             <% } %>
                         </div>
+                        <div class="text-danger" id="password-error">
+                        </div>
+                    </div>
+                    <div class="recordame">
+                        <input type="checkbox" name="recordame" id="recordame" class="" placeholder="Ingrese su contraseña">
+                         <label for="recordame" class="">Recordame</label>
                     </div>
                     
                     <div class="form-control-button">
@@ -39,14 +47,10 @@
                         <button type="reset" class="button-form">Resert</button>
                     </div>
 
-                    <div class="recordame">
-                        <input type="checkbox" name="recordame" id="recordame" class="" placeholder="Ingrese su contraseña">
-                         <label for="recordame" class="">Recordame</label>
-                    </div>
-
                 </form>            
         </main>
     </div>
+    <script src="/js/index.js"></script>
     <%- include('../partials/footer.ejs') %> 
 </body>
 </html>

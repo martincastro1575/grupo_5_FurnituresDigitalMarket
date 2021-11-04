@@ -22,7 +22,8 @@ module.exports=(sequelize, dataTypes)=>{
     let config = {
         timestamps: false,
         tableName: 'images',
-        idProduct: 'id_product',   
+        underscored: true,
+        updatedAt: false
     }
 
 
