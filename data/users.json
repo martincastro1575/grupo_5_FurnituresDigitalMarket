@@ -5,8 +5,8 @@
   "last_name": "Castro",
   "email": "martin.castro1575@gmail.com",
   "telefono": "59713341",
-  "password": "123",
-  "category": "admin",
+  "password": "$2a$12$Qobqwatq.2Y10NqLpTgv0.74fRdgvLlPdiJDwyAo9RkHSTwLHm/8m",
+  "category": "user",
   "image": "default.png",
   "isActive": true
  },
@@ -19,7 +19,7 @@
   "fechaNac": "1981-03-27",
   "password": "$2a$10$NSd9LWPZQSXhUID5Ck7kD.VPPDsNTpDXrnyFnraoLb/A4w430PfBe",
   "category": "user",
-  "image": "user-1630970040104.png",
+  "image": "6058ac609b534_1004x565.jpg",
   "isActive": true
  },
  {
@@ -31,7 +31,7 @@
   "fechaNac": "2021-09-04",
   "password": "$2a$10$lx2eDW9V8FNiuhbwSyGyyuMfNIEWcjckK5DXii/lG0b45oeVUJkaK",
   "category": "user",
-  "image": "user-1630971291792.png",
+  "image": "1628862274_590129_1628935953_noticia_normal_recorte1.jpg",
   "isActive": true
  },
  {
@@ -43,7 +43,7 @@
   "fechaNac": "2021-09-04",
   "password": "$2a$10$Xgk0.q2motaDZP/hbubxMuOT/E9PCJWT3U8Zxl8rXErQLgICD4.A6",
   "category": "user",
-  "image": "user-1630971810990.png",
+  "image": "1630353475_368858_1630353960_noticia_normal_recorte1.jpg",
   "isActive": true
  },
  {
@@ -55,7 +55,7 @@
   "fechaNac": "2021-09-04",
   "password": "$2a$10$shuoVVa14sfRF3ge3MdHju4fNk8eZF0TY4vj0nfY3a10KnwJxsOM.",
   "category": "user",
-  "image": "user-1630972401105.png",
+  "image": "guido-kaczka.jpg",
   "isActive": true
  },
  {
@@ -67,7 +67,7 @@
   "fechaNac": "2021-09-24",
   "password": "$2a$10$An.NjAtr5lhiaM.atqeVrek09neKWHlZPkxaIeqKZMgzLz4rGq.hW",
   "category": "user",
-  "image": "user-1630972976290.png",
+  "image": "IJSMHYLJZ5CNPDJIRBW6XOY7XY.jpg",
   "isActive": true
  },
  {
@@ -79,7 +79,7 @@
   "fechaNac": "2021-09-16",
   "password": "$2a$10$hmHbaVWeRmJ8KQ9wnP5y.e3FglpQbTC5GnDqvs2JXkoj7u275RKlm",
   "category": "user",
-  "image": "user-1631007203013.png",
+  "image": "marley_crop1550075909170.jpg_792575817.jpg",
   "isActive": true
  },
  {
@@ -91,7 +91,7 @@
   "fechaNac": "2021-09-16",
   "password": "$2a$10$yxjaEadx7/N20qdbyw.5pe67MyhO1OROoa7shjcddkBL.2q4k1OFm",
   "category": "user",
-  "image": "user-1631007408911.png",
+  "image": "tinelli-conductorjpg.jpg",
   "isActive": true
  },
  {
@@ -103,7 +103,7 @@
   "fechaNac": "2021-09-16",
   "password": "$2a$10$2PYEuEYCrmKsIPiUbgrZAuJdN7Q5pcSJrcynSVUoYdVqj0.6qqKjS",
   "category": "user",
-  "image": "user-1631007699453.png",
+  "image": "tini-pelo-t.jpg",
   "isActive": true
  },
  {
@@ -115,7 +115,7 @@
   "fechaNac": "2021-09-16",
   "password": "$2a$10$mwnqkH5i1qD1PQbc9OgoRe/PGiQpE.2mkMtBgh/UJNgaXFo.62Nra",
   "category": "user",
-  "image": "user-1631007901691.png",
+  "image": "60f70ce9a463d_720_960!.jpg",
   "isActive": true
  },
  {
@@ -127,7 +127,7 @@
   "fechaNac": "2021-09-16",
   "password": "$2a$10$muECYEfIhKol2zat1o9.4upCzYW/2FK0wWHgL.e/LCybGlZ3Gsi.m",
   "category": "user",
-  "image": "user-1631007981804.png",
+  "image": "248edcd94f2f60dafec896115aefa521.jpg",
   "isActive": true
  },
  {
@@ -139,7 +139,7 @@
   "fechaNac": "2021-10-08",
   "password": "$2a$10$V66efqSUz0LRL1U2xzC7EuIAcFQjpGsVkV9wsoWX0dNGjkPRFkFlW",
   "category": "user",
-  "image": "user-1631008059429.png",
+  "image": "000071874_1_Catherine_Fulop_C_juana_mauri_201908082115.jpg",
   "isActive": true
  },
  {
@@ -151,7 +151,7 @@
   "fechaNac": "2021-09-10",
   "password": "$2a$10$FQ8JRT2Nf80t5h9FeYZ.jOp3hqz6T3PPvkSxcWSxBKgWZ4/YK5YIa",
   "category": "user",
-  "image": "user-1631008121287.png",
+  "image": "0094742.jpg-c_310_420_x-f_jpg-q_x-xxyxx.jpg",
   "isActive": true
  },
  {
@@ -163,7 +163,7 @@
   "fechaNac": "2021-09-30",
   "password": "$2a$10$1.4TWsXQNPPe1EyGS7ChJOzz05WT2fzKp8AAi.auq5Tde10JII20W",
   "category": "user",
-  "image": "user-1631008347248.jpg",
+  "image": "201603161238201f5e7f2748adabf08629a6312ac3bfdd.jpg",
   "isActive": true
  },
  {
@@ -200,6 +200,18 @@
   "password": "$2a$10$W5SY5BUsJW2wEUJOiWqmEumDNz3/qXUGrjlY0qO2LWkXeP4m/.yL2",
   "category": "user",
   "image": "user-1631834726385.png",
+  "isActive": true
+ },
+ {
+  "id": 37,
+  "nombreApellido": "Josibel Hernandez",
+  "sexo": "F",
+  "email": "josiherz28@gmail.com",
+  "telefono": "04122058139",
+  "fechaNac": "1993-11-27",
+  "password": "$2a$10$sn79y5oxNBdaDtv59ebBrutUmv6cmWIXaQcsdtc/eA7wdrBMWGhrW",
+  "category": "user",
+  "image": "user-1633636230616.jpg",
   "isActive": true
  }
 ]

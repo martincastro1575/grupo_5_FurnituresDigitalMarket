@@ -6,68 +6,167 @@
     <div class="main-form"> 
         <main> 
             <h2>Edición de Usuario</h2>              
-            <form action ="/user/edit/<%= oneUser.id %>" method="POST" class="form-register" enctype="multipart/form-data">
-                <div class="form-control">
-                    <input type="hidden" value="<%= oneUser.id %>">   
-                    <label for="nombreApellido">Nombre y apellido</label>
-                    <input type="text" name="nombreApellido" id="nombreApellido" class="control" value="<%= oneUser.nombreApellido %>">
-                    
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.nombreApellido) { %>
-                            <%= errors.nombreApellido.msg %> 
-                        <% } %>
+            <form action ="/user/edit/<%= user.id %>" method="POST" enctype="multipart/form-data">
+                <div class="container-form">
+                    <!-- Row-->
+                    <div class="row-form">
+                        <div class="col-form">
+                            <div class="form-control">
+                                <input type="hidden" value="<%= user.id %>">   
+                                <label for="nameUser">Nombre</label>
+                                <input type="text" name="nameUser" id="nameUser" class="control" value="<%= user.name %>">
+                                
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.nameUser) { %>
+                                        <%= errors.nameUser.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-form">
+                            <div class="form-control">
+                                <input type="hidden" value="<%= user.id %>">   
+                                <label for="lastnameUser">Apellido</label>
+                                <input type="text" name="lastnameUser" id="lastnameUser" class="control" value="<%= user.lastname %>">
+                                
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.lastnameUser) { %>
+                                        <%= errors.lastnameUser.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-control">
-                    <label for="userEmail">Email</label>
-                    <input type="email" name="email" id="email" class="control" value="<%= oneUser.email %>">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.email) { %>
-                            <%= errors.userEmail.msg %> 
-                        <% } %>
+                    <!-- Row -->
+                    <div class="row-form">
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="userEmail">Email</label>
+                               <input type="email" name="email" id="email" class="control" value="<%= user.email %>">
+                               <div class="text-danger">
+                                   <% if (locals.errors && errors.email) { %>
+                                       <%= errors.userEmail.msg %> 
+                                   <% } %>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="sexo">Sexo</label>
+                               <select name="sexo" id="sexo" class="control">
+                                   <option value=""><%= user.gender %></option>
+                                   <option value="Male">
+                                       Masculino
+                                   </option>
+                                   <option value="Female">
+                                       Femenino
+                                   </option>
+                               </select>
+                               <div class="text-danger">
+                                   <% if (locals.errors && errors.sexo) { %>
+                                       <%= errors.sexo.msg %> 
+                                   <% } %>
+                               </div>
+                           </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-control">
-                    <label for="sexo">Sexo</label>
-                    <select name="sexo" id="sexo" class="control" <%=  %>>
-                        <option value="">Seleccione su Sexo</option>
-                        <option value="M" <%= locals.oneUser && (oneUser.sexo === 'M') ? 'selected' : null %>>
-                            Masculino
-                        </option>
-                        <option value="F" <%= locals.oneUser && (oneUser.sexo === 'F') ? 'selected' : null %>>
-                            Femenino
-                        </option>
-                    </select>
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.sexo) { %>
-                            <%= errors.sexo.msg %> 
-                        <% } %>
+                    <!-- Row-->
+                    <div class="row-form">
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="telefono">Teléfono</label>
+                               <input type="text" name="telefono" id="telefono" class="control" value=<%= user.phone %>>
+                               <div class="text-danger">
+                                   <% if (locals.errors && errors.telefono) { %>
+                                       <%= errors.telefono.msg %> 
+                                   <% } %>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="col-form">
+                            <div class="form-control">
+                                <label for="fechaNac">Fecha de nacimiento</label>
+                                <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= user.birthdate %>">
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.fechaNac) { %>
+                                        <%= errors.fechaNac.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                         </div>
                     </div>
-                </div>
-                <div class="form-control">
-                    <label for="telefono">Teléfono</label>
-                    <input type="number" name="telefono" id="telefono" class="control" value="<%= oneUser.telefono %>">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.telefono) { %>
-                            <%= errors.telefono.msg %> 
-                        <% } %>
+                    <!-- Row -->
+                    <div class="row-form">
+                        <div class="col-form">
+                            <div class="form-control">
+                                <label for="rol">Rol de usuario</label>
+                                <select name="rol" id="rol" class="control">
+                                    <option value="<%= user.idRole %>">Seleccione rol de usuario</option>
+                                    <option value="1">
+                                        Administrador
+                                    </option>
+                                    <option value="2">
+                                        Usuario
+                                    </option>
+                                </select>
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.rol) { %>
+                                        <%= errors.rol.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-form">
+                            <div class="form-control">
+                                <label for="status">Status de usuario</label>
+                                <select name="status" id="status" class="control">
+                                    <option value="<%= user.idStatus%>">Seleccione status de usuario</option>
+                                    <option value="1">
+                                        Activo
+                                    </option>
+                                    <option value="2">
+                                        Inactivo
+                                    </option>
+                                </select>
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.rol) { %>
+                                        <%= errors.rol.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-control">
-                    <label for="fechaNac">Fecha de nacimiento</label>
-                    <input type="date" name="fechaNac" id="fechaNac" class="control" value="<%= oneUser.fechaNac %>">
-                    <div class="text-danger">
-                        <% if (locals.errors && errors.fechaNac) { %>
-                            <%= errors.fechaNac.msg %> 
-                        <% } %>
+                    <div class="row-form">
+                        <div class="col-form">
+                            <div class="form-control">
+                                <label for="userPass">Contraseña</label>
+                                <input type="password" name="userPass" id="userPass" class="control">
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.userPass) { %>
+                                        <%= errors.userPass.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-form">
+                            <div class="form-control">
+                                <label for="confirmPass">Confirmar contraseña</label>
+                                <input type="password" name="confirmPass" id="confirmPass" class="control">
+                                <div class="text-danger">
+                                    <% if (locals.errors && errors.confirmPass) { %>
+                                        <%= errors.confirmPass.msg %> 
+                                    <% } %>
+                                </div>
+                            </div>
+                         </div>
+                     </div>
+                    <!-- Row-->
+                    <div class="form-control-button">
+                        <button type="submit" class="button-form">Guardar</button>
+                        <button type="reset" class="button-form">Borrar</button>
                     </div>
-                </div>
-                
-                <div class="form-control-button">
-                    <button type="submit" class="button-form">Actualizar</button>
-                    <button type="reset" class="button-form">Borrar</button>
-                </div>
-            </form>
+                </div>   
+             </form>   
         </main>
     </div>
     <%- include('../partials/footer.ejs') %>

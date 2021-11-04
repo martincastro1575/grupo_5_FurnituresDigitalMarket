@@ -42,10 +42,13 @@ router.get('/agregar', productController.crearProducto);
 //router.post('/guardarProducto', upload.single('imageProduct'),productController.guardarProducto);
 router.post('/guardarProducto', upload_image.array('imageProduct'),addProductValMiddleware,productController.guardarProducto);
 
-router.post('/eliminar/:id', productController.productDelete);
+router.post('/eliminar/:id', productController.delete);
+router.get('/eliminar/:id', productController.delete);
 
 router.get('/listado', productController.productList);
 router.get('/search', productController.search);
+
+router.get('/detail/:id', productController.detail);
 
 
 module.exports = router

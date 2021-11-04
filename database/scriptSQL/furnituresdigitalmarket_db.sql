@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `furnituresdigitalmarket_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `furnituresdigitalmarket_db`;
--- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
--- Host: localhost    Database: furnituresdigitalmarket_db
+-- Host: 127.0.0.1    Database: furnituresdigitalmarket_db
 -- ------------------------------------------------------
--- Server version	8.0.26-0ubuntu0.20.04.2
+-- Server version	8.0.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -58,7 +58,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`),
   KEY `id_user_idx` (`id_user`),
   CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` VALUES (1,'cra 65 #169A',2,0),(2,'cra 68 #169A',3,1);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,12 +80,12 @@ DROP TABLE IF EXISTS `images`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `images` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(500) NOT NULL,
+  `name` varchar(250) NOT NULL,
   `id_product` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_product_image_idx` (`id_product`),
   CONSTRAINT `id_product_image` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +94,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'prod-1633182031906.png',15),(2,'prod-1633182270293.png',16),(3,'user-1633183239291.png',17),(4,'prod-1633188510166.png',19),(5,'prod-1633188510169.png',19),(6,'prod-1633188510170.png',19),(7,'prod-1633194783977.png',20),(8,'prod-1633194959321.png',21),(9,'prod-1633195263298.png',23),(10,'prod-1633195443902.png',24),(11,'prod-1633195443904.png',24);
+INSERT INTO `images` VALUES (1,'imaen-ducha.jpg',5),(2,'mueble-cocina.jpg',6),(3,'sillon-2-cuerpos.png',7),(4,'baño3.png',8),(5,'baño2.png',9),(6,'baño1.png',10),(7,'baño3.png',11),(8,'baño2.png',12),(9,'baño1.png',13),(10,'baño3.png',14),(11,'prod-1629242001540.png',15),(12,'sala1.png',16),(13,'sala2.png',17),(14,'sala3.png',18),(15,'sala1.png',19),(16,'sala2.png',20),(17,'sala3.png',21),(18,'prod-1633985991185.png',30),(19,'prod-1633986069947.jpg',31);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +150,7 @@ CREATE TABLE `products` (
   KEY `id_category_idx` (`id_category`),
   CONSTRAINT `id_category` FOREIGN KEY (`id_category`) REFERENCES `products_category` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status_product` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +159,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Set Comedor NUEVO','fffffffff',1,1,1,200000.00,0,100,5,100,1,1,'2021-10-01 10:24:56'),(2,'Bacha de marmol de Baño','Bacha de baño',0,0,0,45000.00,10,20,1,20,1,2,'2021-10-01 10:51:09'),(3,'Bacha de Cristal','Bacha de Cristal',0,0,0,30000.00,0,10,1,10,1,2,'2021-10-01 10:54:54'),(4,'Set Comedor NUEVO','COMEDOR',0,0,0,200000.00,20,20,3,20,1,3,'2021-10-01 11:04:14'),(5,'dddd','dddd',0,0,0,222.00,2,2,2,2,NULL,1,'2021-10-01 23:49:20'),(6,'sss','sss',4,4,4,4.00,4,4,4,4,NULL,2,'2021-10-01 23:50:27'),(7,'Nuevo Producto','eeee',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 12:24:18'),(8,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:32:58'),(9,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:53'),(10,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:58'),(11,'ddd','ddd',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 12:34:39'),(12,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 13:03:21'),(13,'sss','ssss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 13:37:16'),(14,'Nuevo Producto','fdsf',0,0,0,111.00,111,111,111,111,NULL,2,'2021-10-02 13:38:06'),(15,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,4,'2021-10-02 13:40:31'),(16,'Modulo de Juego Completo','ssss',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 13:44:30'),(17,'Modulo de Juego Completo','ddd',0,0,0,1.00,1,1,1,1,NULL,2,'2021-10-02 14:00:39'),(18,'Set Comedor NUEVO','dddd',0,0,0,9.00,9,9,9,9,NULL,2,'2021-10-02 15:20:31'),(19,'Set Comedor NUEVO','mkmkmk',0,0,0,7.00,7,7,7,7,NULL,1,'2021-10-02 15:28:30'),(20,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 17:13:03'),(21,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 17:15:59'),(22,'Modulo de Juego Completo','hhh',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 17:18:21'),(23,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 17:21:03'),(24,'Set Comedor NUEVO','sss',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 17:24:03');
+INSERT INTO `products` VALUES (5,'dddd','dd',0,0,0,222.00,2,2,2,2,NULL,1,'2021-10-01 23:49:20'),(6,'sss','sss',4,4,4,4.00,4,4,4,4,NULL,2,'2021-10-01 23:50:27'),(7,'Nuevo Producto','eeee',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 12:24:18'),(8,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:32:58'),(9,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:53'),(10,'Modulo de Juego Completo','2222',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 12:33:58'),(11,'ddd','ddd',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 12:34:39'),(12,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 13:03:21'),(13,'sss','ssss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 13:37:16'),(14,'Nuevo Producto','fdsf',0,0,0,111.00,111,111,111,111,NULL,2,'2021-10-02 13:38:06'),(15,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,4,'2021-10-02 13:40:31'),(16,'Modulo de Juego Completo','ssss',0,0,0,2.00,2,2,2,2,NULL,4,'2021-10-02 13:44:30'),(17,'Modulo de Juego Completo','ddd',0,0,0,1.00,1,1,1,1,NULL,2,'2021-10-02 14:00:39'),(18,'Set Comedor NUEVO','dddd',0,0,0,9.00,9,9,9,9,NULL,2,'2021-10-02 15:20:31'),(19,'Set Comedor NUEVO','mkmkmk',0,0,0,7.00,7,7,7,7,NULL,1,'2021-10-02 15:28:30'),(20,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 17:13:03'),(21,'Nuevo Producto','sss',0,0,0,0.00,0,0,0,0,NULL,4,'2021-10-02 17:15:59'),(22,'Modulo de Juego Completo','hhh',0,0,0,0.00,0,0,0,0,NULL,3,'2021-10-02 17:18:21'),(23,'Set Comedor NUEVO','ddd',0,0,0,0.00,0,0,0,0,NULL,2,'2021-10-02 17:21:03'),(24,'Set Comedor NUEVO','sss',0,0,0,0.00,0,0,0,0,NULL,1,'2021-10-02 17:24:03'),(25,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,3,'2021-10-02 13:40:31'),(26,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,1,'2021-10-02 13:40:31'),(27,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,2,'2021-10-02 13:40:31'),(28,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,4,'2021-10-02 13:40:31'),(29,'Modulo de Juego Completo','fdsfdsf',0,0,0,8.00,8,8,8,8,NULL,4,'2021-10-02 13:40:31'),(30,'Any ','Hola',50,10,20,10.00,0,100,2,8,NULL,1,'2021-10-11 20:59:51'),(31,'Mueble negro','hola',20,10,10,200.00,0,100,1,8,NULL,4,'2021-10-11 21:01:09');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +181,7 @@ CREATE TABLE `products_action_type` (
   KEY `id_action_type_idx` (`id_action_type`),
   CONSTRAINT `id_action_type` FOREIGN KEY (`id_action_type`) REFERENCES `action_type` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_product_action` FOREIGN KEY (`id_product_action`) REFERENCES `products` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +190,7 @@ CREATE TABLE `products_action_type` (
 
 LOCK TABLES `products_action_type` WRITE;
 /*!40000 ALTER TABLE `products_action_type` DISABLE KEYS */;
-INSERT INTO `products_action_type` VALUES (1,NULL,NULL,'2021-10-02 17:21:03',34),(2,24,1,'2021-10-02 17:24:04',34);
+INSERT INTO `products_action_type` VALUES (1,NULL,NULL,'2021-10-02 17:21:03',34),(2,NULL,1,'2021-10-02 17:24:04',34),(3,30,1,'2021-10-11 20:59:51',50),(4,31,1,'2021-10-11 21:01:09',50);
 /*!40000 ALTER TABLE `products_action_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +208,7 @@ CREATE TABLE `products_category` (
   `is_active` tinyint DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +217,7 @@ CREATE TABLE `products_category` (
 
 LOCK TABLES `products_category` WRITE;
 /*!40000 ALTER TABLE `products_category` DISABLE KEYS */;
-INSERT INTO `products_category` VALUES (1,'cocina','Productos para cocina',0,'2021-09-30 06:56:37'),(2,'baño','Productos para el baño',0,'2021-09-30 06:56:37'),(3,'sala','Productos para sala',0,'2021-09-30 06:57:19'),(4,'cuarto','Productos para el cuarto',0,'2021-09-30 06:57:19');
+INSERT INTO `products_category` VALUES (1,'cocina','Productos para cocina',0,'2021-09-30 06:56:37'),(2,'baño','Productos para el baño',0,'2021-09-30 06:56:37'),(3,'sala','Productos para sala',0,'2021-09-30 06:57:19'),(4,'cuarto','Productos para el cuarto',0,'2021-09-30 06:57:19'),(5,'masvendidos','Productos más vendidos',0,'2021-09-30 07:57:19'),(6,'ofertasemana','Productos ofertas de la semana',0,'2021-09-30 07:57:19');
 /*!40000 ALTER TABLE `products_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +299,7 @@ CREATE TABLE `roles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(12) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,6 +308,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'Admin'),(2,'User');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,7 +382,7 @@ CREATE TABLE `status` (
   `description` varchar(200) NOT NULL,
   `dominio` enum('USER','PRODUCT','BUY') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,7 +391,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'activo','el producto esta disponible','PRODUCT'),(2,'inactivo','el producto esta disponible','PRODUCT');
+INSERT INTO `status` VALUES (1,'activo','el producto esta disponible','PRODUCT'),(2,'inactivo','el producto esta disponible','PRODUCT'),(3,'activo','usuario activo','USER'),(4,'inactivo','usuario inactivo','USER');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,17 +409,18 @@ CREATE TABLE `users` (
   `gender` enum('Male','Female','Other') DEFAULT NULL,
   `email` varchar(250) NOT NULL,
   `phone` varchar(15) DEFAULT NULL,
-  `bithdate` date DEFAULT NULL,
-  `password` varchar(12) NOT NULL,
-  `image` varchar(250) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `password` varchar(500) NOT NULL,
+  `image` text,
   `id_role` int DEFAULT NULL,
   `id_status` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_role_idx` (`id_role`),
   KEY `id_status_idx` (`id_status`),
   CONSTRAINT `id_role` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id`) ON DELETE SET NULL,
   CONSTRAINT `id_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -426,6 +429,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (2,'Martin','castro','Male','martin.castro1575@gmail.com','3117364159','1975-09-15','$2a$12$yUs17GPoLEeKYfm3ioi8nu/fIi/oYOT4g9n3ZbFIOlyPBEe3HRFYu',NULL,1,1,'2021-10-05 00:47:19'),(3,'Niurka','Rosas','Female','ing3@gmail.com','3117364159','1990-02-02','$2a$12$yUs17GPoLEeKYfm3ioi8nu/fIi/oYOT4g9n3ZbFIOlyPBEe3HRFYu',NULL,1,1,'2021-10-05 00:47:19'),(50,'Niurka','Rosas','Female','ing.niurkarosas@gmail.com','3117364159','1990-02-02','$2a$12$yUs17GPoLEeKYfm3ioi8nu/fIi/oYOT4g9n3ZbFIOlyPBEe3HRFYu',NULL,2,1,'2021-10-05 00:47:19');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,6 +464,10 @@ LOCK TABLES `users_action_type` WRITE;
 /*!40000 ALTER TABLE `users_action_type` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users_action_type` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'furnituresdigitalmarket_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -470,4 +478,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-02 14:32:31
+-- Dump completed on 2021-10-11 20:46:36
