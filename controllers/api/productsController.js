@@ -60,13 +60,16 @@ const productsController = {
     productById: async (req,res)=>{
         const idProd = req.params.id
         const prodById = await db.Product.findByPk(idProd,{
-            include: ['categories'],
-            attributes:
-            {
-                exclude:[
-                    'id_category','idStatus','created_at','idCategory','categories.is_active'
-                ]
-            }
+
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories',
+                attributes:
+                {
+                    exclude:['is_active','createdAt']
+                }
+            }], 
+            
         })
         
         prodById.dataValues.detail = `/images/products/${idProd}`
