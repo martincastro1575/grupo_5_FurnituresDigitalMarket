@@ -6,13 +6,29 @@ const sequelize = db.sequelize;
 
 const productsController = {
     listado: async (req,res)=>{
+        const pageNumber = Number.parseInt(req.query.page)
+        const sizeLimit = Number.parseInt(req.query.size)
+
+        let page =0;
+        let size = 10
+            
+        if (!Number.isNaN(pageNumber) && pageNumber >0){
+                page = pageNumber
+        }
+        
+        if(!Number.isNaN(sizeLimit)){
+            if(sizeLimit > 0 && sizeLimit <= 10){
+                size = sizeLimit
+            }
+        }
+
         const products = await db.Product.findAndCountAll({
             include: [{
                 model: db.ProductCategory,
                 as: 'categories',
                 attributes:
                 {
-                    exclude:['is_active','createdAt']
+                   exclude:['is_active','createdAt']
                 }
             }],            
             attributes:            
@@ -21,17 +37,18 @@ const productsController = {
                     'high','width','length','price','discount','quantity','stock_min',
                     'stock_max', 'idCategory','idStatus','created_at','id_category',
                 ]},
-            limit: 10,
-            offset:10,
+            limit: size,
+            offset: page * size,
         })
-        console.log(products)
+        //console.log(products)
+
         //Agrupando cantidad de productos por Categoria
         const prodBycats = await db.ProductCategory.findAll({
             attributes: ['description', [sequelize.fn('count',sequelize.col('products.id')),'Cantidad']],
-            include: [{
-                model: db.Product,
-                as: 'products'
-            }],
+            include: [
+                //model: db.Product,
+                'products'
+            ],
             group:['description']
         })
         //console.log(prodBycats)
@@ -50,14 +67,14 @@ const productsController = {
         });
         
         //Total de Paginas
-        const pagesCount= Math.ceil(products.count / 10)
+        const pagesCount= Math.ceil(products.count / size)
 
         return res.status(200).json({
             status: 200,
             productsByPage: products.rows.length,
             pages: pagesCount,
             totalProdByCategory: prodCategQty,
-            data: products,
+            data: products.rows,
         })
 
     },
