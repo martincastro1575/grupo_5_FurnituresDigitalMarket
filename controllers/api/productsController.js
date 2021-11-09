@@ -21,7 +21,7 @@ const productsController = {
                 size = sizeLimit
             }
         }
-
+        //EndPoint de paginacion: http://localhost:3500/api/products?page=2&size=10
         const products = await db.Product.findAndCountAll({
             include: [{
                 model: db.ProductCategory,
