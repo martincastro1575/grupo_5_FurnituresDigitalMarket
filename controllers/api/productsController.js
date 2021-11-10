@@ -23,20 +23,22 @@ const productsController = {
         }
         //EndPoint de paginacion: http://localhost:3500/api/products?page=2&size=10
         const products = await db.Product.findAndCountAll({
-            include: [{
-                model: db.ProductCategory,
-                as: 'categories',
-                attributes:
-                {
-                   exclude:['is_active','createdAt']
-                }
-            }],            
-            attributes:            
-                {
-                exclude:[
-                    'high','width','length','price','discount','quantity','stock_min',
-                    'stock_max', 'idCategory','idStatus','created_at','id_category',
-                ]},
+            // include: [{
+            //     model: db.ProductCategory,
+            //     as: 'categories',
+            //     attributes:
+            //     {
+            //        exclude:['is_active','createdAt']
+            //     }
+            // }],            
+            // attributes:            
+            //     {
+            //     exclude:[
+            //         'high','width','length','price','discount','quantity','stock_min',
+            //         'stock_max', 'idCategory','idStatus','created_at','id_category',
+            //     ]},
+            include:['categories'],
+            attributes:['id','name','description'],
             limit: size,
             offset: page * size,
         })
@@ -83,14 +85,23 @@ const productsController = {
         const idProd = req.params.id
         const prodById = await db.Product.findByPk(idProd,{
 
-            include: [{
-                model: db.ProductCategory,
-                as: 'categories',
-                attributes:
-                {
-                    exclude:['is_active','createdAt']
-                }
-            }], 
+            // include: [{
+            //     model: db.ProductCategory,
+            //     as: 'categories',
+            //     attributes:
+            //     {
+            //         exclude:['is_active','createdAt']
+            //     }
+            // }],
+            include: [                
+                'categories'
+            ],            
+            
+            
+                
+                
+           
+
             
         })
         
