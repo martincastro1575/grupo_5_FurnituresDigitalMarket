@@ -41,6 +41,7 @@ const productsController = {
             attributes:['id','name','description'],
             limit: size,
             offset: page * size,
+            
         })
         //console.log(products)
 
@@ -95,14 +96,7 @@ const productsController = {
             // }],
             include: [                
                 'categories'
-            ],            
-            
-            
-                
-                
-           
-
-            
+            ],
         })
         
         prodById.dataValues.detail = `/images/products/${idProd}`
