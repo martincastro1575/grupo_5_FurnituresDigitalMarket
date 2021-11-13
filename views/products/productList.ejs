@@ -15,14 +15,19 @@
              <% products.forEach(product => { %>
                
                     <article>
-                         <a href="/producto/editar/<%= product.id %>">
+                        <% if ( locals.userLogin && locals.userLogin.roles.name == 'Admin') { %>
+                            <a href="/producto/editar/<%= product.id %>">
+                        <% } else { %>
+                            <a href="/producto/detail/<%= product.id %>">
+                        <% } %>
                         <div class="img-description">
-                            <img src="/images/<%- product.images[0] ? product.images[0].name : 'no-image-available.jpg' %>" alt="<%- product.images[0] ? product.images[0].name : '' %>"
+                            <p><% locals.userLogin %></p>
+                            <img src="/images/products/<%- product.images[0] ? product.images[0].name : 'no-image-available.jpg' %>" alt="<%- product.images[0] ? product.images[0].name : '' %>"
                         class="product-image">
                             <h4><%= product.name %></h4>
                         </div>
                         <div class="product-detail">
-                            <a href="/detail"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="/detail/<%= product.id %>"><i class="fas fa-shopping-cart"></i></a>
                             <p class="price">$<%= product.price %></p>
                             <p class="discount"><%= product.discount %>%</p>  
                         </div>

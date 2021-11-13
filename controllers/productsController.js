@@ -33,7 +33,10 @@ const productsController = {
 
     'guardarProducto': async (req, res) =>{
         
-        const resultErros = validationResult(req)        
+        const resultErros = validationResult(req)
+        // console.log(req.body)
+        // console.log("Contendido de File en el controlador: " + req.files)
+        //return res.send(req.files)
         if (resultErros.errors.length > 0 ){
                 
             let allCategory = await productsController.bucarCategorias()
@@ -60,7 +63,8 @@ const productsController = {
                 stock_max: req.body.cantidadMaxima,
             
             }).then(response => {                
-                //obtengo el del producto para poder relacionar con img
+                //obtengo el id del producto para poder relacionar con img
+                //console.log('Recuperando Id del Producto: ' + response)
                 let idPro = response.id
                 //almaceno los archivos devueltos
                 let files = req.files
@@ -80,33 +84,17 @@ const productsController = {
                 })
         })
 
-		// let nuevoProducto = {
-        //     id: nuevoId,
-        //     name: req.body.nombreProducto,
-        //     price: req.body.precioProducto,
-        //     category: req.body.categoriaProd,
-        //     discount: req.body.discountProducto,
-        //     description: req.body.descripcionProd,
-        //     image: req.file.filename, //de este manera se llama usando multer
-        //     w: req.body.ancho,
-        //     h: req.body.alto,
-        //     l: req.body.largo,
-        //     stock: req.body.cantidadProducto,
-		// }
 
-		// products.push(nuevoProducto);
-		// fs.writeFileSync(productsPath, JSON.stringify(products));
         res.redirect('/producto/listado');
     },
 
     'productsEdit': async (req, res)=>{
         let allCategory = await productsController.bucarCategorias()
-
+        
         db.Product.findByPk(req.params.id,{
             include : ['categories']
         })
-        .then(product=> {
-            //return res.send(product)
+        .then(product=> {            
             res.render('products/productEdit',{
                 title: 'Edición de Productos',
                 oneProduct: product,
@@ -114,23 +102,49 @@ const productsController = {
             })
         })
         .catch(error => res.send(error))
-        
-        
-        // let idProduct = req.params.id;
-
-        // let oneProduct = products.find(product=>
-        //         product.id == idProduct
-        //     )
-        // res.render('products/productEdit',{
-        //     title: 'Edición de Productos',
-        //     oneProduct: oneProduct,
-        // })
     },
 
-    'productsUpdate':(req, res)=>{
+    'detail':async (req, res)=>{
+        const producto = await db.Product.findOne({
+            where:{
+                id: req.params.id
+            },
+            include: [{
+                model: db.ProductCategory,
+                as: 'categories'
+            },
+            {
+                model: db.Image,
+                as: 'images'
+            }]
+        })
+        res.render('./products/productDetail', {
+            product : producto,
+            title: 'hola'
+        })
+    },
+
+    'productsUpdate':async (req, res)=>{
         let idProduct = req.params.id
         //return res.send(req.body)
-
+        const resultErros = validationResult(req)
+        //console.log('Id de producto: ' + idProduct)
+        if (resultErros.errors.length > 0 ){                
+            let allCategory = await productsController.bucarCategorias();
+            // console.log('Dentro de errores: ')   
+            // console.log(req.body)
+            // console.log(resultErros)
+            
+            return res.render('products/productEdit',{
+                errors: resultErros.mapped(),
+                oneProduct: req.body,
+                title: 'Registro de Producto',                
+                categories: allCategory,
+                idProduct: idProduct
+            })        
+        }
+        // console.log("Antes del update: " )
+        // console.log(req.body)
         db.Product.update({
             name: req.body.nombreProducto,
             price: req.body.precioProducto,
@@ -147,25 +161,11 @@ const productsController = {
         }, {
             where: {id: idProduct}
         })
-        .then(()=> {
-            return res.redirect('/producto/editar/' + idProduct)})            
+        .then(()=> {           
+           return res.redirect('/producto/editar/' + idProduct)
+           
+        })            
         .catch(error => res.send(error))
-
-        // products.forEach(product => {
-        //     if (product.id == idProduct){
-        //         product.name = req.body.nombreProducto;
-        //         product.description = req.body.descripcionProd;
-        //         product.category = req.body.categoryProducto;
-        //         product.price = req.body.precioProducto;
-        //         product.discount = req.body.discountProducto;
-        //         product.w = req.body.ancho;
-        //         product.l = req.body.largo;
-        //         product.h = req.body.alto;
-        //     }
-        // });
-        // fs.writeFileSync(productsPath, JSON.stringify(products));
-        // res.redirect('/producto/editar/' + idProduct);
-        
 
     },
     'delete':async (req, res)=>{
@@ -177,14 +177,6 @@ const productsController = {
         res.redirect('/producto/listado');
     },
 
-    // 'productList': (req, res) =>{  
-        
-    //     res.render('products/productList',{
-    //         products: products,
-    //         title: 'Listado de Productos'
-    //     })
-
-    // },
     'productList': async (req, res) =>{
         const allProducts = await db.Product.findAll({
             include: [{

@@ -27,8 +27,8 @@
                         <%= users[i].name + ' ' + users[i].lastname %>
                     </td>
                     <td>
-                        <%= users[i].roles.name %>
-                    </td>                        
+                        <%= users[i].roles ?  users[i].roles.name : ''  %>
+                    </td>            
                     <td>
                         <a href="/user/edit/<%= users[i].id %>" class="btn-icon btn-edit"><i class="fas fa-edit"></i> </a>
                         <button id="<%= users[i].id %>" onclick="show(event)" class="btn-icon btn-times"></button>

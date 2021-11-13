@@ -6,6 +6,7 @@ const router = express.Router();
 
 //MiddleWare de validacion
 const addProductValMiddleware = require('../middlewares/addProductValMiddleware')
+const updateProductValMiddleware = require('../middlewares/updateProductValMiddleware')
 
 //Requeriendo Multer
 //const multer = require('multer');
@@ -32,8 +33,8 @@ const upload_image = require('../middlewares/multerProductsMiddlewares');
 //********************************************* */
 
 
-router.get('/editar/:id/', productController.productsEdit);
-router.put('/editar/:id', productController.productsUpdate);
+router.get('/editar/:id', productController.productsEdit);
+router.post('/editar/:id', updateProductValMiddleware, productController.productsUpdate);
 
 router.get('/agregar', productController.crearProducto);
 //colocamos el middleware entre la ruta y el controller
@@ -46,6 +47,8 @@ router.get('/eliminar/:id', productController.delete);
 
 router.get('/listado', productController.productList);
 router.get('/search', productController.search);
+
+router.get('/detail/:id', productController.detail);
 
 
 module.exports = router

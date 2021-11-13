@@ -1,5 +1,31 @@
 # 💈Grupo-5-FurnituresDigitalMarket 💈
 
+## Weekly meeting \# 7
+
+### Meet 20/09/2021 🖊️
+* Organización de tareas en cuanto a la creación de base de datos.
+
+### Meet 23/09/2021 🖊️
+*División de tareas (modelos) del sprint 6.
+
+### Meet 28/09/2021 🖊️
+*División de tareas (CRUD) dell sprint 6.
+
+### Meet 30/09/2021 🖊️
+*Trabajo en conjunto y resolución de dudas.
+
+### Meet 01/10/2021 🖊️
+*Resolución de conflictos.
+
+### Meet 06/10/2021 🖊️
+*Resolución de conflictos con el servidor.
+
+### Meet 07/10/2021 🖊️
+*Resolución de conflictos con el servidor.
+
+### Meet 11/10/2021 🖊️
+*Merge de todas las ramas a 'dev' y último vistazo del sprint.
+
 ## Weekly meeting \# 5️⃣
 
 ### Meet 19/08/2021 🖊️

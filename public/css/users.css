@@ -38,7 +38,7 @@ main h2{
     flex-direction: column;
     justify-content: center;
     padding: 20px 15px;
-    height: 350px;
+    min-height: 350px;
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -134,6 +134,32 @@ is-invalid:focus{
     margin-top: 5px;
 }
 /* Fin de Formulario de edicion de login */  
+
+/* User form */
+
+.container-form{
+    max-width: 750px;
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid #377a76;
+}
+
+.container-form .row-form{
+    display: flex;
+}
+
+.container-form .col-form{
+    width: 50%;
+}
+
+.container-form .col-form input{
+    max-width: 450px;
+    width: 100%;
+}
 
 /*table user*/
 

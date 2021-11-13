@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %> 
+<!-- <%- include('../partials/head') %>  -->
 <body>
     <%- include('../partials/header') %> 
     <div class="main-form">
     <!-- <div class="form-register"> -->
         <main>
             <h2>Edición de Producto</h2>
-            <!-- <form action="/home.html" method="POST" class="create-form"> -->
-            <form action="/producto/editar/<%= oneProduct.id %>?_method=PUT" method="POST" class="form-edit-product">
+            <!-- ?_method=PUT -->
+            <form action="/producto/editar/<%= oneProduct.id == undefined ? idProduct : oneProduct.id %>" method="POST" class="form-edit-product">
                 <div class="form-control">
                     <label for="nombre-producto">Nombre del Producto</label>
                     <input type="text" name="nombreProducto" id="nombreProducto" 
-                    value="<%= oneProduct.name %>" class="control" required>
+                    value="<%= oneProduct.name == undefined ? oneProduct.nombreProducto : oneProduct.name %>" class="control">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.nombreProducto) { %>
+                            <%= errors.nombreProducto.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="descripcion-prod" class="control">Descripción</label>
                     <textarea name="descripcionProd" id="descripcionProd" 
-                    cols="30" rows="5" class="control"><%= oneProduct.description %></textarea>
+                    cols="30" rows="5" class="control"><%= oneProduct.description == undefined ? oneProduct.descripcionProd : oneProduct.description%></textarea>
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.descripcionProd) { %>
+                            <%= errors.descripcionProd.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="categoriaProd" class="control">Categoría</label>                    
 					<select name="categoriaProd" id="categoriaProd" class="control">
 						<option value=""></option>
                             <% categories.forEach(category => { %>  
-                                <option value="<%= category.id %>" <%= oneProduct.categories.id == category.id ? "selected" : null  %>>
+                                <option value="<%= category.id  %> " <%= !oneProduct.categoriaProd ? category.id == oneProduct.categories.id ? "selected" : null : category.id == oneProduct.categoriaProd ? "selected" : null%> >
                                     <%= category.title %> 
                                 </option>
                             <% }) %>                                
 					</select>
-                    <!-- <label for="categoryProducto" class="control">Categoría</label>
-                    <select name="categoryProducto" id="categoryProducto" class="control">
-                        <option value="">Elegí</option>
-                        <% if (oneProduct.category == 'hotSales') { %>
-                            <option value="inSale">En oferta</option>
-                            <option value="hotSales" selected>Más vendidos</option>
-                            <option value="newSales">Nuevo Lanzamiento</option>
-                        <% } else if (oneProduct.category == 'inSale') { %>
-                            <option value="inSale" selected>En oferta</option>
-                            <option value="hotSales">Más vendidos</option>
-                            <option value="newSales">Nuevo Lanzamiento</option>
-                        <% } else { %>
-                            <option value="inSale">En oferta</option>
-                            <option value="hotSales">Más vendidos</option>
-                            <option value="newSales" selected>Nuevo Lanzamiento</option>
-                          
-                        <% } %>
-                    </select> -->
                 </div>
                 <div class="form-control">
                     <label for="statusProd" class="control">Estatus</label>
@@ -54,6 +46,12 @@
 						<option value="">Activo</option>
 						<option value="">Inactivo</option>
 					</select>
+                </div>
+                <div class="form-control" style="display: none;">
+                    <label for="imageProduct" class="control">Seleccione Imagen</label>
+                    <input type="file" name="imageProduct" id="imageProduct" 
+                    accept="image/png, image/jpg, image/gif" value="X" multiple />
+                    
                 </div>
                 <div class="form-control">
                     <label for="medidas" class="control">Medidas</label>
@@ -66,47 +64,57 @@
                         <tr>
                             <td><input type="text" name="largo" id="largo" 
                                 class="control" placeholder="Largo" 
-                                value="<%= oneProduct.length %>" required>
+                                value="<%= oneProduct.length == undefined ? oneProduct.largo : oneProduct.length %>">
                             </td>
                             <td><input type="text" name="ancho" id="ancho" 
                                 class="control" placeholder="Ancho" 
-                                value="<%= oneProduct.width %>"required>
+                                value="<%= oneProduct.width == undefined ? oneProduct.ancho : oneProduct.width %>">
                             </td>
                             <td><input type="text" name="alto" id="alto" 
                                 class="control" placeholder="Alto" 
-                                value="<%= oneProduct.high %>" required>
+                                value="<%= oneProduct.high == undefined ? oneProduct.alto : oneProduct.high %>">
                             </td>                        
                         </tr>                    
-                    </table>
+                    </table>                    
                 </div> 
                 <div class="form-control">
                     <label for="precio-producto">Precio del Producto</label>
                     <input type="text" name="precioProducto" id="precioProducto" 
-                    class="control precio" value="<%= oneProduct.price %>"required>
+                    class="control precio" value="<%= oneProduct.price == undefined ? oneProduct.precioProducto : oneProduct.price %>">
+                    <div class="text-danger">
+                        <% if (locals.errors && errors.precioProducto) { %>
+                            <%= errors.precioProducto.msg %> 
+                        <% } %>
+                    </div>
                 </div>
                 <div class="form-control">
                     <label for="discount-producto">Descuento del Producto</label>
                     <input type="text" name="discountProducto" id="discountProducto" 
-                    class="control precio" value="<%= oneProduct.discount %>" required>
+                    class="control precio" value="<%= oneProduct.discount == undefined ? oneProduct.discountProducto : oneProduct.discount %>">
                 </div>
                 <div class="form-control">
                     <label for="discount-producto">Cantidad Producto</label>
                     <input type="text" name="cantidadProducto" id="cantidadProducto" 
-                    class="control precio" value="<%= oneProduct.quantity %>">
+                    class="control precio" value="<%= oneProduct.quantity == undefined ?oneProduct.cantidadProducto : oneProduct.quantity %>">
                     <div class="text-danger">
-                        
+                        <% if (locals.errors && errors.cantidadProducto) { %>
+                            <%= errors.cantidadProducto.msg %> 
+                        <% } %>
                     </div>
                 </div>
                 <div class="form-control">
                     <label for="discount-producto">Cantidad Minima</label>
                     <input type="text" name="cantidadMinima" id="cantidadMinima" 
-                    class="control precio" value="<%= oneProduct.stock_min %>">
+                    class="control precio" value="<%= oneProduct.stock_min == undefined ? oneProduct.cantidadMinima : oneProduct.stock_min %>">
                 </div>
                 <div class="form-control">
                     <label for="discount-producto">Cantidad Máxima</label>
                     <input type="text" name="cantidadMaxima" id="cantidadMaxima" 
-                    class="control precio" value="<%= oneProduct.stock_max %>">
-                </div>            
+                    class="control precio" value="<%= oneProduct.stock_max == undefined ? oneProduct.cantidadMaxima : oneProduct.stock_max %>">
+                </div>
+                <div class="form-control text-danger val-front">
+                    <ul></ul>
+                </div>      
                 <div class="form-control-button">
                     <button type="submit" class="button-form">Guardar Cambios</button>
                     <button type="reset" class="button-form">Limpiar</button>

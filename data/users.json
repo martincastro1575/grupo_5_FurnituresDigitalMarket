@@ -201,5 +201,17 @@
   "category": "user",
   "image": "user-1631834726385.png",
   "isActive": true
+ },
+ {
+  "id": 37,
+  "nombreApellido": "Josibel Hernandez",
+  "sexo": "F",
+  "email": "josiherz28@gmail.com",
+  "telefono": "04122058139",
+  "fechaNac": "1993-11-27",
+  "password": "$2a$10$sn79y5oxNBdaDtv59ebBrutUmv6cmWIXaQcsdtc/eA7wdrBMWGhrW",
+  "category": "user",
+  "image": "user-1633636230616.jpg",
+  "isActive": true
  }
 ]

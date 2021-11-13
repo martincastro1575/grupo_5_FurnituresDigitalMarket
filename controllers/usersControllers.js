@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const bcryptjs = require('bcryptjs')
+const db = require("../database/models")
 
 //requiriendo modelo JSON
 const User = require('../models/Users');
@@ -21,29 +22,40 @@ const userController = {
 
     'processLogin': async(req, res)=>{
         const resultErros = validationResult(req)       
+        const regEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
 
         //busco en el modelo so existe el usuario
         let userLogin = await User.findByField(req.body.nombreUser)
 
         if (!isEmpty(userLogin)){
-            let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
-
-            if(verificaPassword){
-                //por seguridad borramos de la session el password
-                delete userLogin.password
-                //creo la session
-                req.session.userLogin = userLogin
-                //creo la cookie
-                if(req.body.recordame){
-                    res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+            if(regEx.test(req.body.passUser)){
+                let verificaPassword = bcryptjs.compareSync(req.body.passUser, userLogin.password)
+                if(verificaPassword){
+                    //por seguridad borramos de la session el password
+                    delete userLogin.password
+                    //creo la session
+                    req.session.userLogin = userLogin
+                    //creo la cookie
+                    if(req.body.recordame){
+                        res.cookie('userEmail',req.body.nombreUser, { maxAge:(1000 * 60) * 2})
+                    }
+    
+                    return res.redirect('/user/profile');
+    
+                }else{
+                     res.render('users/loginUser',{
+                        errors:{
+                            passUser:{
+                                msg: 'Verique las credenciales ingresadas',
+                            }
+                        },
+                        title:'Login de Usuario',
+                    })
                 }
-
-                return res.redirect('/user/profile');
-
             }else{
-                return res.render('users/loginUser',{
+                res.render('users/loginUser', {
                     errors:{
-                        nombreUser:{
+                        passUser:{
                             msg: 'Verique las credenciales ingresadas',
                         }
                     },
@@ -95,9 +107,9 @@ const userController = {
 
         //valido que usuario con el mismo email, no se registre
         //dos veces.
-        let userExists = User.findByField('email', req.body.userEmail)
+        let userExists = User.findByField(req.body.userEmail)
 
-        if(userExists){
+       /* if(userExists){
             return res.render('users/register',{
                 errors: {
                     userEmail:{
@@ -107,9 +119,22 @@ const userController = {
                 oldData: req.body,
                 title: 'Registro de Usuario'    
             })
-        }
+        } */
+
+        db.User.create({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        })
         
-        let userCreate = {
+        /*let userCreate = {
             
             nombreApellido: req.body.nombreApellido,
             sexo: req.body.sexo,
@@ -123,9 +148,9 @@ const userController = {
             
         }
         
-        let createuser = User.create(userCreate)
+        let createuser = User.create(userCreate) */
 
-         return res.redirect('/user/login')
+         return res.redirect('/user/listado')
 
     },
 
@@ -158,13 +183,40 @@ const userController = {
         })
     },
 
+    'updateUser': (req, res) =>{
+        db.User.update({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: req.body.sexo,
+            email: req.body.email,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            /*password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename, */
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+
+        return res.redirect('/user/listado')
+       
+        
+    },
+
+
     'userDelete': async (req, res) =>{  
          await models.User.destroy({
             where: {
                 id: req.params.id
             }
         })
-        res.redirect('/user/listado')
+
+        return res.redirect('/user/listado')
+        
+
     },
     
     'usersList': async (req,res)=>{
@@ -181,10 +233,16 @@ const userController = {
             }]
         })
         //res.send('9')
-        res.render('users/userList',{
+
+        db.User.findAll()
+            .then(function(users){
+                res.render("users/userList", {users: users, title:'Listado de Usuarios'}  )
+            }) 
+
+        /*res.render('users/userList',{
             users:users,
             title:'Listado de Usuarios'
-        }) 
+        }) */
     },
 
     'store':(req, res)=>{

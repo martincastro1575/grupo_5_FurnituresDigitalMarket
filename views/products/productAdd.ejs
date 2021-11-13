@@ -53,7 +53,7 @@
                 <div class="form-control">
                     <label for="imageProduct" class="control">Seleccione Imagen</label>
                     <input type="file" name="imageProduct" id="imageProduct" 
-                    accept="image/png, image/jpeg, image/jpg, image/gif" multiple>
+                    accept="image/png, image/jpg, image/gif" multiple />
                     <div class="text-danger">
                         <% if (locals.errors && errors.imageProduct) { %>
                             <%= errors.imageProduct.msg %> 
@@ -117,6 +117,9 @@
                     <label for="discount-producto">Cantidad Máxima</label>
                     <input type="text" name="cantidadMaxima" id="cantidadMaxima" 
                     class="control precio" value="<%= locals.oldData ? oldData.cantidadMaxima : null %>">
+                </div>
+                <div class="form-control text-danger val-front">
+                    <ul></ul>
                 </div>
                 
                 <div class="form-control-button">

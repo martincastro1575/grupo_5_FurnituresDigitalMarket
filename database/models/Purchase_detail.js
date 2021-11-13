@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes){
         timestamps: false
     };
     const Purchase_detail = sequelize.define(alias, cols, config);
-
+    
     Purchase_detail.associate = function(models){
         Purchase_detail.belongsTo(models.Purchase,{
             as : 'purchase',
