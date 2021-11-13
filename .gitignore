@@ -37,7 +37,7 @@ peliculasDrama.ejs
 top.ejs
 crearPelicula.ejs
 editarPelicula.ejs
-
+env
 .env
  public/images
  public/images/products/
