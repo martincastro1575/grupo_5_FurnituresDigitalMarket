@@ -4,6 +4,9 @@ const path = require('path');
 const methodOverride = require('method-override');
 const routes = require('./routers/mainRoutes');
 const routesProducts = require('./routers/products');
+const cors = require('cors')
+
+app.use(cors())
 
 //Rutas para API
 const routeApiProducts = require('./routers/api/products')
