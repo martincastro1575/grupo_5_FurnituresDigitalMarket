@@ -11,12 +11,13 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quia, non fugiat ipsum perspiciatis totam et nisi qui repellendus eum laboriosam rem corrupti reiciendis officia quidem quibusdam quas quos tempore!</p>
              </div> -->
          </div>
-         <div class="products-hot">
-             <% resultado.forEach(element => { %>
-                <a href="/producto/editar/<%= element.id %>">
-                    <article>
+         <div class="products-hot products-search">
+            <% if(resultado.length > 0){ %>
+                <% resultado.forEach(element => { %>
+                <article>
+                    <a href="/producto/editar/<%= element.id %>">
                         <div class="img-description">
-                            <img src="/images/<%= element.image %>" alt="<%= element.name %>"
+                            <img src="/images/products/<%- element.images[0] ? element.images[0].name : 'no-image-available.jpg' %>" alt="<%- element.images[0] ? element.images[0].name : '' %>"
                         class="product-image">
                             <h4><%= element.name %></h4>
                         </div>
@@ -25,9 +26,12 @@
                             <p class="price">$<%= element.price %></p>
                             <p class="discount"><%= element.discount %>%</p>  
                         </div>
-                    </article>
-                </a>
-             <% }) %>            
+                    </a>
+                </article>
+            <% }) %>          
+            <% } else { %>
+                <img class="img-noresult" src="/images/icons/no-result.jpg" alt="No Result">
+            <% } %>
          </div>
     </section>
  </main>

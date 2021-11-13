@@ -4,12 +4,20 @@ const path = require('path');
 const methodOverride = require('method-override');
 const routes = require('./routers/mainRoutes');
 const routesProducts = require('./routers/products');
+const cors = require('cors')
+
+app.use(cors())
+
+//Rutas para API
+const routeApiProducts = require('./routers/api/products')
+const userRouterApi = require('./routers/api/usersApiRouter')
+
 
 // const routerEjemplo = require('./routers/rutaEjemplo')
 const routerUser = require('./routers/users');
 
 //OJO!!!!! SE DEBE QUITAR ESTA LINEA
-//const moviesRouter = require('./routers/movies');
+//const moviesRouter = require('./routers/movies');//
 
 //requerimos express session
 const session = require('express-session');
@@ -58,12 +66,14 @@ app.set('view engine', 'ejs');
 app.use('/', routes);
 app.use('/producto', routesProducts);
 app.use('/user', routerUser);
+app.use('/api',routeApiProducts)
+app.use('/api', userRouterApi)
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA
-//app.use('/movies', moviesRouter);
+//app.use('/movies', moviesRouter);//
 
 //app.use(logMiddleWare);
 
-app.listen(process.env.PORT || 3000, ()=>{
-    console.log('Corriendo servidor Express:3000');
+app.listen(process.env.PORT || 3500, ()=>{
+    console.log('Corriendo servidor Express:3500');
 })
