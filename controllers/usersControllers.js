@@ -4,6 +4,7 @@ const path = require('path');
 const bcryptjs = require('bcryptjs')
 const db = require("../database/models")
 
+
 //requiriendo modelo JSON
 const User = require('../models/Users');
 const models = require('../database/models')
@@ -273,6 +274,17 @@ const userController = {
         //console.log(req.body)
         res.redirect('Todo validado')
         //res.redirect('/user/edit/' + req.body.id)
+    },
+
+    'userDetail': async (req, res) =>{    
+
+        db.User.findByPk(req.params.id)
+        .then((users)=>{
+            res.render('users/detail',  {users: users, title:'Listado de Usuarios'} )
+            
+        })
+
+        
     }
 }
 module.exports = userController;
