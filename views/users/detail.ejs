@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %> 
+<body>
+    <%- include('../partials/header.ejs') %>
+    <div class="main-form"> 
+        <main> 
+            <h2>Detalle de Usuario</h2>              
+            <form action ="/user/edit/" method="POST" enctype="multipart/form-data">
+                <div class="container-form">
+                    <!-- Row-->
+                    <div class="row-form">
+                        <div class="col-form">
+                            <div class="form-control"> 
+            
+                                <img class="imgAvatar" src="/images/avatars/<%= users.image %>" alt="Imagen de Perfil" title="Imagen de Perfil" >   
+                                                           
+                            </div>
+                        </div>
+                        <div class="col-form">
+                            <div class="form-control inputInline">
+                                <h2><%= users.name %> <%= users.lastname %></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row -->
+                    <div class="row-form">
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="userEmail">Email</label>
+                               <p class="paddingP"><%= users.email %></p>
+                               <hr>
+                           </div>
+                        </div>
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="sexo">Sexo</label>
+                               <p class="paddingP"><%= users.gender %></p>
+                               <hr>
+                           </div>
+                        </div>
+                    </div>
+                    <!-- Row-->
+                    <div class="row-form">
+                        <div class="col-form">
+                           <div class="form-control">
+                               <label for="telefono">Teléfono</label>
+                               <p class="paddingP"><%= users.phone %></p>
+                               <hr>
+                           </div>
+                        </div>
+                        <div class="col-form">
+                            <div class="form-control">
+                                <label for="fechaNac">Fecha de nacimiento</label>
+                                <p class="paddingP"><%= users.birthdate %></p>
+                                <hr>
+                            </div>
+                         </div>
+                    </div>
+
+                    </div>
+                </div>   
+             </form>   
+        </main>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
