@@ -10,6 +10,8 @@ app.use(cors())
 
 //Rutas para API
 const routeApiProducts = require('./routers/api/products')
+const userRouterApi = require('./routers/api/usersApiRouter')
+
 
 // const routerEjemplo = require('./routers/rutaEjemplo')
 const routerUser = require('./routers/users');
@@ -65,6 +67,7 @@ app.use('/', routes);
 app.use('/producto', routesProducts);
 app.use('/user', routerUser);
 app.use('/api',routeApiProducts)
+app.use('/api', userRouterApi)
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA
 //app.use('/movies', moviesRouter);//

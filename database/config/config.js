@@ -1,7 +1,9 @@
 module.exports = {
   "development": {
-    "username": process.env.DATABASE_USER,
-    "password": process.env.DATABASE_PASSWORD,
+    "username": "root",
+    "password": "1234",
+    /*"username": process.env.DATABASE_USER,
+    "password": process.env.DATABASE_PASSWORD,*/
     "database": "furnituresdigitalmarket_db",
     "host": "127.0.0.1",
     "dialect": "mysql",

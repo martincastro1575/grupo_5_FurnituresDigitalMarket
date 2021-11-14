@@ -150,6 +150,7 @@ is-invalid:focus{
 
 .container-form .row-form{
     display: flex;
+    align-items: center;
 }
 
 .container-form .col-form{
@@ -159,6 +160,10 @@ is-invalid:focus{
 .container-form .col-form input{
     max-width: 450px;
     width: 100%;
+}
+
+.container-form .row-form .paddingP{
+    padding: 10px;
 }
 
 /*table user*/
@@ -210,3 +215,9 @@ table.table-user thead tr th:last-child {
     max-width: 1440px;
     margin: auto;
 }
+
+.imgAvatar{
+    width: 100px;
+    border-radius: 10px;
+}
+
