@@ -9,8 +9,8 @@ const productsController = {
         const pageNumber = Number.parseInt(req.query.page)
         const sizeLimit = Number.parseInt(req.query.size)
 
-        let page =0;
-        let size = 10
+        let page = 0;
+        let size = 10;
             
         if (!Number.isNaN(pageNumber) && pageNumber >0){
                 page = pageNumber
@@ -23,20 +23,7 @@ const productsController = {
         }
         //EndPoint de paginacion: http://localhost:3500/api/products?page=2&size=10
         const products = await db.Product.findAndCountAll({
-            // include: [{
-            //     model: db.ProductCategory,
-            //     as: 'categories',
-            //     attributes:
-            //     {
-            //        exclude:['is_active','createdAt']
-            //     }
-            // }],            
-            // attributes:            
-            //     {
-            //     exclude:[
-            //         'high','width','length','price','discount','quantity','stock_min',
-            //         'stock_max', 'idCategory','idStatus','created_at','id_category',
-            //     ]},
+           
             include:['categories'],
             attributes:['id','name','description'],
             limit: size,
@@ -48,10 +35,10 @@ const productsController = {
         //Agrupando cantidad de productos por Categoria
         const prodBycats = await db.ProductCategory.findAll({
             attributes: ['description', [sequelize.fn('count',sequelize.col('products.id')),'Cantidad']],
-            include: [
+            include:{ 
                 //model: db.Product,
-                'products'
-            ],
+                association: 'products'
+            },
             group:['description']
         })
         //console.log(prodBycats)
@@ -86,14 +73,6 @@ const productsController = {
         const idProd = req.params.id
         const prodById = await db.Product.findByPk(idProd,{
 
-            // include: [{
-            //     model: db.ProductCategory,
-            //     as: 'categories',
-            //     attributes:
-            //     {
-            //         exclude:['is_active','createdAt']
-            //     }
-            // }],
             include: [                
                 'categories'
             ],
