@@ -27,7 +27,7 @@ const productsController = {
         let size = 10
 
         if (!Number.isNaN(pageNumber) && pageNumber > 0) {
-            page = pageNumber -1
+            page = pageNumber - 1
         }
 
         if (!Number.isNaN(sizeLimit)) {
@@ -40,12 +40,12 @@ const productsController = {
 
             include: ['categories', 'images'],
             attributes: ['id', 'name', 'description', 'price'],
-            logging: console.log,
             limit: size,
             offset: page * size,
         })
 
         //Agrupando cantidad de productos por Categoria
+        console.log(products)
         const prodBycats = await db.ProductCategory.findAll({
             attributes: ['description', [sequelize.fn('count', sequelize.col('products.id')), 'Cantidad']],
             include: {
@@ -95,7 +95,7 @@ const productsController = {
 
         })
 
-        prodById.dataValues.detail = `/products/${idProd}`
+        
         return res.status(200).json({
             status: 200,
             data: prodById,
@@ -105,3 +105,4 @@ const productsController = {
 }
 
 module.exports = productsController
+
