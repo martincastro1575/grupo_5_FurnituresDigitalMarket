@@ -38,8 +38,9 @@ const productsController = {
         //EndPoint de paginacion: http://localhost:3500/api/products?page=2&size=10
         const products = await db.Product.findAndCountAll({
 
-            include: ['categories'],
-            attributes: ['id', 'name', 'description'],
+            include: ['categories', 'images'],
+            attributes: ['id', 'name', 'description', 'price'],
+            logging: console.log,
             limit: size,
             offset: page * size,
         })
@@ -67,7 +68,7 @@ const productsController = {
         });
         // agregando detail
         products.rows.forEach(product => {
-            product.dataValues.detail = `/images/products/${product.id}`
+            product.dataValues.detail = `/products/${product.id}`
         });
 
         //Total de Paginas
@@ -88,12 +89,13 @@ const productsController = {
         const prodById = await db.Product.findByPk(idProd, {
 
             include: [
-                'categories'
+                'categories',
+                'images'
             ],
 
         })
 
-        prodById.dataValues.detail = `/images/products/${idProd}`
+        prodById.dataValues.detail = `/products/${idProd}`
         return res.status(200).json({
             status: 200,
             data: prodById,
