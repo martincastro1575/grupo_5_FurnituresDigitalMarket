@@ -219,6 +219,12 @@ const productsController = {
 
     },
 
+    'productCart': (req, res) =>{
+        res.render('products/productCart', { title: 'Resultado de Busqueda'})
+        
+        
+    }
+
 }
 
 module.exports = productsController
