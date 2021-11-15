@@ -93,7 +93,7 @@ const userController = {
 
     },
 
-    //Procesa el form de registro
+    //Procesa el form de registro de usuario general
     'processUser': (req, res)=>{
         const resultErros= validationResult(req)
         
@@ -120,7 +120,7 @@ const userController = {
             birthdate: req.body.fechaNac,
             password: bcryptjs.hashSync(req.body.userPass),
             image: req.file.filename,
-            idRole: 1,
+            idRole: 2,
             idStatus: 1
         })
         
@@ -140,7 +140,7 @@ const userController = {
         
         let createuser = User.create(userCreate) */
 
-         return res.redirect('/user/listado')
+         return res.redirect('/')
 
     },
 
@@ -191,7 +191,7 @@ const userController = {
             }
         })
 
-        return res.redirect('/user/listado')
+        return res.redirect('/user/profile')
        
         
     },
