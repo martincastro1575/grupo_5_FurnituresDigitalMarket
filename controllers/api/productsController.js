@@ -45,7 +45,6 @@ const productsController = {
         })
 
         //Agrupando cantidad de productos por Categoria
-        console.log(products)
         const prodBycats = await db.ProductCategory.findAll({
             attributes: ['description', [sequelize.fn('count', sequelize.col('products.id')), 'Cantidad']],
             include: {
@@ -56,7 +55,7 @@ const productsController = {
             group: ['ProductCategory.description'],
             raw: true
         })
-        console.log(prodBycats)
+        
         //Cantidad de prod por categoria
         let prodCategQty = []
         prodBycats.forEach(prodCat => {
