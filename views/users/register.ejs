@@ -99,22 +99,26 @@
                         <div class="col-form">
                             <div class="form-control">
                                 <label for="userPass">Contraseña</label>
-                                <input type="password" name="userPass" id="userPass" class="control">
-                                <div class="text-danger">
-                                    <% if (locals.errors && errors.userPass) { %>
-                                        <%= errors.userPass.msg %> 
+                                <input type="password"  oninput="onInputPassword(event)" name="userPass" id="userPass" class="control">
+                                <div class="text-danger" id="back-error">
+                                    <% if (locals.errors && errors.passUser) { %>
+                                        <%= errors.passUser.msg %> 
                                     <% } %>
+                                </div>
+                                <div class="text-danger" id="password-error">
                                 </div>
                             </div>
                         </div>
                          <div class="col-form">
                             <div class="form-control">
                                 <label for="confirmPass">Confirmar contraseña</label>
-                                <input type="password" name="confirmPass" id="confirmPass" class="control">
+                                <input oninput="onInputPassword(event)" type="password" name="confirmPass" id="confirmPass" class="control">
                                 <div class="text-danger">
                                     <% if (locals.errors && errors.confirmPass) { %>
                                         <%= errors.confirmPass.msg %> 
                                     <% } %>
+                                </div>
+                                <div class="text-danger" id="password-confirm">
                                 </div>
                             </div>
                          </div>
@@ -140,6 +144,7 @@
             </form>         
         </main>
     </div>
+    <script src="/js/index.js"></script>
     <%- include('../partials/footer.ejs') %>
 </body>
 </html>

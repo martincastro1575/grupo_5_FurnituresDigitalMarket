@@ -35,8 +35,15 @@ function onInputPassword(event){
     if(filterMsg.length > 0){
         for(msg of filterMsg){
             descriptionPass += `${msg.message} </br>`
-        }   
-        document.getElementById('password-error').innerHTML = descriptionPass
+        } 
+        if(event.target.name !== 'confirmPass'){
+          document.getElementById('password-confirm').innerHTML = ''
+          document.getElementById('password-error').innerHTML = descriptionPass
+        }else{
+          document.getElementById('password-error').innerHTML = ''
+          document.getElementById('password-confirm').innerHTML = descriptionPass
+        }
+      
     }else{
         document.getElementById('password-error').innerHTML = ''
     }
