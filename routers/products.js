@@ -49,6 +49,7 @@ router.get('/listado', productController.productList);
 router.get('/search', productController.search);
 
 router.get('/detail/:id', productController.detail);
+router.get('/cart', productController.productCart)
 
 
 module.exports = router

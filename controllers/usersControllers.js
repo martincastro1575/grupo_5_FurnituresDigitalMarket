@@ -4,6 +4,7 @@ const path = require('path');
 const bcryptjs = require('bcryptjs')
 const db = require("../database/models")
 
+
 //requiriendo modelo JSON
 const User = require('../models/Users');
 const models = require('../database/models')
@@ -104,6 +105,19 @@ const userController = {
                 title: 'Registro de Usuario'    
             })        
         }
+
+        db.User.create({
+            name: req.body.nombreApellido,
+            lastname: req.body.nombreApellido,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: req.body.rol,
+            idStatus: req.body.status
+        })
 
         //valido que usuario con el mismo email, no se registre
         //dos veces.
@@ -260,6 +274,17 @@ const userController = {
         //console.log(req.body)
         res.redirect('Todo validado')
         //res.redirect('/user/edit/' + req.body.id)
+    },
+
+    'userDetail': async (req, res) =>{    
+
+        db.User.findByPk(req.params.id)
+        .then((users)=>{
+            res.render('users/detail',  {users: users, title:'Listado de Usuarios'} )
+            
+        })
+
+        
     }
 }
 module.exports = userController;

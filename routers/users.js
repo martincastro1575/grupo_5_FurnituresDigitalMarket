@@ -48,6 +48,9 @@ routerUser.get('/edit/:id', userController.userEdit);
 // Delete user
 routerUser.post('/delete/:id', userController.userDelete);
 
+// Details User
+routerUser.get('/detail/:id', userController.userDetail);
+
 
 //logout
 routerUser.get('/logout', userController.logout);
