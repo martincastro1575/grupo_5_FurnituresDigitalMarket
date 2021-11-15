@@ -13,7 +13,7 @@
                     <form>                    
                         <div>
                             <h2>Hi! <%= user.name + ' ' + user.lastname %> </h2>
-                            <img src="/images/avatars/<%=user.image %>" alt="foto de usuario">
+                            <img src="/images/avatars/<%- user.image ? user.image : 'default.png'%>" alt="foto de usuario">
                             </br>    
                         </div>
                         <div class="form-perfil-item">
@@ -37,12 +37,12 @@
                           <label for="address" class="form-label">Dirección de facturación</label>
                           <textarea name="address" id="address" rows="5" aria-describedby="address-help" disabled><%= user.address.find(a => a.isAddressBill === 0) ? user.address.find(a => a.isAddressBill === 0).description : '' %></textarea>
                         </div>
-                        <% if (user.roles.name == 'Admin') { %>
+       
                           <div class="buttons-form">
                             <a href="/user/edit/<%= user.id %>" class="btn btn-secondary">Edit <i class="fas fa-edit"></i></a>
                         </div>
-                      <% } %>
-                      <a href="/user/edit/<%= user.id %>" class="btn-icon btn-edit">Modificar <i class="fas fa-edit"></i> </a>
+       
+             
                       </form>
   
     
