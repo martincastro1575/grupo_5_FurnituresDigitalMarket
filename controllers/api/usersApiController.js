@@ -5,6 +5,7 @@ module.exports = {
     list: (req, res) => {
         db.User.findAll({
             attributes: ['id', 'name', 'lastname', 'email'],
+            include:['roles'],
             raw: true
         })
         .then(users =>{
@@ -26,11 +27,10 @@ module.exports = {
 
     searchById: (req, res) =>{
         db.User
-        .findByPk(req.params.id)
+        .findByPk(req.params.id,{
+            include:['roles'],
+        })
         .then(user =>{
-            
-            
-   
             let userAvatar = 'http://localhost:3500/images/avatars/' + user.image      
 
             return res.json({
@@ -44,7 +44,9 @@ module.exports = {
     // API para ver el detalle de usuarios
 
     detailUser: (req, res) => {
-        db.User.findByPk(req.params.id)
+        db.User.findByPk(req.params.id,{
+            include:['roles'],
+        })
         .then((users)=>{
             res.json({
                 data: users,

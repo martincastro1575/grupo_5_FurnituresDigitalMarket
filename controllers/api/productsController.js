@@ -27,7 +27,7 @@ const productsController = {
         let size = 10
 
         if (!Number.isNaN(pageNumber) && pageNumber > 0) {
-            page = pageNumber -1
+            page = pageNumber - 1
         }
 
         if (!Number.isNaN(sizeLimit)) {
@@ -40,7 +40,6 @@ const productsController = {
 
             include: ['categories', 'images'],
             attributes: ['id', 'name', 'description', 'price'],
-            logging: console.log,
             limit: size,
             offset: page * size,
         })
@@ -56,7 +55,7 @@ const productsController = {
             group: ['ProductCategory.description'],
             raw: true
         })
-        console.log(prodBycats)
+        
         //Cantidad de prod por categoria
         let prodCategQty = []
         prodBycats.forEach(prodCat => {
@@ -95,7 +94,7 @@ const productsController = {
 
         })
 
-        prodById.dataValues.detail = `/products/${idProd}`
+        
         return res.status(200).json({
             status: 200,
             data: prodById,
@@ -105,3 +104,4 @@ const productsController = {
 }
 
 module.exports = productsController
+
