@@ -16,7 +16,7 @@
 
         <% if(producthotSales.length > 0)  {%>
             <% producthotSales.forEach(element => { %>
-                <a href="/producto/editar/<%= element.id %>">
+                <a href="/producto/detail/<%= element.id %>">
                     <article>
                         <div class="img-description">
                             <img src="/images/products/<%- element.images[0] ? element.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
@@ -81,7 +81,7 @@
                     quidem quibusdam quas quos temp.
                 </p>                
                 <div class="products-new">
-                    <a href="/producto/editar/<%= newProducts.id %>">
+                    <a href="/producto/detail/<%= newProducts.id %>">
                         <article>
                             <div class="img-description">
                                 <img src="/images/products/<%- newProducts.images[0] ? newProducts.images[0].name : 'no-image-available.jpg' %>" alt="No Image"
