@@ -26,6 +26,7 @@ productsPrueba.css
 
 log.txt
 logDB.txt
+.env
 
 
 Pelicula.js
@@ -39,5 +40,6 @@ crearPelicula.ejs
 editarPelicula.ejs
 env
 .env
+
  public/images
  public/images/products/

@@ -80,8 +80,8 @@ module.exports=(sequelize, dataTypes)=>{
         stkMin: 'stock_min',
         stkMax: 'stock_max',
         idStatus: 'id_status',
-        //idCategory: 'id_category',
-        //idMeasure: 'id_measure',
+        idCategory: 'id_category',
+        // idMeasure: 'id_measure',
         tableName: 'products',
         createdAt: 'created_at',
         underscored: true,
@@ -98,7 +98,7 @@ module.exports=(sequelize, dataTypes)=>{
         
         Product.belongsTo(models.ProductCategory,{
             as:'categories',
-            foreignKey: 'idCategory'
+            foreignKey: 'id_category'
         }),        
         
         Product.hasMany(models.Image,{

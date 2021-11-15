@@ -1,75 +1,77 @@
 const db = require('../../database/models');
 const { param } = require('../../routers/api/products');
-const  Op = db.Sequelize.Op;
+const Op = db.Sequelize.Op;
 const sequelize = db.sequelize;
 
 
 const productsController = {
-    listado: async (req,res)=>{
+    allProducts: async(req, res) => {
+        const products = await db.Product.findAndCountAll({
+            include: ['categories', 'images'],
+            attributes: ['id', 'name', 'description', 'price'],
+            order: [['created_at', 'DESC']]
+        
+        })
+        return res.status(200).json({
+            status: 200,
+            data: products,
+            
+        })
+    },
+
+    listado: async (req, res) => {
         const pageNumber = Number.parseInt(req.query.page)
         const sizeLimit = Number.parseInt(req.query.size)
 
-        let page =0;
+        let page = 0;
         let size = 10
-            
-        if (!Number.isNaN(pageNumber) && pageNumber >0){
-                page = pageNumber
+
+        if (!Number.isNaN(pageNumber) && pageNumber > 0) {
+            page = pageNumber - 1
         }
-        
-        if(!Number.isNaN(sizeLimit)){
-            if(sizeLimit > 0 && sizeLimit <= 10){
+
+        if (!Number.isNaN(sizeLimit)) {
+            if (sizeLimit > 0 && sizeLimit <= 10) {
                 size = sizeLimit
             }
         }
         //EndPoint de paginacion: http://localhost:3500/api/products?page=2&size=10
         const products = await db.Product.findAndCountAll({
-            // include: [{
-            //     model: db.ProductCategory,
-            //     as: 'categories',
-            //     attributes:
-            //     {
-            //        exclude:['is_active','createdAt']
-            //     }
-            // }],            
-            // attributes:            
-            //     {
-            //     exclude:[
-            //         'high','width','length','price','discount','quantity','stock_min',
-            //         'stock_max', 'idCategory','idStatus','created_at','id_category',
-            //     ]},
-            include:['categories'],
-            attributes:['id','name','description'],
+
+            include: ['categories', 'images'],
+            attributes: ['id', 'name', 'description', 'price'],
             limit: size,
             offset: page * size,
         })
-        //console.log(products)
 
         //Agrupando cantidad de productos por Categoria
         const prodBycats = await db.ProductCategory.findAll({
-            attributes: ['description', [sequelize.fn('count',sequelize.col('products.id')),'Cantidad']],
-            include: [
-                //model: db.Product,
-                'products'
-            ],
-            group:['description']
+            attributes: ['description', [sequelize.fn('count', sequelize.col('products.id')), 'Cantidad']],
+            include: {
+                model: db.Product,
+                as: 'products',
+                attributes: []
+            },
+            group: ['ProductCategory.description'],
+            raw: true
         })
-        //console.log(prodBycats)
+        
         //Cantidad de prod por categoria
-        let prodCategQty=[]
+        let prodCategQty = []
         prodBycats.forEach(prodCat => {
             prodCategQty.push({
-                Category: prodCat.dataValues.description,
-                cantidad: prodCat.dataValues.Cantidad
+                Category: prodCat.description,
+                cantidad: prodCat.Cantidad
             })
-            
-            });
+
+        });
         // agregando detail
         products.rows.forEach(product => {
-            product.dataValues.detail = `/images/products/${product.id}`
+            product.dataValues.detail = `/products/${product.id}`
         });
-        
+
         //Total de Paginas
-        const pagesCount= Math.ceil(products.count / size)
+        const pagesCount = Math.ceil(products.count / size)
 
         return res.status(200).json({
             status: 200,
@@ -81,37 +83,25 @@ const productsController = {
 
     },
 
-    productById: async (req,res)=>{
+    productById: async (req, res) => {
         const idProd = req.params.id
-        const prodById = await db.Product.findByPk(idProd,{
+        const prodById = await db.Product.findByPk(idProd, {
 
-            // include: [{
-            //     model: db.ProductCategory,
-            //     as: 'categories',
-            //     attributes:
-            //     {
-            //         exclude:['is_active','createdAt']
-            //     }
-            // }],
-            include: [                
-                'categories'
-            ],            
-            
-            
-                
-                
-           
+            include: [
+                'categories',
+                'images'
+            ],
 
-            
         })
+
         
-        prodById.dataValues.detail = `/images/products/${idProd}`
         return res.status(200).json({
-            status:200,
-            data:prodById,
+            status: 200,
+            data: prodById,
         })
-        
+
     }
 }
 
 module.exports = productsController
+
