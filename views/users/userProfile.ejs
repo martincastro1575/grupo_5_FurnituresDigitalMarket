@@ -40,6 +40,10 @@
        
                           <div class="buttons-form">
                             <a href="/user/edit/<%= user.id %>" class="btn btn-secondary">Edit <i class="fas fa-edit"></i></a>
+                            <% if (user.roles.name == 'Admin') { %>
+                              <a href="/user/registerAdmin %>" class="btn btn-secondary">Registrar Usuarios</i></a>
+                              <a href="/user/listado %>" class="btn btn-secondary">Lista de Usuarios</i></a>
+                            <% } %>
                         </div>
        
              
