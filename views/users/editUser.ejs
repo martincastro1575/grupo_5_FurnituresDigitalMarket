@@ -54,7 +54,7 @@
                            <div class="form-control">
                                <label for="sexo">Sexo</label>
                                <select name="sexo" id="sexo" class="control">
-                                   <option value=""><%= user.gender %></option>
+                                   <option value="<%= user.gender %>"><%= user.gender %></option>
                                    <option value="Male">
                                        Masculino
                                    </option>
@@ -94,47 +94,6 @@
                                 </div>
                             </div>
                          </div>
-                    </div>
-                    <!-- Row -->
-                    <div class="row-form">
-                        <div class="col-form">
-                            <div class="form-control">
-                                <label for="rol">Rol de usuario</label>
-                                <select name="rol" id="rol" class="control">
-                                    <option value="<%= user.idRole %>">Seleccione rol de usuario</option>
-                                    <option value="1">
-                                        Administrador
-                                    </option>
-                                    <option value="2">
-                                        Usuario
-                                    </option>
-                                </select>
-                                <div class="text-danger">
-                                    <% if (locals.errors && errors.rol) { %>
-                                        <%= errors.rol.msg %> 
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-form">
-                            <div class="form-control">
-                                <label for="status">Status de usuario</label>
-                                <select name="status" id="status" class="control">
-                                    <option value="<%= user.idStatus%>">Seleccione status de usuario</option>
-                                    <option value="1">
-                                        Activo
-                                    </option>
-                                    <option value="2">
-                                        Inactivo
-                                    </option>
-                                </select>
-                                <div class="text-danger">
-                                    <% if (locals.errors && errors.rol) { %>
-                                        <%= errors.rol.msg %> 
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="row-form">
                         <div class="col-form">

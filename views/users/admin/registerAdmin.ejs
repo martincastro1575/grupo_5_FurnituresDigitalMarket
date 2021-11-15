@@ -1,12 +1,12 @@
   
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %> 
+    <%- include('../../partials/head.ejs') %> 
 <body>
-    <%- include('../partials/header.ejs') %>
+    <%- include('../../partials/header.ejs') %>
     <div class="main-form"> 
         <main> 
-            <h2 style="text-align: center;">Registro de Usuario</h2>
+            <h2 style="text-align: center;">Registro de Usuario Administrador</h2>
             <form action ="/user/registro/" method="POST" enctype="multipart/form-data">
                <div class="container-form">
                    <!-- Row-->
@@ -94,7 +94,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="row-form">
                         <div class="col-form">
                             <div class="form-control">
@@ -140,6 +139,6 @@
             </form>         
         </main>
     </div>
-    <%- include('../partials/footer.ejs') %>
+    <%- include('../../partials/footer.ejs') %>
 </body>
 </html>

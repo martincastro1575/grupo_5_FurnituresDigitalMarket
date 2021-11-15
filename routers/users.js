@@ -39,11 +39,10 @@ routerUser.get('/profile', authMiddleware, userController.profile);
 //Listado users
 routerUser.get('/listado', userController.usersList);
 
-//Update User
-routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.updateUser);
-
 //Editarusuario
 routerUser.get('/edit/:id', userController.userEdit);
+//Update User
+routerUser.post('/edit/:id', upload_image.single('imageUser'),validationToUpdateUser, userController.updateUser);
 
 // Delete user
 routerUser.post('/delete/:id', userController.userDelete);
@@ -51,6 +50,10 @@ routerUser.post('/delete/:id', userController.userDelete);
 // Details User
 routerUser.get('/detail/:id', userController.userDetail);
 
+//Register Admin
+routerUser.get('/registerAdmin', userController.registerAdmin);
+//Procesar Admin
+routerUser.post('/registro', upload_image.single('imageUser'), validationUser, userController.processUserAdmin);
 
 //logout
 routerUser.get('/logout', userController.logout);

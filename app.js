@@ -68,6 +68,7 @@ app.use('/producto', routesProducts);
 app.use('/user', routerUser);
 app.use('/api',routeApiProducts)
 app.use('/api', userRouterApi)
+app.use('/admin', routerUser)
 
 //OJO!!!!, SE DEBE QUITAR ESTA RUTA
 //app.use('/movies', moviesRouter);//

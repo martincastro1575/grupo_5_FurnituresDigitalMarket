@@ -106,46 +106,22 @@ const userController = {
             })        
         }
 
-        db.User.create({
-            name: req.body.nombreApellido,
-            lastname: req.body.nombreApellido,
-            gender: "male",
-            email: req.body.userEmail,
-            phone: req.body.telefono,
-            birthdate: req.body.fechaNac,
-            password: bcryptjs.hashSync(req.body.userPass),
-            image: req.file.filename,
-            idRole: req.body.rol,
-            idStatus: req.body.status
-        })
-
         //valido que usuario con el mismo email, no se registre
         //dos veces.
         let userExists = User.findByField(req.body.userEmail)
 
-       /* if(userExists){
-            return res.render('users/register',{
-                errors: {
-                    userEmail:{
-                        msg: 'Este email ya existe'
-                    }
-                },
-                oldData: req.body,
-                title: 'Registro de Usuario'    
-            })
-        } */
 
         db.User.create({
             name: req.body.nameUser,
             lastname: req.body.lastnameUser,
-            gender: "male",
+            gender: req.body.sexo,
             email: req.body.userEmail,
             phone: req.body.telefono,
             birthdate: req.body.fechaNac,
             password: bcryptjs.hashSync(req.body.userPass),
             image: req.file.filename,
-            idRole: req.body.rol,
-            idStatus: req.body.status
+            idRole: 1,
+            idStatus: 1
         })
         
         /*let userCreate = {
@@ -285,6 +261,59 @@ const userController = {
         })
 
         
-    }
+    },
+
+     //Muestra el form de registro
+     'registerAdmin': (req, res)=>{
+        return res.render('users/admin/registerAdmin',{
+            title: 'Registro de Usuario'
+        })
+
+    },
+
+    //Procesa el form de registro
+    'processUserAdmin': (req, res)=>{
+        const resultErros= validationResult(req)
+        
+        if (resultErros.errors.length > 0){
+            
+            return res.render('users/admin/registerAdmin',{
+                errors: resultErros.mapped(),
+                oldData: req.body,
+                title: 'Registro de Usuario'    
+            })        
+        }
+
+        //valido que usuario con el mismo email, no se registre
+        //dos veces.
+        let userExists = User.findByField(req.body.userEmail)
+
+
+        db.User.create({
+            name: req.body.nameUser,
+            lastname: req.body.lastnameUser,
+            gender: "male",
+            email: req.body.userEmail,
+            phone: req.body.telefono,
+            birthdate: req.body.fechaNac,
+            password: bcryptjs.hashSync(req.body.userPass),
+            image: req.file.filename,
+            idRole: 1,
+            idStatus: null
+        })
+        
+
+         return res.redirect('/user/listado')
+
+    },
+
+    'profile': (req, res)=>{
+        return res.render('./users/userProfile', {
+            title: 'Procfile de Usuario',
+            user : req.session.userLogin,
+        });
+    },
+
+    
 }
 module.exports = userController;

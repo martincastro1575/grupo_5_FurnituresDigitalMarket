@@ -10,7 +10,6 @@ const validationUser = [
     body('telefono').notEmpty().withMessage('Ingrese un numero de telefono'),
     body('fechaNac').notEmpty().withMessage('Ingrese una fecha de nacimiento'),
     body('userPass').notEmpty().withMessage('Ingrese la clave'),
-    //body('confirmPass').notEmpty().withMessage('Repita la clave'),
     body('confirmPass').notEmpty().withMessage('Repita la clave').custom((value, { req })=>{
         if (req.body.userPass !== req.body.confirmPass && req.body.confirmPass!= undefined) {
             throw new Error('Las Claves deben ser iguales');
@@ -38,8 +37,8 @@ const validationUser = [
         return true;
 
     }),
-    body('rol').notEmpty().withMessage('Seleccione rol de usuario'),
-    body('status').notEmpty().withMessage('Seleccione status de usuario'),
+   // body('rol').notEmpty().withMessage('Seleccione rol de usuario'),
+    //body('status').notEmpty().withMessage('Seleccione status de usuario')
 
 ]
 
