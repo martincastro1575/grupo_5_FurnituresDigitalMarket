@@ -1,4 +1,4 @@
-# 💈Grupo-5-FurnituresDigitalMarket-2 💈
+# 💈Grupo-5-FurnituresDigitalMarket 💈
 
 ## Furnitures Digital Market 🚀
 *Esta tienda electrónica fue concebida con la finalidad de antender las necesidades de un exclusivo y exigente público, ofreciendo productos de alta gama, fabricados bajo los estandares más altos de calidad y diseño.* :star2:🥇:star2:
